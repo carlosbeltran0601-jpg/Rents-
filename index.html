@@ -10,6 +10,10 @@
 box-sizing:border-box;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 font-family:Arial,Helvetica,sans-serif;
 margin:0;
@@ -207,6 +211,97 @@ border-radius:8px;
 line-height:1.5;
 }
 
+/* PROGRESS BAR */
+.progress-container{
+background:rgba(255,255,255,.97);
+padding:20px 15px 18px;
+box-shadow:0 3px 12px rgba(0,0,0,.10);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.progress{
+max-width:850px;
+margin:auto;
+display:flex;
+align-items:flex-start;
+justify-content:space-between;
+position:relative;
+}
+
+.progress-line{
+position:absolute;
+top:17px;
+left:8%;
+right:8%;
+height:4px;
+background:#d1d5db;
+z-index:0;
+border-radius:10px;
+}
+
+.progress-line-fill{
+position:absolute;
+top:17px;
+left:8%;
+width:0%;
+height:4px;
+background:#111827;
+z-index:1;
+border-radius:10px;
+transition:width .3s ease;
+}
+
+.progress-step{
+position:relative;
+z-index:2;
+text-align:center;
+width:20%;
+color:#6b7280;
+font-size:12px;
+font-weight:bold;
+}
+
+.progress-circle{
+width:34px;
+height:34px;
+margin:0 auto 7px;
+border-radius:50%;
+background:#d1d5db;
+color:#4b5563;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:15px;
+font-weight:800;
+border:3px solid white;
+box-shadow:0 1px 5px rgba(0,0,0,.15);
+transition:.3s ease;
+}
+
+.progress-step.active{
+color:#111827;
+}
+
+.progress-step.active .progress-circle{
+background:#111827;
+color:white;
+transform:scale(1.08);
+}
+
+.progress-step.completed .progress-circle{
+background:#374151;
+color:white;
+}
+
+.progress-subtitle{
+font-size:11px;
+font-weight:normal;
+margin-top:2px;
+color:#777;
+}
+
 footer{
 text-align:center;
 padding:25px;
@@ -246,7 +341,32 @@ padding:8px;
 padding:18px;
 }
 
+.progress-container{
+padding:14px 6px;
 }
+
+.progress-line,
+.progress-line-fill{
+left:10%;
+right:10%;
+}
+
+.progress-step{
+font-size:10px;
+}
+
+.progress-subtitle{
+font-size:9px;
+}
+
+.progress-circle{
+width:30px;
+height:30px;
+font-size:13px;
+}
+
+}
+
 </style>
 </head>
 
@@ -348,6 +468,149 @@ Monthly Rental Agreement
 </header>
 
 
+<!-- PROGRESS BAR -->
+<div class="progress-container">
+
+<div class="progress">
+
+<div class="progress-line"></div>
+<div class="progress-line-fill" id="progressFill"></div>
+
+
+<div class="progress-step active" data-step="1">
+
+<div class="progress-circle">1</div>
+
+<div
+data-en="Agreement"
+data-es="Contrato"
+data-pt="Contrato">
+
+Agreement
+
+</div>
+
+<div
+class="progress-subtitle"
+data-en="Basic Information"
+data-es="Información Básica"
+data-pt="Informações Básicas">
+
+Basic Information
+
+</div>
+
+</div>
+
+
+<div class="progress-step" data-step="2">
+
+<div class="progress-circle">2</div>
+
+<div
+data-en="Rent"
+data-es="Alquiler"
+data-pt="Aluguel">
+
+Rent
+
+</div>
+
+<div
+class="progress-subtitle"
+data-en="Payment Details"
+data-es="Detalles de Pago"
+data-pt="Detalhes do Pagamento">
+
+Payment Details
+
+</div>
+
+</div>
+
+
+<div class="progress-step" data-step="3">
+
+<div class="progress-circle">3</div>
+
+<div
+data-en="Tenants"
+data-es="Inquilinos"
+data-pt="Inquilinos">
+
+Tenants
+
+</div>
+
+<div
+class="progress-subtitle"
+data-en="Tenant Information"
+data-es="Información del Inquilino"
+data-pt="Informações do Inquilino">
+
+Tenant Information
+
+</div>
+
+</div>
+
+
+<div class="progress-step" data-step="4">
+
+<div class="progress-circle">4</div>
+
+<div
+data-en="Review"
+data-es="Revisión"
+data-pt="Revisão">
+
+Review
+
+</div>
+
+<div
+class="progress-subtitle"
+data-en="Review & Confirm"
+data-es="Revisar y Confirmar"
+data-pt="Revisar e Confirmar">
+
+Review & Confirm
+
+</div>
+
+</div>
+
+
+<div class="progress-step" data-step="5">
+
+<div class="progress-circle">5</div>
+
+<div
+data-en="Submit"
+data-es="Enviar"
+data-pt="Enviar">
+
+Submit
+
+</div>
+
+<div
+class="progress-subtitle"
+data-en="Complete"
+data-es="Completar"
+data-pt="Concluir">
+
+Complete
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
 <main>
 
 <form
@@ -361,7 +624,9 @@ value="New Carlos Rents Rental Agreement">
 
 
 <!-- AGREEMENT INFORMATION -->
-<div class="card">
+<div
+class="card"
+id="step1">
 
 <h2
 data-en="Agreement Information"
@@ -559,7 +824,9 @@ Enter the date the tenant will begin living at the property.
 
 
 <!-- RENT & PAYMENT -->
-<div class="card">
+<div
+class="card"
+id="step2">
 
 <h2
 data-en="Rent & Payment"
@@ -671,7 +938,7 @@ Select the agreed method that will be used to pay rent.
 </div>
 
 
-<!-- LATE FEE - LOCKED -->
+<!-- LATE FEE LOCKED -->
 <div>
 
 <label
@@ -729,7 +996,9 @@ Enter the amount required as the security deposit.
 
 
 <!-- OCCUPANTS & PETS -->
-<div class="card">
+<div
+class="card"
+id="step3">
 
 <h2
 data-en="Occupants & Pets"
@@ -1411,8 +1680,58 @@ Any lawful charges may be deducted from the security deposit or otherwise charge
 </div>
 
 
+<!-- REVIEW -->
+<div
+class="card"
+id="step4">
+
+<h2
+data-en="Review & Confirmation"
+data-es="Revisión y Confirmación"
+data-pt="Revisão e Confirmação">
+
+Review & Confirmation
+
+</h2>
+
+<div class="notice">
+
+<p
+data-en="Please review all information before submitting this rental agreement."
+data-es="Revise toda la información antes de enviar este contrato de alquiler."
+data-pt="Revise todas as informações antes de enviar este contrato de aluguel.">
+
+Please review all information before submitting this rental agreement.
+
+</p>
+
+<p
+data-en="Make sure your name, property address, rent amount, payment information, and signature information are correct."
+data-es="Asegúrese de que su nombre, dirección de la propiedad, monto del alquiler, información de pago y firma sean correctos."
+data-pt="Certifique-se de que seu nome, endereço do imóvel, valor do aluguel, informações de pagamento e assinatura estejam corretos.">
+
+Make sure your name, property address, rent amount, payment information, and signature information are correct.
+
+</p>
+
+</div>
+
+</div>
+
+
 <!-- SUBMIT -->
-<div class="card">
+<div
+class="card"
+id="step5">
+
+<h2
+data-en="Submit Rental Agreement"
+data-es="Enviar Contrato de Alquiler"
+data-pt="Enviar Contrato de Aluguel">
+
+Submit Rental Agreement
+
+</h2>
 
 <div class="notice">
 
@@ -1435,7 +1754,6 @@ Nothing in this form is intended to waive or limit rights or duties that cannot 
 </p>
 
 </div>
-
 
 <button
 type="submit"
@@ -1461,6 +1779,7 @@ Submit Rental Agreement
 
 <script>
 
+/* LANGUAGE */
 function changeLanguage(lang){
 
 document.documentElement.lang=lang;
@@ -1476,6 +1795,80 @@ el.textContent=text;
 });
 
 }
+
+
+/* PROGRESS BAR */
+const steps = [
+document.getElementById("step1"),
+document.getElementById("step2"),
+document.getElementById("step3"),
+document.getElementById("step4"),
+document.getElementById("step5")
+];
+
+const progressSteps =
+document.querySelectorAll(".progress-step");
+
+const progressFill =
+document.getElementById("progressFill");
+
+
+function updateProgress(){
+
+let currentStep = 1;
+
+const scrollPosition =
+window.scrollY + window.innerHeight * 0.35;
+
+steps.forEach(function(section,index){
+
+if(section.offsetTop <= scrollPosition){
+
+currentStep = index + 1;
+
+}
+
+});
+
+
+progressSteps.forEach(function(step,index){
+
+step.classList.remove("active");
+step.classList.remove("completed");
+
+if(index + 1 === currentStep){
+
+step.classList.add("active");
+
+}
+
+if(index + 1 < currentStep){
+
+step.classList.add("completed");
+
+}
+
+});
+
+
+let percentage =
+((currentStep - 1) / 4) * 84;
+
+progressFill.style.width = percentage + "%";
+
+}
+
+
+/* UPDATE WHEN SCROLLING */
+window.addEventListener(
+"scroll",
+updateProgress
+);
+
+window.addEventListener(
+"load",
+updateProgress
+);
 
 </script>
 
