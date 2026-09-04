@@ -167,20 +167,6 @@ border-radius:5px;
 line-height:1.5;
 }
 
-.upload-box{
-background:#f8fafc;
-border:2px dashed #cbd5e1;
-padding:18px;
-border-radius:8px;
-margin-top:8px;
-}
-
-.upload-box input{
-border:0;
-padding:5px 0;
-background:transparent;
-}
-
 .required{
 color:#dc2626;
 }
@@ -233,9 +219,7 @@ padding:18px;
 </style>
 </head>
 
-
 <body>
-
 
 <!-- LANGUAGE -->
 
@@ -261,7 +245,6 @@ onchange="changeLanguage(this.value)">
 
 </div>
 
-
 <!-- HEADER -->
 
 <header>
@@ -281,20 +264,16 @@ Monthly Rental Agreement
 
 </header>
 
-
 <main>
-
 
 <form
 action="https://formspree.io/f/xeaqzogr"
-method="POST"
-enctype="multipart/form-data">
+method="POST">
 
 <input
 type="hidden"
 name="_subject"
 value="New Carlos Rents Rental Agreement">
-
 
 <!-- AGREEMENT INFORMATION -->
 
@@ -307,9 +286,7 @@ data-pt="Informações do Contrato">
 Agreement Information
 </h2>
 
-
 <div class="grid">
-
 
 <div>
 
@@ -327,7 +304,6 @@ required>
 
 </div>
 
-
 <div>
 
 <label
@@ -343,7 +319,6 @@ name="year"
 placeholder="2026">
 
 </div>
-
 
 <div>
 
@@ -362,7 +337,6 @@ readonly>
 
 </div>
 
-
 <div>
 
 <label
@@ -377,7 +351,6 @@ name="lessee"
 required>
 
 </div>
-
 
 <div class="full">
 
@@ -394,7 +367,6 @@ required>
 
 </div>
 
-
 <div class="full">
 
 <label
@@ -408,7 +380,6 @@ Unit / Premises Description
 name="unit_description">
 
 </div>
-
 
 <div>
 
@@ -426,11 +397,9 @@ required>
 
 </div>
 
-
 </div>
 
 </div>
-
 
 <!-- RENT & PAYMENT -->
 
@@ -443,9 +412,7 @@ data-pt="Aluguel e Pagamento">
 Rent & Payment
 </h2>
 
-
 <div class="grid">
-
 
 <div>
 
@@ -464,7 +431,6 @@ required>
 
 </div>
 
-
 <div>
 
 <label
@@ -482,7 +448,6 @@ name="rent_due_day"
 required>
 
 </div>
-
 
 <div>
 
@@ -505,7 +470,6 @@ required>
 
 </div>
 
-
 <div>
 
 <label
@@ -519,7 +483,6 @@ Payment Location / Address
 name="payment_location">
 
 </div>
-
 
 <div>
 
@@ -537,7 +500,6 @@ name="late_fee">
 
 </div>
 
-
 <div>
 
 <label
@@ -553,7 +515,6 @@ step=".01"
 name="prorated_rent">
 
 </div>
-
 
 <div>
 
@@ -571,11 +532,9 @@ name="security_deposit">
 
 </div>
 
-
 </div>
 
 </div>
-
 
 <!-- OCCUPANTS & PETS -->
 
@@ -588,9 +547,7 @@ data-pt="Ocupantes e Animais de Estimação">
 Occupants & Pets
 </h2>
 
-
 <div class="grid">
-
 
 <div>
 
@@ -608,7 +565,6 @@ name="adults">
 
 </div>
 
-
 <div>
 
 <label
@@ -624,7 +580,6 @@ min="0"
 name="children">
 
 </div>
-
 
 <div>
 
@@ -645,7 +600,6 @@ Pets
 
 </div>
 
-
 <div class="full">
 
 <label
@@ -661,11 +615,9 @@ The tenant is responsible for damage caused by pets to the extent permitted by l
 
 </div>
 
-
 </div>
 
 </div>
-
 
 <!-- RENT PAYMENT RULES -->
 
@@ -678,9 +630,7 @@ data-pt="Regras de Pagamento do Aluguel">
 Rent Payment Rules
 </h2>
 
-
 <div class="grid">
-
 
 <div>
 
@@ -698,7 +648,6 @@ name="additional_amount">
 
 </div>
 
-
 <div class="full notice">
 
 Rent is due on the agreed due date.
@@ -706,11 +655,9 @@ Any late fee or additional amount must comply with applicable Florida law.
 
 </div>
 
-
 </div>
 
 </div>
-
 
 <!-- LEAD PAINT -->
 
@@ -723,7 +670,6 @@ data-pt="Divulgação de Tinta à Base de Chumbo">
 Lead-Based Paint Disclosure
 </h2>
 
-
 <label
 data-en="Was the property built before 1978?"
 data-es="¿La propiedad fue construida antes de 1978?"
@@ -733,7 +679,6 @@ Was the property built before 1978?
 
 </label>
 
-
 <select name="built_before_1978">
 
 <option value="No" selected>No</option>
@@ -741,59 +686,11 @@ Was the property built before 1978?
 
 </select>
 
-
 <p>
 Housing built before 1978 may require additional lead-based paint disclosures.
 </p>
 
 </div>
-
-
-<!-- DRIVER LICENSE -->
-
-<div class="card">
-
-<h2
-data-en="Tenant Identification"
-data-es="Identificación del Inquilino"
-data-pt="Identificação do Inquilino">
-Tenant Identification
-</h2>
-
-
-<label
-data-en="Driver's License / Government ID"
-data-es="Licencia de Conducir / Identificación"
-data-pt="Carteira de Motorista / Identificação">
-
-Driver's License / Government ID
-
-<span class="required">*</span>
-
-</label>
-
-
-<div class="upload-box">
-
-<input
-type="file"
-id="driver_license"
-name="driver_license"
-accept="image/jpeg,image/png,application/pdf"
-required>
-
-</div>
-
-
-<div class="notice">
-
-Please upload a clear photo or PDF of your driver's license
-or government-issued identification.
-
-</div>
-
-</div>
-
 
 <!-- TENANT CERTIFICATION -->
 
@@ -806,9 +703,7 @@ data-pt="Certificação do Inquilino">
 Tenant Certification
 </h2>
 
-
 <div class="grid">
-
 
 <div>
 
@@ -824,7 +719,6 @@ name="tenant_name"
 required>
 
 </div>
-
 
 <div>
 
@@ -842,7 +736,6 @@ required>
 
 </div>
 
-
 <div>
 
 <label
@@ -859,7 +752,6 @@ required>
 
 </div>
 
-
 <div>
 
 <label
@@ -874,7 +766,6 @@ name="second_tenant">
 
 </div>
 
-
 <div>
 
 <label
@@ -888,7 +779,6 @@ Second Tenant Signature
 name="second_signature">
 
 </div>
-
 
 <div>
 
@@ -906,7 +796,6 @@ required>
 
 </div>
 
-
 <div>
 
 <label
@@ -922,11 +811,9 @@ name="tenant_phone">
 
 </div>
 
-
 </div>
 
 </div>
-
 
 <!-- LANDLORD / AGENT -->
 
@@ -939,9 +826,7 @@ data-pt="Dados do Proprietário / Agente">
 Landlord / Agent Details
 </h2>
 
-
 <div class="grid">
-
 
 <div>
 
@@ -960,13 +845,12 @@ readonly>
 
 </div>
 
-
 <div>
 
 <label
 data-en="Landlord / Agent Signature"
 data-es="Firma del Propietario / Agente"
-data-pt="Assinatura do Proprietário / Agente">
+data-pt="Assinatura do Propietário / Agente">
 Landlord / Agent Signature
 </label>
 
@@ -977,7 +861,6 @@ class="readonly"
 readonly>
 
 </div>
-
 
 <div>
 
@@ -996,7 +879,6 @@ readonly>
 
 </div>
 
-
 <div>
 
 <label
@@ -1012,11 +894,9 @@ name="landlord_date">
 
 </div>
 
-
 </div>
 
 </div>
-
 
 <!-- SUBMIT -->
 
@@ -1031,7 +911,6 @@ that cannot lawfully be waived.
 
 </div>
 
-
 <button
 type="submit"
 data-en="Submit Rental Agreement"
@@ -1044,18 +923,15 @@ Submit Rental Agreement
 
 </div>
 
-
 </form>
 
 </main>
-
 
 <footer>
 
 © Carlos Rents • RENT • APPLY • LIVE
 
 </footer>
-
 
 <script>
 
@@ -1078,7 +954,6 @@ el.textContent=text;
 }
 
 </script>
-
 
 </body>
 </html>
