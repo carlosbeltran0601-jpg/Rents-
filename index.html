@@ -2,162 +2,84 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carlos Rents | Monthly Rental Agreement</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Carlos Rents</title>
 
 <style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f5f6f8;
-  color:#222;
-}
-header{
-  background:#111827;
-  color:white;
-  text-align:center;
-  padding:28px 18px;
-}
-header h1{margin:0 0 8px;font-size:30px}
-header p{margin:0;color:#d1d5db}
-main{
-  max-width:850px;
-  margin:25px auto;
-  padding:0 16px 40px;
-}
-.card{
-  background:white;
-  border-radius:12px;
-  padding:24px;
-  margin-bottom:18px;
-  box-shadow:0 2px 12px rgba(0,0,0,.07);
-}
-h2{margin-top:0}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:16px;
-}
+body{font-family:Arial;margin:0;background:#f4f4f4;color:#222}
+header{background:#111827;color:white;text-align:center;padding:25px}
+main{max-width:850px;margin:20px auto;padding:10px}
+.card{background:white;padding:22px;margin-bottom:18px;border-radius:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
 .full{grid-column:1/-1}
-label{
-  display:block;
-  font-weight:bold;
-  margin-bottom:6px;
-}
-input,select,textarea{
-  width:100%;
-  padding:12px;
-  border:1px solid #cbd5e1;
-  border-radius:7px;
-  font-size:16px;
-}
+label{font-weight:bold;display:block;margin-bottom:5px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #bbb;border-radius:7px;font-size:16px}
 textarea{min-height:100px}
-.small{
-  font-size:13px;
-  color:#64748b;
-  line-height:1.5;
-  margin-bottom:5px;
-}
-.notice{
-  background:#fff7ed;
-  border-left:4px solid #f97316;
-  padding:12px;
-  margin-bottom:18px;
-  line-height:1.5;
-}
-button{
-  width:100%;
-  border:0;
-  border-radius:8px;
-  padding:15px;
-  background:#111827;
-  color:white;
-  font-size:17px;
-  font-weight:bold;
-}
-.language{
-  background:white;
-  padding:12px 16px;
-  text-align:right;
-  border-bottom:1px solid #ddd;
-}
-.language select{width:auto;min-width:150px;padding:8px}
-#leadFields{display:none}
-
-@media(max-width:650px){
-  .grid{grid-template-columns:1fr}
-  .full{grid-column:auto}
-}
+button{width:100%;padding:15px;background:#111827;color:white;border:0;border-radius:8px;font-size:17px;font-weight:bold}
+.lang{text-align:right;background:white;padding:10px}
+.lang select{width:auto}
+.notice{background:#fff7ed;padding:12px;border-left:4px solid #f97316}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.full{grid-column:auto}}
 </style>
 </head>
 
 <body>
 
-<div class="language">
-  <label style="display:inline-block" for="languageSelect" data-i18n="language">Language</label>
-  <select id="languageSelect">
-    <option value="en">English</option>
-    <option value="es">Español</option>
-    <option value="pt">Português</option>
-  </select>
+<div class="lang">
+<label for="language" data-en="Language" data-es="Idioma" data-pt="Idioma">Language</label>
+<select id="language" onchange="changeLanguage(this.value)">
+<option value="en">English</option>
+<option value="es">Español</option>
+<option value="pt">Português</option>
+</select>
 </div>
 
 <header>
-  <h1>Carlos Rents</h1>
-  <p data-i18n="monthly">Monthly Rental Agreement</p>
+<h1>Carlos Rents</h1>
+<p data-en="Monthly Rental Agreement" data-es="Contrato de Alquiler Mensual" data-pt="Contrato de Aluguel Mensal">Monthly Rental Agreement</p>
 </header>
 
 <main>
 
-<form action="YOUR_FORM_ENDPOINT_HERE" method="POST">
+<form action="https://formspree.io/f/xeaqzogr" method="POST">
 
 <div class="card">
-<h2 data-i18n="agreement">Agreement Information</h2>
-
-<div class="notice" data-i18n="intro">
-Please enter the information requested below. This online form is intended to collect the information needed for the rental agreement.
-</div>
+<h2 data-en="Agreement Information" data-es="Información del Contrato" data-pt="Informações do Contrato">Agreement Information</h2>
 
 <div class="grid">
 
 <div>
-<label data-i18n="agreementDate">Agreement Date</label>
-<div class="small" data-i18n="agreementDateHelp">the date this rental agreement is entered into</div>
+<label data-en="Agreement Date" data-es="Fecha del Contrato" data-pt="Data do Contrato">Agreement Date</label>
 <input type="date" name="agreement_date" required>
 </div>
 
 <div>
-<label data-i18n="year">Year</label>
-<div class="small" data-i18n="yearHelp">the year the agreement is signed</div>
-<input type="number" name="year" placeholder="2026" required>
+<label data-en="Year" data-es="Año" data-pt="Ano">Year</label>
+<input type="number" name="year" placeholder="2026">
 </div>
 
 <div>
-<label data-i18n="lessor">Lessor / Landlord</label>
-<input type="text" name="lessor" value="Carlos" readonly>
+<label data-en="Lessor / Landlord" data-es="Arrendador / Propietario" data-pt="Locador / Proprietário">Lessor / Landlord</label>
+<input name="lessor" value="Carlos" readonly>
 </div>
 
 <div>
-<label data-i18n="lessee">Lessee / Tenant</label>
-<div class="small" data-i18n="lesseeHelp">the person renting the property</div>
-<input type="text" name="lessee" required>
+<label data-en="Lessee / Tenant" data-es="Arrendatario / Inquilino" data-pt="Locatário / Inquilino">Lessee / Tenant</label>
+<input name="lessee" required>
 </div>
 
 <div class="full">
-<label data-i18n="address">Rental Property Address</label>
-<div class="small" data-i18n="addressHelp">the address of the rental property</div>
-<input type="text" name="property_address" required>
+<label data-en="Rental Property Address" data-es="Dirección de la Propiedad" data-pt="Endereço do Imóvel">Rental Property Address</label>
+<input name="property_address" required>
 </div>
 
 <div class="full">
-<label data-i18n="unit">Unit / Premises Description</label>
-<div class="small" data-i18n="unitHelp">the home, apartment, room, or unit being rented</div>
-<input type="text" name="unit_description">
+<label data-en="Unit / Premises Description" data-es="Descripción de la Unidad / Inmueble" data-pt="Descrição da Unidade / Imóvel">Unit / Premises Description</label>
+<input name="unit_description">
 </div>
 
 <div>
-<label data-i18n="movein">Tenancy Start / Move-in Date</label>
+<label data-en="Tenancy Start / Move-in Date" data-es="Fecha de Inicio / Mudanza" data-pt="Data de Início / Mudança">Tenancy Start / Move-in Date</label>
 <input type="date" name="move_in_date" required>
 </div>
 
@@ -166,50 +88,47 @@ Please enter the information requested below. This online form is intended to co
 
 
 <div class="card">
-<h2 data-i18n="rentPayment">Rent & Payment</h2>
+<h2 data-en="Rent & Payment" data-es="Alquiler y Pago" data-pt="Aluguel e Pagamento">Rent & Payment</h2>
 
 <div class="grid">
 
 <div>
-<label data-i18n="monthlyRent">Monthly Rent ($)</label>
-<input type="number" step="0.01" name="monthly_rent" required>
+<label data-en="Monthly Rent ($)" data-es="Alquiler Mensual ($)" data-pt="Aluguel Mensal ($)">Monthly Rent ($)</label>
+<input type="number" step=".01" name="monthly_rent" required>
 </div>
 
 <div>
-<label data-i18n="dueDay">Rent Due Day</label>
+<label data-en="Rent Due Day" data-es="Día de Vencimiento" data-pt="Dia de Vencimento">Rent Due Day</label>
 <input type="number" min="1" max="31" name="rent_due_day" required>
 </div>
 
 <div>
-<label data-i18n="paymentMethod">Payment Method</label>
+<label data-en="Payment Method" data-es="Método de Pago" data-pt="Método de Pagamento">Payment Method</label>
 <select name="payment_method" required>
-<option value="">Select one</option>
-<option value="Cash" data-i18n="cash">Cash</option>
-<option value="Zelle">Zelle</option>
+<option value="">Select</option>
+<option>Cash</option>
+<option>Zelle</option>
 </select>
 </div>
 
 <div>
-<label data-i18n="paymentLocation">Payment Location / Address</label>
-<input type="text" name="payment_location">
+<label data-en="Payment Location / Address" data-es="Lugar / Dirección de Pago" data-pt="Local / Endereço de Pagamento">Payment Location / Address</label>
+<input name="payment_location">
 </div>
 
 <div>
-<label data-i18n="lateFee">Late Fee ($)</label>
-<div class="small" data-i18n="lateHelp">
-A charge that may apply when rent is paid late, as allowed by law.
-</div>
-<input type="number" step="0.01" name="late_fee">
+<label data-en="Late Fee ($)" data-es="Cargo por Pago Tardío ($)" data-pt="Taxa por Atraso ($)">Late Fee ($)</label>
+<input type="number" step=".01" name="late_fee">
 </div>
 
 <div>
-<label data-i18n="prorated">Prorated First Month Rent ($)</label>
-<input type="number" step="0.01" name="prorated_first_month">
+<label data-en="Prorated First Month Rent ($)" data-es="Alquiler Prorrateado del Primer Mes ($)" data-pt="Aluguel Proporcional do Primeiro Mês ($)">Prorated First Month Rent ($)</label>
+<input type="number" step=".01" name="prorated_rent">
 </div>
 
 <div>
-<label data-i18n="security">Security Deposit ($)</label>
-<input type="number" step="0.01" name="security_deposit">
+<label data-en="Security Deposit ($)" data-es="Depósito de Seguridad ($)" data-pt="Depósito de Segurança ($)">Security Deposit ($)</label>
+<input type="number" step=".01" name="security_deposit">
 </div>
 
 </div>
@@ -217,34 +136,32 @@ A charge that may apply when rent is paid late, as allowed by law.
 
 
 <div class="card">
-<h2 data-i18n="occupants">Occupants & Pets</h2>
+<h2 data-en="Occupants & Pets" data-es="Ocupantes y Mascotas" data-pt="Ocupantes e Animais de Estimação">Occupants & Pets</h2>
 
 <div class="grid">
 
 <div>
-<label data-i18n="adults">Number of Adults</label>
-<input type="number" min="0" name="number_adults">
+<label data-en="Number of Adults" data-es="Número de Adultos" data-pt="Número de Adultos">Number of Adults</label>
+<input type="number" min="0" name="adults">
 </div>
 
 <div>
-<label data-i18n="children">Number of Children</label>
-<input type="number" min="0" name="number_children">
+<label data-en="Number of Children" data-es="Número de Niños" data-pt="Número de Crianças">Number of Children</label>
+<input type="number" min="0" name="children">
 </div>
 
 <div>
-<label data-i18n="pets">Pets</label>
+<label data-en="Pets" data-es="Mascotas" data-pt="Animais de Estimação">Pets</label>
 <select name="pets">
-<option value="">Select one</option>
-<option value="Yes" data-i18n="yes">Yes</option>
-<option value="No" data-i18n="no">No</option>
+<option value="">Select</option>
+<option>Yes</option>
+<option>No</option>
 </select>
 </div>
 
 <div class="full">
-<label data-i18n="petResponsibility">Pet Responsibility</label>
-<div class="small">
-The tenant is responsible for pet-caused damage to the extent permitted by law.
-</div>
+<label data-en="Pet Responsibility" data-es="Responsabilidad por Mascotas" data-pt="Responsabilidade por Animais">Pet Responsibility</label>
+<p>The tenant is responsible for damage caused by pets to the extent permitted by law.</p>
 </div>
 
 </div>
@@ -252,30 +169,16 @@ The tenant is responsible for pet-caused damage to the extent permitted by law.
 
 
 <div class="card">
-<h2 data-i18n="paymentRules">Rent Payment Rules</h2>
+<h2 data-en="Rent Payment Rules" data-es="Reglas de Pago del Alquiler" data-pt="Regras de Pagamento do Aluguel">Rent Payment Rules</h2>
 
 <div class="grid">
 
 <div>
-<label data-i18n="dueDay">Rent Due Day</label>
-<input type="number" min="1" max="31" name="rules_rent_due_day">
+<label data-en="Additional Amount Due" data-es="Monto Adicional Adeudado" data-pt="Valor Adicional Devido">Additional Amount Due</label>
+<input type="number" step=".01" name="additional_amount">
 </div>
 
-<div>
-<label data-i18n="paymentMethod">Payment Method</label>
-<select name="rules_payment_method">
-<option value="">Select one</option>
-<option value="Cash" data-i18n="cash">Cash</option>
-<option value="Zelle">Zelle</option>
-</select>
-</div>
-
-<div>
-<label data-i18n="additional">Additional Amount Due</label>
-<input type="number" step="0.01" name="additional_amount_due">
-</div>
-
-<div class="full notice" data-i18n="lawNotice">
+<div class="full notice">
 Rent is due on the agreed due date. Any late fee or additional amount must comply with applicable Florida law.
 </div>
 
@@ -284,94 +187,60 @@ Rent is due on the agreed due date. Any late fee or additional amount must compl
 
 
 <div class="card">
-<h2 data-i18n="lead">Lead-Based Paint Disclosure</h2>
+<h2 data-en="Lead-Based Paint Disclosure" data-es="Divulgación de Pintura a Base de Plomo" data-pt="Divulgação de Tinta à Base de Chumbo">Lead-Based Paint Disclosure</h2>
 
-<div class="notice" data-i18n="leadHelp">
-Required for most rental housing built before 1978.
-</div>
+<label data-en="Was the property built before 1978?" data-es="¿La propiedad fue construida antes de 1978?" data-pt="O imóvel foi construído antes de 1978?">
+Was the property built before 1978?
+</label>
 
-<label data-i18n="before1978">Was the property built before 1978?</label>
-
-<select name="built_before_1978" id="builtBefore1978">
-<option value="No" selected data-i18n="no">No</option>
-<option value="Yes" data-i18n="yes">Yes</option>
+<select name="built_before_1978">
+<option value="No" selected>No</option>
+<option value="Yes">Yes</option>
 </select>
 
-<div id="leadFields">
-
-<br>
-
-<div class="grid">
-
-<div>
-<label data-i18n="knownLead">Known Lead-Based Paint / Hazards</label>
-<select name="known_lead">
-<option value="Known hazards are present" data-i18n="knownYes">Known hazards are present</option>
-<option value="No knowledge" data-i18n="noKnowledge">Lessor has no knowledge of lead-based paint or hazards</option>
-</select>
-</div>
-
-<div>
-<label data-i18n="records">Records / Reports</label>
-<select name="lead_records">
-<option value="Available records/reports provided" data-i18n="recordsYes">Available records/reports provided</option>
-<option value="No reports or records" data-i18n="recordsNo">Lessor has no reports or records</option>
-</select>
-</div>
-
-<div class="full">
-<label data-i18n="leadExplanation">Lead Disclosure Explanation / Documents</label>
-<textarea name="lead_explanation"></textarea>
-</div>
-
-</div>
-</div>
+<p>
+Housing built before 1978 may require additional lead-based paint disclosures.
+</p>
 </div>
 
 
 <div class="card">
-<h2 data-i18n="tenantCertification">Tenant Certification</h2>
+<h2 data-en="Tenant Certification" data-es="Certificación del Inquilino" data-pt="Certificação do Inquilino">Tenant Certification</h2>
 
 <div class="grid">
 
 <div>
-<label data-i18n="tenantName">Tenant Name</label>
-<input type="text" name="tenant_name" required>
+<label data-en="Tenant Name" data-es="Nombre del Inquilino" data-pt="Nome do Inquilino">Tenant Name</label>
+<input name="tenant_name" required>
 </div>
 
 <div>
-<label data-i18n="tenantSignature">Tenant Signature</label>
-<div class="small" data-i18n="printName">Print full name as signature</div>
-<input type="text" name="tenant_signature" placeholder="Print full name" required>
+<label data-en="Tenant Signature" data-es="Firma del Inquilino" data-pt="Assinatura do Inquilino">Tenant Signature</label>
+<input name="tenant_signature" placeholder="Print full name" required>
 </div>
 
 <div>
-<label data-i18n="signatureDate">Signature Date</label>
-<input type="date" name="tenant_signature_date" required>
+<label data-en="Signature Date" data-es="Fecha de Firma" data-pt="Data da Assinatura">Signature Date</label>
+<input type="date" name="signature_date" required>
 </div>
 
 <div>
-<label data-i18n="secondTenant">Second Tenant Name (if applicable)</label>
-<input type="text" name="second_tenant_name">
+<label data-en="Second Tenant Name (if applicable)" data-es="Nombre del Segundo Inquilino" data-pt="Nome do Segundo Inquilino">Second Tenant Name (if applicable)</label>
+<input name="second_tenant">
 </div>
 
 <div>
-<label data-i18n="secondSignature">Second Tenant Signature</label>
-<input type="text" name="second_tenant_signature" placeholder="Print full name">
+<label data-en="Second Tenant Signature" data-es="Firma del Segundo Inquilino" data-pt="Assinatura do Segundo Inquilino">Second Tenant Signature</label>
+<input name="second_signature">
 </div>
 
 <div>
-<label data-i18n="secondDate">Second Signature Date</label>
-<input type="date" name="second_signature_date">
-</div>
-
-<div>
-<label data-i18n="email">Tenant Email</label>
+<label data-en="Tenant Email" data-es="Correo Electrónico" data-pt="E-mail do Inquilino">Tenant Email</label>
 <input type="email" name="tenant_email" required>
 </div>
 
 <div>
-<label data-i18n="phone">Tenant Phone</label>
+<label data-en="Tenant Phone" data-es="Teléfono del Inquilino" data-pt="Telefone do Inquilino">Tenant Phone</label>
 <input type="tel" name="tenant_phone">
 </div>
 
@@ -380,28 +249,28 @@ Required for most rental housing built before 1978.
 
 
 <div class="card">
-<h2 data-i18n="landlordDetails">Landlord / Agent Details</h2>
+<h2 data-en="Landlord / Agent Details" data-es="Datos del Propietario / Agente" data-pt="Dados do Proprietário / Agente">Landlord / Agent Details</h2>
 
 <div class="grid">
 
 <div>
-<label data-i18n="landlordName">Landlord / Agent Name</label>
-<input type="text" name="landlord_agent_name" value="Carlos" readonly>
+<label data-en="Landlord / Agent Name" data-es="Nombre del Propietario / Agente" data-pt="Nome do Proprietário / Agente">Landlord / Agent Name</label>
+<input name="landlord_name" value="Carlos" readonly>
 </div>
 
 <div>
-<label data-i18n="landlordSignature">Landlord / Agent Signature</label>
-<input type="text" name="landlord_agent_signature" value="CB" readonly>
+<label data-en="Landlord / Agent Signature" data-es="Firma del Propietario / Agente" data-pt="Assinatura do Proprietário / Agente">Landlord / Agent Signature</label>
+<input name="landlord_signature" value="CB" readonly>
 </div>
 
 <div>
-<label data-i18n="title">Title</label>
-<input type="text" name="landlord_agent_title" value="Carlos Rents" readonly>
+<label data-en="Title" data-es="Cargo" data-pt="Cargo">Title</label>
+<input name="landlord_title" value="Carlos Rents" readonly>
 </div>
 
 <div>
-<label data-i18n="date">Date</label>
-<input type="date" name="landlord_agent_date">
+<label data-en="Date" data-es="Fecha" data-pt="Data">Date</label>
+<input type="date" name="landlord_date">
 </div>
 
 </div>
@@ -409,15 +278,16 @@ Required for most rental housing built before 1978.
 
 
 <div class="card">
-
-<div class="notice" data-i18n="disclaimer">
-By submitting this form, the person submitting confirms that the information entered is intended for the rental agreement process. Nothing in this form is intended to waive or limit any rights or duties that cannot lawfully be waived under Florida or federal law. The final rental agreement should include all disclosures required for the property and tenancy.
+<div class="notice">
+By submitting this form, the person submitting confirms that the information entered is intended for the rental agreement process. Nothing in this form is intended to waive or limit rights or duties that cannot lawfully be waived.
 </div>
 
-<button type="submit" data-i18n="submit">
+<button type="submit"
+data-en="Submit Rental Agreement"
+data-es="Enviar Contrato de Alquiler"
+data-pt="Enviar Contrato de Aluguel">
 Submit Rental Agreement
 </button>
-
 </div>
 
 </form>
@@ -425,250 +295,19 @@ Submit Rental Agreement
 
 
 <script>
-
-const translations = {
-
-en:{
-language:"Language",
-monthly:"Monthly Rental Agreement",
-agreement:"Agreement Information",
-intro:"Please enter the information requested below. This online form is intended to collect the information needed for the rental agreement.",
-agreementDate:"Agreement Date",
-agreementDateHelp:"the date this rental agreement is entered into",
-year:"Year",
-yearHelp:"the year the agreement is signed",
-lessor:"Lessor / Landlord",
-lessee:"Lessee / Tenant",
-lesseeHelp:"the person renting the property",
-address:"Rental Property Address",
-addressHelp:"the address of the rental property",
-unit:"Unit / Premises Description",
-unitHelp:"the home, apartment, room, or unit being rented",
-movein:"Tenancy Start / Move-in Date",
-rentPayment:"Rent & Payment",
-monthlyRent:"Monthly Rent ($)",
-dueDay:"Rent Due Day",
-paymentMethod:"Payment Method",
-cash:"Cash",
-paymentLocation:"Payment Location / Address",
-lateFee:"Late Fee ($)",
-lateHelp:"A charge that may apply when rent is paid late, as allowed by law.",
-prorated:"Prorated First Month Rent ($)",
-security:"Security Deposit ($)",
-occupants:"Occupants & Pets",
-adults:"Number of Adults",
-children:"Number of Children",
-pets:"Pets",
-yes:"Yes",
-no:"No",
-petResponsibility:"Pet Responsibility",
-paymentRules:"Rent Payment Rules",
-additional:"Additional Amount Due",
-lawNotice:"Rent is due on the agreed due date. Any late fee or additional amount must comply with applicable Florida law.",
-lead:"Lead-Based Paint Disclosure",
-leadHelp:"Required for most rental housing built before 1978.",
-before1978:"Was the property built before 1978?",
-knownLead:"Known Lead-Based Paint / Hazards",
-knownYes:"Known hazards are present",
-noKnowledge:"Lessor has no knowledge of lead-based paint or hazards",
-records:"Records / Reports",
-recordsYes:"Available records/reports provided",
-recordsNo:"Lessor has no reports or records",
-leadExplanation:"Lead Disclosure Explanation / Documents",
-tenantCertification:"Tenant Certification",
-tenantName:"Tenant Name",
-tenantSignature:"Tenant Signature",
-printName:"Print full name as signature",
-secondTenant:"Second Tenant Name (if applicable)",
-secondSignature:"Second Tenant Signature",
-secondDate:"Second Signature Date",
-signatureDate:"Signature Date",
-email:"Tenant Email",
-phone:"Tenant Phone",
-landlordDetails:"Landlord / Agent Details",
-landlordName:"Landlord / Agent Name",
-landlordSignature:"Landlord / Agent Signature",
-title:"Title",
-date:"Date",
-disclaimer:"By submitting this form, the person submitting confirms that the information entered is intended for the rental agreement process. Nothing in this form is intended to waive or limit any rights or duties that cannot lawfully be waived under Florida or federal law. The final rental agreement should include all disclosures required for the property and tenancy.",
-submit:"Submit Rental Agreement"
-},
-
-es:{
-language:"Idioma",
-monthly:"Contrato de Alquiler Mensual",
-agreement:"Información del Contrato",
-intro:"Ingrese la información solicitada a continuación. Este formulario en línea tiene como objetivo recopilar la información necesaria para el contrato de alquiler.",
-agreementDate:"Fecha del Contrato",
-agreementDateHelp:"la fecha en que se celebra este contrato de alquiler",
-year:"Año",
-yearHelp:"el año en que se firma el contrato",
-lessor:"Arrendador / Propietario",
-lessee:"Arrendatario / Inquilino",
-lesseeHelp:"la persona que alquila la propiedad",
-address:"Dirección de la Propiedad de Alquiler",
-addressHelp:"la dirección de la propiedad de alquiler",
-unit:"Descripción de la Unidad / Inmueble",
-unitHelp:"la casa, apartamento, habitación o unidad que se alquila",
-movein:"Fecha de Inicio / Mudanza",
-rentPayment:"Alquiler y Pago",
-monthlyRent:"Alquiler Mensual ($)",
-dueDay:"Día de Vencimiento del Alquiler",
-paymentMethod:"Método de Pago",
-cash:"Efectivo",
-paymentLocation:"Lugar / Dirección de Pago",
-lateFee:"Cargo por Pago Tardío ($)",
-lateHelp:"Un cargo que puede aplicarse cuando el alquiler se paga tarde, según lo permita la ley.",
-prorated:"Alquiler Prorrateado del Primer Mes ($)",
-security:"Depósito de Seguridad ($)",
-occupants:"Ocupantes y Mascotas",
-adults:"Número de Adultos",
-children:"Número de Niños",
-pets:"Mascotas",
-yes:"Sí",
-no:"No",
-petResponsibility:"Responsabilidad por Mascotas",
-paymentRules:"Reglas de Pago del Alquiler",
-additional:"Monto Adicional Adeudado",
-lawNotice:"El alquiler vence en la fecha acordada. Cualquier cargo por pago tardío o monto adicional debe cumplir con la ley aplicable de Florida.",
-lead:"Divulgación de Pintura a Base de Plomo",
-leadHelp:"Requerida para la mayoría de las viviendas de alquiler construidas antes de 1978.",
-before1978:"¿La propiedad fue construida antes de 1978?",
-knownLead:"Pintura a Base de Plomo / Peligros Conocidos",
-knownYes:"Hay peligros conocidos presentes",
-noKnowledge:"El arrendador no tiene conocimiento de pintura a base de plomo ni de peligros",
-records:"Registros / Informes",
-recordsYes:"Se proporcionaron registros/informes disponibles",
-recordsNo:"El arrendador no tiene informes ni registros",
-leadExplanation:"Explicación / Documentos de Divulgación de Plomo",
-tenantCertification:"Certificación del Inquilino",
-tenantName:"Nombre del Inquilino",
-tenantSignature:"Firma del Inquilino",
-printName:"Escriba el nombre completo como firma",
-secondTenant:"Nombre del Segundo Inquilino (si corresponde)",
-secondSignature:"Firma del Segundo Inquilino",
-secondDate:"Fecha de la Segunda Firma",
-signatureDate:"Fecha de Firma",
-email:"Correo Electrónico del Inquilino",
-phone:"Teléfono del Inquilino",
-landlordDetails:"Datos del Propietario / Agente",
-landlordName:"Nombre del Propietario / Agente",
-landlordSignature:"Firma del Propietario / Agente",
-title:"Cargo",
-date:"Fecha",
-disclaimer:"Al enviar este formulario, la persona que lo presenta confirma que la información ingresada está destinada al proceso del contrato de alquiler. Nada en este formulario pretende renunciar o limitar derechos u obligaciones que no puedan renunciarse legalmente conforme a la ley de Florida o federal. El contrato final debe incluir todas las divulgaciones requeridas.",
-submit:"Enviar Contrato de Alquiler"
-},
-
-pt:{
-language:"Idioma",
-monthly:"Contrato de Aluguel Mensal",
-agreement:"Informações do Contrato",
-intro:"Insira as informações solicitadas abaixo. Este formulário online destina-se a coletar as informações necessárias para o contrato de aluguel.",
-agreementDate:"Data do Contrato",
-agreementDateHelp:"a data em que este contrato de aluguel é celebrado",
-year:"Ano",
-yearHelp:"o ano em que o contrato é assinado",
-lessor:"Locador / Proprietário",
-lessee:"Locatário / Inquilino",
-lesseeHelp:"a pessoa que aluga o imóvel",
-address:"Endereço do Imóvel Alugado",
-addressHelp:"o endereço do imóvel alugado",
-unit:"Descrição da Unidade / Imóvel",
-unitHelp:"a casa, apartamento, quarto ou unidade alugada",
-movein:"Data de Início / Mudança",
-rentPayment:"Aluguel e Pagamento",
-monthlyRent:"Aluguel Mensal ($)",
-dueDay:"Dia de Vencimento do Aluguel",
-paymentMethod:"Método de Pagamento",
-cash:"Dinheiro",
-paymentLocation:"Local / Endereço de Pagamento",
-lateFee:"Taxa por Atraso ($)",
-lateHelp:"Uma cobrança que pode ser aplicada quando o aluguel é pago atrasado, conforme permitido por lei.",
-prorated:"Aluguel Proporcional do Primeiro Mês ($)",
-security:"Depósito de Segurança ($)",
-occupants:"Ocupantes e Animais de Estimação",
-adults:"Número de Adultos",
-children:"Número de Crianças",
-pets:"Animais de Estimação",
-yes:"Sim",
-no:"Não",
-petResponsibility:"Responsabilidade por Animais",
-paymentRules:"Regras de Pagamento do Aluguel",
-additional:"Valor Adicional Devido",
-lawNotice:"O aluguel vence na data acordada. Qualquer taxa por atraso ou valor adicional deve cumprir a lei aplicável da Flórida.",
-lead:"Divulgação de Tinta à Base de Chumbo",
-leadHelp:"Exigida para a maioria das moradias de aluguel construídas antes de 1978.",
-before1978:"O imóvel foi construído antes de 1978?",
-knownLead:"Tinta à Base de Chumbo / Riscos Conhecidos",
-knownYes:"Há riscos conhecidos presentes",
-noKnowledge:"O locador não tem conhecimento de tinta à base de chumbo ou riscos",
-records:"Registros / Relatórios",
-recordsYes:"Registros/relatórios disponíveis fornecidos",
-recordsNo:"O locador não possui relatórios ou registros",
-leadExplanation:"Explicação / Documentos da Divulgação de Chumbo",
-tenantCertification:"Certificação do Inquilino",
-tenantName:"Nome do Inquilino",
-tenantSignature:"Assinatura do Inquilino",
-printName:"Digite o nome completo como assinatura",
-secondTenant:"Nome do Segundo Inquilino (se aplicável)",
-secondSignature:"Assinatura do Segundo Inquilino",
-secondDate:"Data da Segunda Assinatura",
-signatureDate:"Data da Assinatura",
-email:"E-mail do Inquilino",
-phone:"Telefone do Inquilino",
-landlordDetails:"Dados do Proprietário / Agente",
-landlordName:"Nome do Proprietário / Agente",
-landlordSignature:"Assinatura do Proprietário / Agente",
-title:"Cargo",
-date:"Data",
-disclaimer:"Ao enviar este formulário, a pessoa que o envia confirma que as informações inseridas destinam-se ao processo do contrato de aluguel. Nada neste formulário pretende renunciar ou limitar direitos ou deveres que não possam ser legalmente renunciados de acordo com a lei da Flórida ou federal. O contrato final deve incluir todas as divulgações exigidas.",
-submit:"Enviar Contrato de Aluguel"
-}
-
-};
-
-
 function changeLanguage(lang){
 
 document.documentElement.lang=lang;
 
-const t=translations[lang];
+document.querySelectorAll("[data-en]").forEach(function(el){
 
-document.querySelectorAll("[data-i18n]").forEach(el=>{
-  const key=el.getAttribute("data-i18n");
-  if(t[key]) el.textContent=t[key];
-});
+let text=el.getAttribute("data-"+lang);
 
-document.querySelectorAll("input[placeholder]").forEach(input=>{
-  if(input.name==="tenant_signature" || input.name==="second_tenant_signature"){
-    input.placeholder =
-      lang==="es" ? "Escriba el nombre completo" :
-      lang==="pt" ? "Digite o nome completo" :
-      "Print full name";
-  }
-});
+if(text) el.textContent=text;
 
-document.querySelectorAll("select option[data-i18n]").forEach(option=>{
-  const key=option.getAttribute("data-i18n");
-  if(t[key]) option.textContent=t[key];
 });
 
 }
-
-
-document.getElementById("languageSelect").addEventListener("change",function(){
-  changeLanguage(this.value);
-});
-
-
-document.getElementById("builtBefore1978").addEventListener("change",function(){
-
-document.getElementById("leadFields").style.display =
-this.value==="Yes" ? "block" : "none";
-
-});
-
 </script>
 
 </body>
