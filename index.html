@@ -211,6 +211,44 @@ border-radius:8px;
 line-height:1.5;
 }
 
+
+/* REQUIRED AGREEMENT CHECKBOX */
+.agreement-check{
+background:#f9fafb;
+border:2px solid #d1d5db;
+border-radius:10px;
+padding:16px;
+margin-bottom:18px;
+}
+
+.checkbox-label{
+display:flex;
+align-items:flex-start;
+gap:12px;
+font-weight:bold;
+line-height:1.5;
+cursor:pointer;
+}
+
+.checkbox-label input[type="checkbox"]{
+width:22px;
+height:22px;
+min-width:22px;
+margin-top:2px;
+cursor:pointer;
+accent-color:#111827;
+}
+
+.checkbox-label input[type="checkbox"]:invalid{
+outline:2px solid #dc2626;
+outline-offset:2px;
+}
+
+.agreement-check .description{
+margin-left:34px;
+}
+
+
 /* PROGRESS BAR */
 .progress-container{
 background:rgba(255,255,255,.97);
@@ -363,6 +401,18 @@ font-size:9px;
 width:30px;
 height:30px;
 font-size:13px;
+}
+
+.agreement-check{
+padding:14px;
+}
+
+.checkbox-label{
+font-size:14px;
+}
+
+.agreement-check .description{
+margin-left:0;
 }
 
 }
@@ -1755,11 +1805,47 @@ Nothing in this form is intended to waive or limit rights or duties that cannot 
 
 </div>
 
+
+<!-- REQUIRED AGREEMENT CHECKBOX -->
+<div class="agreement-check">
+
+<label class="checkbox-label">
+
+<input
+type="checkbox"
+name="tenant_agreement_confirmation"
+value="I agree to all terms and confirm the information is accurate"
+required>
+
+<span
+data-en="I confirm that I have read and agree to the information, terms, rent payment rules, late-payment rules, property responsibility rules, and other requirements shown in this rental agreement. I also confirm that the information I entered is accurate."
+data-es="Confirmo que he leído y acepto la información, los términos, las reglas de pago del alquiler, las reglas de pagos atrasados, las reglas de responsabilidad por la propiedad y otros requisitos mostrados en este contrato de alquiler. También confirmo que la información que ingresé es correcta."
+data-pt="Confirmo que li e concordo com as informações, termos, regras de pagamento do aluguel, regras de atraso, regras de responsabilidade pela propriedade e outros requisitos apresentados neste contrato de aluguel. Também confirmo que as informações que inseri estão corretas.">
+
+I confirm that I have read and agree to the information, terms, rent payment rules, late-payment rules, property responsibility rules, and other requirements shown in this rental agreement. I also confirm that the information I entered is accurate.
+
+</span>
+
+</label>
+
+<p
+class="description"
+data-en="You must check this box before you can submit the rental agreement."
+data-es="Debe marcar esta casilla antes de poder enviar el contrato de alquiler."
+data-pt="Você deve marcar esta caixa antes de enviar o contrato de aluguel.">
+
+You must check this box before you can submit the rental agreement.
+
+</p>
+
+</div>
+
+
 <button
 type="submit"
 data-en="Submit Rental Agreement"
 data-es="Enviar Contrato de Alquiler"
-data-pt="Enviar Contrato de Aluguel">
+data-pt="Enviar Contrato de Alquiler">
 
 Submit Rental Agreement
 
