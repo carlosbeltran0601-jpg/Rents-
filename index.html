@@ -139,6 +139,12 @@ border-left:4px solid #f97316;
 border-radius:5px;
 line-height:1.5;
 }
+.description{
+font-size:13px;
+color:#666;
+margin:6px 0 0 0;
+line-height:1.4;
+}
 .required{
 color:#dc2626;
 }
@@ -164,6 +170,14 @@ margin:0 0 10px 0;
 background:#f3f4f6;
 font-weight:bold;
 cursor:not-allowed;
+}
+.three-day{
+background:#fff7ed;
+border:2px solid #f97316;
+border-left:6px solid #f97316;
+padding:18px;
+border-radius:8px;
+line-height:1.5;
 }
 footer{
 text-align:center;
@@ -231,7 +245,7 @@ margin-bottom:8px;
 "
 data-en="⚠️ MUST SEND ME YOUR ID"
 data-es="⚠️ DEBE ENVIARME SU IDENTIFICACIÓN"
-data-pt="⚠️ VOCÊ DEVE ME ENVIAR SEU DOCUMENTO DE IDENTIFICAÇÃO">
+data-pt="⚠️ VOCÊ DEVE ENVIAR SEU DOCUMENTO DE IDENTIFICAÇÃO">
 ⚠️ MUST SEND ME YOUR ID
 </div>
 <div
@@ -282,6 +296,7 @@ data-pt="Informações do Contrato">
 Agreement Information
 </h2>
 <div class="grid">
+<!-- AGREEMENT DATE -->
 <div>
 <label
 data-en="Agreement Date"
@@ -293,7 +308,15 @@ Agreement Date
 type="date"
 name="agreement_date"
 required>
+<p
+class="description"
+data-en="Enter the date this rental agreement is being completed."
+data-es="Ingrese la fecha en que se completa este contrato de alquiler."
+data-pt="Digite a data em que este contrato de aluguel está sendo preenchido.">
+Enter the date this rental agreement is being completed.
+</p>
 </div>
+<!-- YEAR -->
 <div>
 <label
 data-en="Year"
@@ -305,7 +328,15 @@ Year
 type="number"
 name="year"
 placeholder="2026">
+<p
+class="description"
+data-en="Enter the year of the rental agreement."
+data-es="Ingrese el año del contrato de alquiler."
+data-pt="Digite o ano do contrato de aluguel.">
+Enter the year of the rental agreement.
+</p>
 </div>
+<!-- LESSOR -->
 <div>
 <label
 data-en="Lessor / Landlord"
@@ -318,7 +349,15 @@ name="lessor"
 value="Carlos"
 class="readonly"
 readonly>
+<p
+class="description"
+data-en="The landlord or person providing the rental property."
+data-es="El propietario o persona que proporciona la propiedad en alquiler."
+data-pt="O proprietário ou pessoa que fornece o imóvel para aluguel.">
+The landlord or person providing the rental property.
+</p>
 </div>
+<!-- LESSEE -->
 <div>
 <label
 data-en="Lessee / Tenant"
@@ -329,7 +368,15 @@ Lessee / Tenant
 <input
 name="lessee"
 required>
+<p
+class="description"
+data-en="Enter the full legal name of the person renting the property."
+data-es="Ingrese el nombre legal completo de la persona que alquila la propiedad."
+data-pt="Digite o nome legal completo da pessoa que está alugando o imóvel.">
+Enter the full legal name of the person renting the property.
+</p>
 </div>
+<!-- PROPERTY ADDRESS -->
 <div class="full">
 <label
 data-en="Rental Property Address"
@@ -340,7 +387,15 @@ Rental Property Address
 <input
 name="property_address"
 required>
+<p
+class="description"
+data-en="Enter the complete address of the rental property, including apartment or unit information if applicable."
+data-es="Ingrese la dirección completa de la propiedad, incluyendo apartamento o unidad si corresponde."
+data-pt="Digite o endereço completo do imóvel, incluindo apartamento ou unidade, se aplicável.">
+Enter the complete address of the rental property, including apartment or unit information if applicable.
+</p>
 </div>
+<!-- MOVE IN -->
 <div>
 <label
 data-en="Tenancy Start / Move-in Date"
@@ -352,6 +407,13 @@ Tenancy Start / Move-in Date
 type="date"
 name="move_in_date"
 required>
+<p
+class="description"
+data-en="Enter the date the tenant will begin living at the property."
+data-es="Ingrese la fecha en que el inquilino comenzará a vivir en la propiedad."
+data-pt="Digite a data em que o inquilino começará a morar no imóvel.">
+Enter the date the tenant will begin living at the property.
+</p>
 </div>
 </div>
 </div>
@@ -364,6 +426,7 @@ data-pt="Aluguel e Pagamento">
 Rent & Payment
 </h2>
 <div class="grid">
+<!-- MONTHLY RENT -->
 <div>
 <label
 data-en="Monthly Rent ($)"
@@ -376,7 +439,15 @@ type="number"
 step=".01"
 name="monthly_rent"
 required>
+<p
+class="description"
+data-en="Enter the agreed amount of rent due each month."
+data-es="Ingrese el monto acordado de alquiler que debe pagarse cada mes."
+data-pt="Digite o valor acordado do aluguel devido todos os meses.">
+Enter the agreed amount of rent due each month.
+</p>
 </div>
+<!-- DUE DAY -->
 <div>
 <label
 data-en="Rent Due Day"
@@ -390,7 +461,15 @@ min="1"
 max="31"
 name="rent_due_day"
 required>
+<p
+class="description"
+data-en="Enter the day of the month when rent is due."
+data-es="Ingrese el día del mes en que vence el alquiler."
+data-pt="Digite o dia do mês em que o aluguel vence.">
+Enter the day of the month when rent is due.
+</p>
 </div>
+<!-- PAYMENT METHOD -->
 <div>
 <label
 data-en="Payment Method"
@@ -405,7 +484,15 @@ required>
 <option>Cash</option>
 <option>Zelle</option>
 </select>
+<p
+class="description"
+data-en="Select the agreed method that will be used to pay rent."
+data-es="Seleccione el método acordado que se utilizará para pagar el alquiler."
+data-pt="Selecione o método acordado que será usado para pagar o aluguel.">
+Select the agreed method that will be used to pay rent.
+</p>
 </div>
+<!-- LATE FEE -->
 <div>
 <label
 data-en="Late Fee ($)"
@@ -417,7 +504,15 @@ Late Fee ($)
 type="number"
 step=".01"
 name="late_fee">
+<p
+class="description"
+data-en="Enter any agreed late fee, if applicable and permitted by law."
+data-es="Ingrese cualquier cargo por pago tardío acordado, si corresponde y está permitido por la ley."
+data-pt="Digite qualquer taxa por atraso acordada, se aplicável e permitida por lei.">
+Enter any agreed late fee, if applicable and permitted by law.
+</p>
 </div>
+<!-- SECURITY DEPOSIT -->
 <div>
 <label
 data-en="Security Deposit ($)"
@@ -429,6 +524,13 @@ Security Deposit ($)
 type="number"
 step=".01"
 name="security_deposit">
+<p
+class="description"
+data-en="Enter the amount required as the security deposit."
+data-es="Ingrese el monto requerido como depósito de seguridad."
+data-pt="Digite o valor exigido como depósito de segurança.">
+Enter the amount required as the security deposit.
+</p>
 </div>
 </div>
 </div>
@@ -441,6 +543,7 @@ data-pt="Ocupantes e Animais de Estimação">
 Occupants & Pets
 </h2>
 <div class="grid">
+<!-- ADULTS -->
 <div>
 <label
 data-en="Number of Adults"
@@ -452,7 +555,15 @@ Number of Adults
 type="number"
 min="0"
 name="adults">
+<p
+class="description"
+data-en="Enter the number of adults who will live at the property."
+data-es="Ingrese el número de adultos que vivirán en la propiedad."
+data-pt="Digite o número de adultos que morarão no imóvel.">
+Enter the number of adults who will live at the property.
+</p>
 </div>
+<!-- CHILDREN -->
 <div>
 <label
 data-en="Number of Children"
@@ -464,7 +575,15 @@ Number of Children
 type="number"
 min="0"
 name="children">
+<p
+class="description"
+data-en="Enter the number of children who will live at the property."
+data-es="Ingrese el número de niños que vivirán en la propiedad."
+data-pt="Digite o número de crianças que morarão no imóvel.">
+Enter the number of children who will live at the property.
+</p>
 </div>
+<!-- PETS -->
 <div>
 <label
 data-en="Pets"
@@ -477,7 +596,15 @@ Pets
 <option>Yes</option>
 <option>No</option>
 </select>
+<p
+class="description"
+data-en="Select whether any pets will live at the rental property."
+data-es="Seleccione si alguna mascota vivirá en la propiedad de alquiler."
+data-pt="Selecione se algum animal de estimação viverá no imóvel.">
+Select whether any pets will live at the rental property.
+</p>
 </div>
+<!-- PET RESPONSIBILITY -->
 <div class="full">
 <label
 data-en="Pet Responsibility"
@@ -485,7 +612,12 @@ data-es="Responsabilidad por Mascotas"
 data-pt="Responsabilidade por Animais">
 Pet Responsibility
 </label>
-<p>
+<p
+class="description"
+style="font-size:14px;color:#444;"
+data-en="The tenant is responsible for damage caused by pets to the extent permitted by law."
+data-es="El inquilino es responsable de los daños causados por mascotas en la medida permitida por la ley."
+data-pt="O inquilino é responsável por danos causados por animais de estimação na medida permitida pela lei.">
 The tenant is responsible for damage caused by pets to the extent permitted by law.
 </p>
 </div>
@@ -499,6 +631,7 @@ data-es="Reglas de Pago del Alquiler"
 data-pt="Regras de Pagamento do Aluguel">
 Rent Payment Rules
 </h2>
+<!-- $100 WARNING -->
 <div class="late-warning">
 <p
 class="late-warning-title"
@@ -517,6 +650,27 @@ Rent is due on the agreed due date. A $100 additional charge is specified for ea
 type="hidden"
 name="additional_amount_due"
 value="100">
+</div>
+<!-- 3 DAY NOTICE -->
+<div class="three-day" style="margin-top:15px;">
+<h3
+data-en="Nonpayment of Rent – 3-Day Notice"
+data-es="Falta de Pago del Alquiler – Aviso de 3 Días"
+data-pt="Falta de Pagamento do Aluguel – Aviso de 3 Dias">
+Nonpayment of Rent – 3-Day Notice
+</h3>
+<p
+data-en="If rent is not paid when due and the default continues, the landlord may use the applicable Florida statutory notice process for nonpayment of rent."
+data-es="Si el alquiler no se paga cuando vence y el incumplimiento continúa, el propietario puede utilizar el proceso de aviso legal de Florida aplicable por falta de pago del alquiler."
+data-pt="Se o aluguel não for pago quando devido e o inadimplemento continuar, o proprietário poderá utilizar o processo de aviso legal aplicável da Flórida para falta de pagamento do aluguel.">
+If rent is not paid when due and the default continues, the landlord may use the applicable Florida statutory notice process for nonpayment of rent.
+</p>
+<p
+data-en="The statutory notice process does not replace or waive any rights, notices, service requirements, or court procedures required by Florida law."
+data-es="El proceso de aviso legal no reemplaza ni renuncia a ningún derecho, aviso, requisito de entrega o procedimiento judicial exigido por la ley de Florida."
+data-pt="O processo de aviso legal não substitui nem renuncia a quaisquer direitos, avisos, requisitos de entrega ou procedimentos judiciais exigidos pela lei da Flórida.">
+The statutory notice process does not replace or waive any rights, notices, service requirements, or court procedures required by Florida law.
+</p>
 </div>
 </div>
 <!-- LEAD PAINT -->
@@ -538,11 +692,22 @@ type="text"
 value="No"
 readonly
 class="locked">
+<p
+class="description"
+data-en="This form records the property as not being built before 1978. This field cannot be changed by the tenant."
+data-es="Este formulario registra que la propiedad no fue construida antes de 1978. El inquilino no puede cambiar este campo."
+data-pt="Este formulário registra que o imóvel não foi construído antes de 1978. O inquilino não pode alterar este campo.">
+This form records the property as not being built before 1978. This field cannot be changed by the tenant.
+</p>
 <input
 type="hidden"
 name="built_before_1978"
 value="No">
-<p>
+<p
+class="description"
+data-en="Housing built before 1978 may require additional lead-based paint disclosures."
+data-es="Las viviendas construidas antes de 1978 pueden requerir divulgaciones adicionales sobre pintura a base de plomo."
+data-pt="Imóveis construídos antes de 1978 podem exigir divulgações adicionais sobre tinta à base de chumbo.">
 Housing built before 1978 may require additional lead-based paint disclosures.
 </p>
 </div>
@@ -555,6 +720,7 @@ data-pt="Certificação do Inquilino">
 Tenant Certification
 </h2>
 <div class="grid">
+<!-- TENANT NAME -->
 <div>
 <label
 data-en="Tenant Name"
@@ -565,7 +731,15 @@ Tenant Name
 <input
 name="tenant_name"
 required>
+<p
+class="description"
+data-en="Enter your full legal name."
+data-es="Ingrese su nombre legal completo."
+data-pt="Digite seu nome legal completo.">
+Enter your full legal name.
+</p>
 </div>
+<!-- TENANT SIGNATURE -->
 <div>
 <label
 data-en="Tenant Signature"
@@ -577,7 +751,15 @@ Tenant Signature
 name="tenant_signature"
 placeholder="Print full name"
 required>
+<p
+class="description"
+data-en="Type your full name as your electronic signature."
+data-es="Escriba su nombre completo como firma electrónica."
+data-pt="Digite seu nome completo como assinatura eletrônica.">
+Type your full name as your electronic signature.
+</p>
 </div>
+<!-- SIGNATURE DATE -->
 <div>
 <label
 data-en="Signature Date"
@@ -589,7 +771,15 @@ Signature Date
 type="date"
 name="signature_date"
 required>
+<p
+class="description"
+data-en="Enter the date you are signing this agreement."
+data-es="Ingrese la fecha en que firma este contrato."
+data-pt="Digite a data em que está assinando este contrato.">
+Enter the date you are signing this agreement.
+</p>
 </div>
+<!-- SECOND TENANT -->
 <div>
 <label
 data-en="Second Tenant Name (if applicable)"
@@ -599,7 +789,15 @@ Second Tenant Name (if applicable)
 </label>
 <input
 name="second_tenant">
+<p
+class="description"
+data-en="If another tenant will be listed on the agreement, enter their full name."
+data-es="Si otro inquilino aparecerá en el contrato, ingrese su nombre completo."
+data-pt="Se outro inquilino estiver listado no contrato, digite o nome completo.">
+If another tenant will be listed on the agreement, enter their full name.
+</p>
 </div>
+<!-- SECOND SIGNATURE -->
 <div>
 <label
 data-en="Second Tenant Signature"
@@ -609,7 +807,15 @@ Second Tenant Signature
 </label>
 <input
 name="second_signature">
+<p
+class="description"
+data-en="The second tenant should type their full name as their electronic signature."
+data-es="El segundo inquilino debe escribir su nombre completo como firma electrónica."
+data-pt="O segundo inquilino deve digitar seu nome completo como assinatura eletrônica.">
+The second tenant should type their full name as their electronic signature.
+</p>
 </div>
+<!-- EMAIL -->
 <div>
 <label
 data-en="Tenant Email"
@@ -621,7 +827,15 @@ Tenant Email
 type="email"
 name="tenant_email"
 required>
+<p
+class="description"
+data-en="Enter an email address where you can receive rental-related communication."
+data-es="Ingrese un correo electrónico donde pueda recibir comunicaciones relacionadas con el alquiler."
+data-pt="Digite um endereço de e-mail onde você possa receber comunicações relacionadas ao aluguel.">
+Enter an email address where you can receive rental-related communication.
+</p>
 </div>
+<!-- PHONE -->
 <div>
 <label
 data-en="Tenant Phone"
@@ -632,6 +846,13 @@ Tenant Phone
 <input
 type="tel"
 name="tenant_phone">
+<p
+class="description"
+data-en="Enter a phone number where you can be reached regarding the rental."
+data-es="Ingrese un número de teléfono donde pueda ser contactado sobre el alquiler."
+data-pt="Digite um número de telefone onde você possa ser contatado sobre o aluguel.">
+Enter a phone number where you can be reached regarding the rental.
+</p>
 </div>
 </div>
 </div>
@@ -644,6 +865,7 @@ data-pt="Dados do Proprietário / Agente">
 Landlord / Agent Details
 </h2>
 <div class="grid">
+<!-- LANDLORD NAME -->
 <div>
 <label
 data-en="Landlord / Agent Name"
@@ -656,7 +878,15 @@ name="landlord_name"
 value="Carlos"
 class="readonly"
 readonly>
+<p
+class="description"
+data-en="The landlord or rental agent responsible for this agreement."
+data-es="El propietario o agente de alquiler responsable de este contrato."
+data-pt="O proprietário ou agente de aluguel responsável por este contrato.">
+The landlord or rental agent responsible for this agreement.
+</p>
 </div>
+<!-- LANDLORD SIGNATURE -->
 <div>
 <label
 data-en="Landlord / Agent Signature"
@@ -669,7 +899,15 @@ name="landlord_signature"
 value="CB"
 class="readonly"
 readonly>
+<p
+class="description"
+data-en="Pre-entered landlord or agent signature information."
+data-es="Información de firma del propietario o agente ingresada previamente."
+data-pt="Informação de assinatura do proprietário ou agente preenchida previamente.">
+Pre-entered landlord or agent signature information.
+</p>
 </div>
+<!-- TITLE -->
 <div>
 <label
 data-en="Title"
@@ -682,7 +920,15 @@ name="landlord_title"
 value="Carlos Rents"
 class="readonly"
 readonly>
+<p
+class="description"
+data-en="The name or business title associated with the rental agreement."
+data-es="El nombre o título comercial asociado con el contrato de alquiler."
+data-pt="O nome ou título comercial associado ao contrato de aluguel.">
+The name or business title associated with the rental agreement.
+</p>
 </div>
+<!-- LANDLORD DATE -->
 <div>
 <label
 data-en="Date"
@@ -693,10 +939,17 @@ Date
 <input
 type="date"
 name="landlord_date">
+<p
+class="description"
+data-en="Enter the date the landlord or agent completes their portion of the agreement."
+data-es="Ingrese la fecha en que el propietario o agente completa su parte del contrato."
+data-pt="Digite a data em que o proprietário ou agente completa sua parte do contrato.">
+Enter the date the landlord or agent completes their portion of the agreement.
+</p>
 </div>
 </div>
 </div>
-<!-- PROPERTY DAMAGE & TENANT RESPONSIBILITY -->
+<!-- PROPERTY DAMAGE -->
 <div class="card">
 <h2
 data-en="Property Damage & Tenant Responsibility"
@@ -728,10 +981,18 @@ Any lawful charges may be deducted from the security deposit or otherwise charge
 <!-- SUBMIT -->
 <div class="card">
 <div class="notice">
-By submitting this form, the person submitting confirms that
-the information entered is intended for the rental agreement process.
-Nothing in this form is intended to waive or limit rights or duties
-that cannot lawfully be waived.
+<p
+data-en="By submitting this form, the person submitting confirms that the information entered is intended for the rental agreement process."
+data-es="Al enviar este formulario, la persona que lo presenta confirma que la información ingresada está destinada al proceso del contrato de alquiler."
+data-pt="Ao enviar este formulário, a pessoa que o envia confirma que as informações inseridas destinam-se ao processo do contrato de aluguel.">
+By submitting this form, the person submitting confirms that the information entered is intended for the rental agreement process.
+</p>
+<p
+data-en="Nothing in this form is intended to waive or limit rights or duties that cannot lawfully be waived."
+data-es="Nada en este formulario pretende renunciar o limitar derechos u obligaciones que legalmente no puedan ser renunciados."
+data-pt="Nada neste formulário pretende renunciar ou limitar direitos ou deveres que não possam ser legalmente renunciados.">
+Nothing in this form is intended to waive or limit rights or duties that cannot lawfully be waived.
+</p>
 </div>
 <button
 type="submit"
