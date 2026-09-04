@@ -4,69 +4,56 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Carlos Rents</title>
-
 <style>
-
 *{
 box-sizing:border-box;
 }
-
 body{
 font-family:Arial,Helvetica,sans-serif;
 margin:0;
 color:#222;
-
 background-image:
 linear-gradient(
 rgba(255,255,255,.78),
 rgba(255,255,255,.78)
 ),
 url("F17FF1AB-7477-4FE2-9600-6E3011ABF755.png");
-
 background-size:cover;
 background-position:center top;
 background-attachment:fixed;
 background-repeat:no-repeat;
 }
-
 header{
 color:white;
 text-align:center;
 padding:0;
 min-height:280px;
-
 background-image:
 linear-gradient(
 rgba(0,25,55,.15),
 rgba(0,25,55,.15)
 ),
 url("F17FF1AB-7477-4FE2-9600-6E3011ABF755.png");
-
 background-size:cover;
 background-position:center center;
-
 display:flex;
 align-items:flex-end;
 justify-content:center;
 }
-
 .header-overlay{
 width:100%;
 padding:35px 20px 25px;
-
 background:linear-gradient(
 transparent,
 rgba(0,20,45,.85)
 );
 }
-
 header h1{
 margin:0;
 font-size:42px;
 font-weight:800;
 text-shadow:0 3px 8px rgba(0,0,0,.6);
 }
-
 header p{
 margin:8px 0 0;
 font-size:17px;
@@ -74,13 +61,11 @@ font-weight:bold;
 letter-spacing:2px;
 text-shadow:0 2px 5px rgba(0,0,0,.6);
 }
-
 main{
 max-width:850px;
 margin:20px auto;
 padding:10px;
 }
-
 .card{
 background:rgba(255,255,255,.96);
 padding:22px;
@@ -88,23 +73,19 @@ margin-bottom:18px;
 border-radius:12px;
 box-shadow:0 4px 15px rgba(0,0,0,.10);
 }
-
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:15px;
 }
-
 .full{
 grid-column:1/-1;
 }
-
 label{
 font-weight:bold;
 display:block;
 margin-bottom:5px;
 }
-
 input,
 select,
 textarea{
@@ -115,18 +96,15 @@ border-radius:7px;
 font-size:16px;
 background:white;
 }
-
 textarea{
 min-height:100px;
 }
-
 input:focus,
 select:focus,
 textarea:focus{
 outline:none;
 border-color:#111827;
 }
-
 button{
 width:100%;
 padding:15px;
@@ -138,27 +116,22 @@ font-size:17px;
 font-weight:bold;
 cursor:pointer;
 }
-
 button:hover{
 background:#1f2937;
 }
-
 .lang{
 text-align:right;
 background:white;
 padding:10px;
 box-shadow:0 2px 6px rgba(0,0,0,.08);
 }
-
 .lang label{
 display:inline-block;
 margin-right:8px;
 }
-
 .lang select{
 width:auto;
 }
-
 .notice{
 background:#fff7ed;
 padding:12px;
@@ -166,15 +139,32 @@ border-left:4px solid #f97316;
 border-radius:5px;
 line-height:1.5;
 }
-
 .required{
 color:#dc2626;
 }
-
 .readonly{
 background:#f3f4f6;
 }
-
+.late-warning{
+background:#fff1f2;
+border:2px solid #dc2626;
+border-left:6px solid #dc2626;
+color:#991b1b;
+padding:18px;
+border-radius:8px;
+line-height:1.5;
+}
+.late-warning-title{
+color:#dc2626;
+font-size:21px;
+font-weight:800;
+margin:0 0 10px 0;
+}
+.locked{
+background:#f3f4f6;
+font-weight:bold;
+cursor:not-allowed;
+}
 footer{
 text-align:center;
 padding:25px;
@@ -183,48 +173,34 @@ background:#111827;
 margin-top:30px;
 font-size:14px;
 }
-
 @media(max-width:650px){
-
 header{
 min-height:210px;
 }
-
 header h1{
 font-size:32px;
 }
-
 header p{
 font-size:13px;
 }
-
 .grid{
 grid-template-columns:1fr;
 }
-
 .full{
 grid-column:auto;
 }
-
 main{
 padding:8px;
 }
-
 .card{
 padding:18px;
 }
-
 }
-
 </style>
 </head>
-
 <body>
-
 <!-- LANGUAGE -->
-
 <div class="lang">
-
 <label
 for="language"
 data-en="Language"
@@ -232,22 +208,15 @@ data-es="Idioma"
 data-pt="Idioma">
 Language
 </label>
-
 <select
 id="language"
 onchange="changeLanguage(this.value)">
-
 <option value="en">English</option>
 <option value="es">Español</option>
 <option value="pt">Português</option>
-
 </select>
-
 </div>
-
-
 <!-- IMPORTANT ID WARNING -->
-
 <div style="
 background:#fee2e2;
 border-bottom:3px solid #dc2626;
@@ -255,7 +224,6 @@ padding:18px 15px;
 text-align:center;
 color:#991b1b;
 ">
-
 <div style="
 font-size:22px;
 font-weight:800;
@@ -264,793 +232,530 @@ margin-bottom:8px;
 data-en="⚠️ MUST SEND ME YOUR ID"
 data-es="⚠️ DEBE ENVIARME SU IDENTIFICACIÓN"
 data-pt="⚠️ VOCÊ DEVE ME ENVIAR SEU DOCUMENTO DE IDENTIFICAÇÃO">
-
 ⚠️ MUST SEND ME YOUR ID
-
 </div>
-
 <div
 style="font-size:16px;font-weight:bold;line-height:1.5;"
 data-en="After submitting this rental agreement, you MUST email a clear photo of your driver's license or government-issued ID to:"
 data-es="Después de enviar este contrato de alquiler, DEBE enviar una foto clara de su licencia de conducir o identificación emitida por el gobierno a:"
 data-pt="Após enviar este contrato de aluguel, VOCÊ DEVE enviar uma foto nítida da sua carteira de motorista ou documento de identificação emitido pelo governo para:">
-
 After submitting this rental agreement, you MUST email a clear photo of your driver's license or government-issued ID to:
-
 </div>
-
 <div style="
 font-size:18px;
 font-weight:800;
 margin-top:8px;
 ">
-
 <a
 href="mailto:carlosrents1@yahoo.com"
 style="color:#991b1b;text-decoration:underline;">
 carlosrents1@yahoo.com
 </a>
-
 </div>
-
 </div>
-
-
 <!-- HEADER -->
-
 <header>
-
 <div class="header-overlay">
-
 <h1>Carlos Rents</h1>
-
 <p
 data-en="Monthly Rental Agreement"
 data-es="Contrato de Alquiler Mensual"
 data-pt="Contrato de Aluguel Mensal">
 Monthly Rental Agreement
 </p>
-
 </div>
-
 </header>
-
 <main>
-
 <form
 action="https://formspree.io/f/xeaqzogr"
 method="POST">
-
 <input
 type="hidden"
 name="_subject"
 value="New Carlos Rents Rental Agreement">
-
 <!-- AGREEMENT INFORMATION -->
-
 <div class="card">
-
 <h2
 data-en="Agreement Information"
 data-es="Información del Contrato"
 data-pt="Informações do Contrato">
 Agreement Information
 </h2>
-
 <div class="grid">
-
 <div>
-
 <label
 data-en="Agreement Date"
 data-es="Fecha del Contrato"
 data-pt="Data do Contrato">
 Agreement Date
 </label>
-
 <input
 type="date"
 name="agreement_date"
 required>
-
 </div>
-
 <div>
-
 <label
 data-en="Year"
 data-es="Año"
 data-pt="Ano">
 Year
 </label>
-
 <input
 type="number"
 name="year"
 placeholder="2026">
-
 </div>
-
 <div>
-
 <label
 data-en="Lessor / Landlord"
 data-es="Arrendador / Propietario"
 data-pt="Locador / Proprietário">
 Lessor / Landlord
 </label>
-
 <input
 name="lessor"
 value="Carlos"
 class="readonly"
 readonly>
-
 </div>
-
 <div>
-
 <label
 data-en="Lessee / Tenant"
 data-es="Arrendatario / Inquilino"
 data-pt="Locatário / Inquilino">
 Lessee / Tenant
 </label>
-
 <input
 name="lessee"
 required>
-
 </div>
-
 <div class="full">
-
 <label
 data-en="Rental Property Address"
 data-es="Dirección de la Propiedad"
 data-pt="Endereço do Imóvel">
 Rental Property Address
 </label>
-
 <input
 name="property_address"
 required>
-
 </div>
-
-<div class="full">
-
-<label
-data-en="Unit / Premises Description"
-data-es="Descripción de la Unidad / Inmueble"
-data-pt="Descrição da Unidade / Imóvel">
-Unit / Premises Description
-</label>
-
-<input
-name="unit_description">
-
-</div>
-
 <div>
-
 <label
 data-en="Tenancy Start / Move-in Date"
 data-es="Fecha de Inicio / Mudanza"
 data-pt="Data de Início / Mudança">
 Tenancy Start / Move-in Date
 </label>
-
 <input
 type="date"
 name="move_in_date"
 required>
-
 </div>
-
 </div>
-
 </div>
-
-
 <!-- RENT & PAYMENT -->
-
 <div class="card">
-
 <h2
 data-en="Rent & Payment"
 data-es="Alquiler y Pago"
 data-pt="Aluguel e Pagamento">
 Rent & Payment
 </h2>
-
 <div class="grid">
-
 <div>
-
 <label
 data-en="Monthly Rent ($)"
 data-es="Alquiler Mensual ($)"
 data-pt="Aluguel Mensal ($)">
 Monthly Rent ($)
 </label>
-
 <input
 type="number"
 step=".01"
 name="monthly_rent"
 required>
-
 </div>
-
 <div>
-
 <label
 data-en="Rent Due Day"
 data-es="Día de Vencimiento"
 data-pt="Dia de Vencimento">
 Rent Due Day
 </label>
-
 <input
 type="number"
 min="1"
 max="31"
 name="rent_due_day"
 required>
-
 </div>
-
 <div>
-
 <label
 data-en="Payment Method"
 data-es="Método de Pago"
 data-pt="Método de Pagamento">
 Payment Method
 </label>
-
 <select
 name="payment_method"
 required>
-
 <option value="">Select</option>
 <option>Cash</option>
 <option>Zelle</option>
-
 </select>
-
 </div>
-
 <div>
-
-<label
-data-en="Payment Location / Address"
-data-es="Lugar / Dirección de Pago"
-data-pt="Local / Endereço de Pagamento">
-Payment Location / Address
-</label>
-
-<input
-name="payment_location">
-
-</div>
-
-<div>
-
 <label
 data-en="Late Fee ($)"
 data-es="Cargo por Pago Tardío ($)"
 data-pt="Taxa por Atraso ($)">
 Late Fee ($)
 </label>
-
 <input
 type="number"
 step=".01"
 name="late_fee">
-
 </div>
-
 <div>
-
-<label
-data-en="Prorated First Month Rent ($)"
-data-es="Alquiler Prorrateado del Primer Mes ($)"
-data-pt="Aluguel Proporcional do Primeiro Mês ($)">
-Prorated First Month Rent ($)
-</label>
-
-<input
-type="number"
-step=".01"
-name="prorated_rent">
-
-</div>
-
-<div>
-
 <label
 data-en="Security Deposit ($)"
 data-es="Depósito de Seguridad ($)"
 data-pt="Depósito de Segurança ($)">
 Security Deposit ($)
 </label>
-
 <input
 type="number"
 step=".01"
 name="security_deposit">
-
 </div>
-
 </div>
-
 </div>
-
-
 <!-- OCCUPANTS & PETS -->
-
 <div class="card">
-
 <h2
 data-en="Occupants & Pets"
 data-es="Ocupantes y Mascotas"
 data-pt="Ocupantes e Animais de Estimação">
 Occupants & Pets
 </h2>
-
 <div class="grid">
-
 <div>
-
 <label
 data-en="Number of Adults"
 data-es="Número de Adultos"
 data-pt="Número de Adultos">
 Number of Adults
 </label>
-
 <input
 type="number"
 min="0"
 name="adults">
-
 </div>
-
 <div>
-
 <label
 data-en="Number of Children"
 data-es="Número de Niños"
 data-pt="Número de Crianças">
 Number of Children
 </label>
-
 <input
 type="number"
 min="0"
 name="children">
-
 </div>
-
 <div>
-
 <label
 data-en="Pets"
 data-es="Mascotas"
 data-pt="Animais de Estimação">
 Pets
 </label>
-
 <select name="pets">
-
 <option value="">Select</option>
 <option>Yes</option>
 <option>No</option>
-
 </select>
-
 </div>
-
 <div class="full">
-
 <label
 data-en="Pet Responsibility"
 data-es="Responsabilidad por Mascotas"
 data-pt="Responsabilidade por Animais">
 Pet Responsibility
 </label>
-
 <p>
 The tenant is responsible for damage caused by pets to the extent permitted by law.
 </p>
-
 </div>
-
 </div>
-
 </div>
-
-
 <!-- RENT PAYMENT RULES -->
-
 <div class="card">
-
 <h2
 data-en="Rent Payment Rules"
 data-es="Reglas de Pago del Alquiler"
 data-pt="Regras de Pagamento do Aluguel">
 Rent Payment Rules
 </h2>
-
-<div class="grid">
-
-<div>
-
-<label
-data-en="Additional Amount Due"
-data-es="Monto Adicional Adeudado"
-data-pt="Valor Adicional Devido">
-Additional Amount Due
-</label>
-
+<div class="late-warning">
+<p
+class="late-warning-title"
+data-en="⚠️ $100 EXTRA FOR EVERY DAY PAYMENT IS LATE"
+data-es="⚠️ $100 ADICIONALES POR CADA DÍA DE ATRASO"
+data-pt="⚠️ $100 ADICIONAIS POR CADA DIA DE ATRASO">
+⚠️ $100 EXTRA FOR EVERY DAY PAYMENT IS LATE
+</p>
+<p
+data-en="Rent is due on the agreed due date. A $100 additional charge is specified for each day payment remains unpaid, to the extent permitted by applicable law."
+data-es="El alquiler vence en la fecha acordada. Se establece un cargo adicional de $100 por cada día que el pago permanezca pendiente, en la medida permitida por la ley aplicable."
+data-pt="O aluguel vence na data acordada. É estabelecida uma cobrança adicional de $100 por cada dia em que o pagamento permanecer em atraso, na medida permitida pela lei aplicável.">
+Rent is due on the agreed due date. A $100 additional charge is specified for each day payment remains unpaid, to the extent permitted by applicable law.
+</p>
 <input
-type="number"
-step=".01"
-name="additional_amount">
-
+type="hidden"
+name="additional_amount_due"
+value="100">
 </div>
-
-<div class="full notice">
-
-Rent is due on the agreed due date.
-Any late fee or additional amount must comply with applicable Florida law.
-
 </div>
-
-</div>
-
-</div>
-
-
 <!-- LEAD PAINT -->
-
 <div class="card">
-
 <h2
 data-en="Lead-Based Paint Disclosure"
 data-es="Divulgación de Pintura a Base de Plomo"
 data-pt="Divulgação de Tinta à Base de Chumbo">
 Lead-Based Paint Disclosure
 </h2>
-
 <label
 data-en="Was the property built before 1978?"
 data-es="¿La propiedad fue construida antes de 1978?"
 data-pt="O imóvel foi construído antes de 1978?">
-
 Was the property built before 1978?
-
 </label>
-
-<select name="built_before_1978">
-
-<option value="No" selected>No</option>
-<option value="Yes">Yes</option>
-
-</select>
-
+<input
+type="text"
+value="No"
+readonly
+class="locked">
+<input
+type="hidden"
+name="built_before_1978"
+value="No">
 <p>
 Housing built before 1978 may require additional lead-based paint disclosures.
 </p>
-
 </div>
-
-
 <!-- TENANT CERTIFICATION -->
-
 <div class="card">
-
 <h2
 data-en="Tenant Certification"
 data-es="Certificación del Inquilino"
 data-pt="Certificação do Inquilino">
 Tenant Certification
 </h2>
-
 <div class="grid">
-
 <div>
-
 <label
 data-en="Tenant Name"
 data-es="Nombre del Inquilino"
 data-pt="Nome do Inquilino">
 Tenant Name
 </label>
-
 <input
 name="tenant_name"
 required>
-
 </div>
-
 <div>
-
 <label
 data-en="Tenant Signature"
 data-es="Firma del Inquilino"
 data-pt="Assinatura do Inquilino">
 Tenant Signature
 </label>
-
 <input
 name="tenant_signature"
 placeholder="Print full name"
 required>
-
 </div>
-
 <div>
-
 <label
 data-en="Signature Date"
 data-es="Fecha de Firma"
 data-pt="Data da Assinatura">
 Signature Date
 </label>
-
 <input
 type="date"
 name="signature_date"
 required>
-
 </div>
-
 <div>
-
 <label
 data-en="Second Tenant Name (if applicable)"
 data-es="Nombre del Segundo Inquilino"
 data-pt="Nome do Segundo Inquilino">
 Second Tenant Name (if applicable)
 </label>
-
 <input
 name="second_tenant">
-
 </div>
-
 <div>
-
 <label
 data-en="Second Tenant Signature"
 data-es="Firma del Segundo Inquilino"
 data-pt="Assinatura do Segundo Inquilino">
 Second Tenant Signature
 </label>
-
 <input
 name="second_signature">
-
 </div>
-
 <div>
-
 <label
 data-en="Tenant Email"
 data-es="Correo Electrónico"
 data-pt="E-mail do Inquilino">
 Tenant Email
 </label>
-
 <input
 type="email"
 name="tenant_email"
 required>
-
 </div>
-
 <div>
-
 <label
 data-en="Tenant Phone"
 data-es="Teléfono del Inquilino"
 data-pt="Telefone do Inquilino">
 Tenant Phone
 </label>
-
 <input
 type="tel"
 name="tenant_phone">
-
 </div>
-
 </div>
-
 </div>
-
-
 <!-- LANDLORD / AGENT -->
-
 <div class="card">
-
 <h2
 data-en="Landlord / Agent Details"
 data-es="Datos del Propietario / Agente"
 data-pt="Dados do Proprietário / Agente">
 Landlord / Agent Details
 </h2>
-
 <div class="grid">
-
 <div>
-
 <label
 data-en="Landlord / Agent Name"
 data-es="Nombre del Propietario / Agente"
 data-pt="Nome do Proprietário / Agente">
 Landlord / Agent Name
 </label>
-
 <input
 name="landlord_name"
 value="Carlos"
 class="readonly"
 readonly>
-
 </div>
-
 <div>
-
 <label
 data-en="Landlord / Agent Signature"
 data-es="Firma del Propietario / Agente"
 data-pt="Assinatura do Proprietário / Agente">
 Landlord / Agent Signature
 </label>
-
 <input
 name="landlord_signature"
 value="CB"
 class="readonly"
 readonly>
-
 </div>
-
 <div>
-
 <label
 data-en="Title"
 data-es="Cargo"
 data-pt="Cargo">
 Title
 </label>
-
 <input
 name="landlord_title"
 value="Carlos Rents"
 class="readonly"
 readonly>
-
 </div>
-
 <div>
-
 <label
 data-en="Date"
 data-es="Fecha"
 data-pt="Data">
 Date
 </label>
-
 <input
 type="date"
 name="landlord_date">
-
 </div>
-
 </div>
-
 </div>
-
-
 <!-- PROPERTY DAMAGE & TENANT RESPONSIBILITY -->
-
 <div class="card">
-
 <h2
 data-en="Property Damage & Tenant Responsibility"
 data-es="Daños a la Propiedad y Responsabilidad del Inquilino"
 data-pt="Danos à Propriedade e Responsabilidade do Inquilino">
 Property Damage & Tenant Responsibility
 </h2>
-
 <div class="notice">
-
 <p
 data-en="Tenant is responsible for costs of repairing damage to the rental property caused by the tenant, household members, guests, or invitees, to the extent permitted by law."
 data-es="El inquilino es responsable de los costos de reparación de los daños a la propiedad de alquiler causados por el inquilino, miembros del hogar, invitados o visitantes, en la medida permitida por la ley."
-data-pt="O inquilino é responsável pelos custos de reparação de danos ao imóvel causados pelo inquilino, membros da residência, convidados ou visitantes, na medida permitida por lei.">
+data-pt="O inquilino é responsável pelos custos de reparação de danos ao imóvel causados pelo inquilino, membros da residência, convidados ou visitantes, na medida permitida pela lei.">
 Tenant is responsible for costs of repairing damage to the rental property caused by the tenant, household members, guests, or invitees, to the extent permitted by law.
 </p>
-
 <p
 data-en="Tenant is not responsible for ordinary wear and tear or damage that is the landlord's responsibility under applicable law."
 data-es="El inquilino no es responsable del desgaste normal ni de los daños que sean responsabilidad del propietario conforme a la ley aplicable."
 data-pt="O inquilino não é responsável pelo desgaste normal ou por danos que sejam responsabilidade do proprietário conforme a lei aplicável.">
 Tenant is not responsible for ordinary wear and tear or damage that is the landlord's responsibility under applicable law.
 </p>
-
 <p
 data-en="Any lawful charges may be deducted from the security deposit or otherwise charged to the tenant as permitted by law."
 data-es="Cualquier cargo legal puede deducirse del depósito de seguridad o cobrarse al inquilino según lo permita la ley."
-data-pt="Quaisquer cobranças legais podem ser deduzidas do depósito de segurança ou cobradas ao inquilino conforme permitido por la ley.">
+data-pt="Quaisquer cobranças legais podem ser deduzidas do depósito de segurança ou cobradas ao inquilino conforme permitido pela lei.">
 Any lawful charges may be deducted from the security deposit or otherwise charged to the tenant as permitted by law.
 </p>
-
 </div>
-
 </div>
-
-
 <!-- SUBMIT -->
-
 <div class="card">
-
 <div class="notice">
-
 By submitting this form, the person submitting confirms that
 the information entered is intended for the rental agreement process.
 Nothing in this form is intended to waive or limit rights or duties
 that cannot lawfully be waived.
-
 </div>
-
 <button
 type="submit"
 data-en="Submit Rental Agreement"
 data-es="Enviar Contrato de Alquiler"
 data-pt="Enviar Contrato de Aluguel">
-
 Submit Rental Agreement
-
 </button>
-
 </div>
-
 </form>
-
 </main>
-
 <footer>
-
 © Carlos Rents • RENT • APPLY • LIVE
-
 </footer>
-
 <script>
-
 function changeLanguage(lang){
-
 document.documentElement.lang=lang;
-
 document.querySelectorAll("[data-en]").forEach(function(el){
-
 let text=el.getAttribute("data-"+lang);
-
 if(text){
-
 el.textContent=text;
-
 }
-
 });
-
 }
-
 </script>
-
 </body>
 </html>
