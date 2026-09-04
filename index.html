@@ -124,6 +124,8 @@ outline:none;
 border-color:#111827;
 }
 
+
+/* SUBMIT BUTTON */
 button{
 width:100%;
 padding:15px;
@@ -134,12 +136,22 @@ border-radius:8px;
 font-size:17px;
 font-weight:bold;
 cursor:pointer;
+transition:.2s ease;
 }
 
-button:hover{
+button:hover:not(:disabled){
 background:#1f2937;
 }
 
+button:disabled{
+background:#9ca3af;
+color:#f3f4f6;
+cursor:not-allowed;
+opacity:.85;
+}
+
+
+/* LANGUAGE */
 .lang{
 text-align:right;
 background:white;
@@ -156,6 +168,8 @@ margin-right:8px;
 width:auto;
 }
 
+
+/* NOTICES */
 .notice{
 background:#fff7ed;
 padding:12px;
@@ -246,6 +260,88 @@ outline-offset:2px;
 
 .agreement-check .description{
 margin-left:34px;
+}
+
+
+/* REFERENCE NUMBER */
+.reference-box{
+background:#f3f4f6;
+border:2px solid #d1d5db;
+border-radius:10px;
+padding:16px;
+margin-bottom:18px;
+text-align:center;
+}
+
+.reference-label{
+font-size:13px;
+color:#6b7280;
+font-weight:bold;
+margin-bottom:6px;
+}
+
+.reference-number{
+font-size:25px;
+font-weight:800;
+letter-spacing:1px;
+color:#111827;
+}
+
+
+/* FINAL CONFIRMATION */
+.confirmation-screen{
+background:white;
+padding:35px 25px;
+border-radius:14px;
+box-shadow:0 4px 20px rgba(0,0,0,.12);
+text-align:center;
+margin:30px auto;
+max-width:700px;
+}
+
+.confirmation-icon{
+font-size:55px;
+margin-bottom:12px;
+}
+
+.confirmation-screen h2{
+font-size:30px;
+margin:0 0 12px;
+color:#111827;
+}
+
+.confirmation-screen p{
+font-size:16px;
+line-height:1.6;
+}
+
+.confirmation-reference{
+background:#f3f4f6;
+padding:15px;
+border-radius:8px;
+margin:20px 0;
+font-size:18px;
+font-weight:bold;
+}
+
+.id-confirmation{
+background:#fee2e2;
+border:2px solid #dc2626;
+border-left:6px solid #dc2626;
+color:#991b1b;
+padding:20px;
+border-radius:8px;
+margin-top:20px;
+line-height:1.6;
+}
+
+.id-email{
+display:block;
+font-size:20px;
+font-weight:800;
+color:#991b1b;
+margin-top:10px;
+text-decoration:underline;
 }
 
 
@@ -413,6 +509,18 @@ font-size:14px;
 
 .agreement-check .description{
 margin-left:0;
+}
+
+.confirmation-screen{
+padding:28px 18px;
+}
+
+.confirmation-screen h2{
+font-size:25px;
+}
+
+.reference-number{
+font-size:21px;
 }
 
 }
@@ -663,7 +771,9 @@ Complete
 
 <main>
 
+<!-- FORM -->
 <form
+id="rentalForm"
 action="https://formspree.io/f/xeaqzogr"
 method="POST">
 
@@ -671,6 +781,12 @@ method="POST">
 type="hidden"
 name="_subject"
 value="New Carlos Rents Rental Agreement">
+
+<!-- REFERENCE NUMBER -->
+<input
+type="hidden"
+name="agreement_reference"
+id="agreementReferenceInput">
 
 
 <!-- AGREEMENT INFORMATION -->
@@ -689,8 +805,6 @@ Agreement Information
 
 <div class="grid">
 
-
-<!-- AGREEMENT DATE -->
 <div>
 
 <label
@@ -720,7 +834,6 @@ Enter the date this rental agreement is being completed.
 </div>
 
 
-<!-- YEAR -->
 <div>
 
 <label
@@ -750,7 +863,6 @@ Enter the year of the rental agreement.
 </div>
 
 
-<!-- LESSOR -->
 <div>
 
 <label
@@ -781,7 +893,6 @@ The landlord or person providing the rental property.
 </div>
 
 
-<!-- LESSEE -->
 <div>
 
 <label
@@ -810,7 +921,6 @@ Enter the full legal name of the person renting the property.
 </div>
 
 
-<!-- PROPERTY ADDRESS -->
 <div class="full">
 
 <label
@@ -839,7 +949,6 @@ Enter the complete address of the rental property, including apartment or unit i
 </div>
 
 
-<!-- MOVE IN -->
 <div>
 
 <label
@@ -889,8 +998,6 @@ Rent & Payment
 
 <div class="grid">
 
-
-<!-- MONTHLY RENT -->
 <div>
 
 <label
@@ -921,7 +1028,6 @@ Enter the agreed amount of rent due each month.
 </div>
 
 
-<!-- DUE DAY -->
 <div>
 
 <label
@@ -953,7 +1059,6 @@ Enter the day of the month when rent is due.
 </div>
 
 
-<!-- PAYMENT METHOD -->
 <div>
 
 <label
@@ -988,7 +1093,6 @@ Select the agreed method that will be used to pay rent.
 </div>
 
 
-<!-- LATE FEE LOCKED -->
 <div>
 
 <label
@@ -1011,7 +1115,6 @@ class="locked">
 </div>
 
 
-<!-- SECURITY DEPOSIT -->
 <div>
 
 <label
@@ -1061,8 +1164,6 @@ Occupants & Pets
 
 <div class="grid">
 
-
-<!-- ADULTS -->
 <div>
 
 <label
@@ -1092,7 +1193,6 @@ Enter the number of adults who will live at the property.
 </div>
 
 
-<!-- CHILDREN -->
 <div>
 
 <label
@@ -1122,7 +1222,6 @@ Enter the number of children who will live at the property.
 </div>
 
 
-<!-- PETS -->
 <div>
 
 <label
@@ -1155,7 +1254,6 @@ Select whether any pets will live at the rental property.
 </div>
 
 
-<!-- PET RESPONSIBILITY -->
 <div class="full">
 
 <label
@@ -1197,8 +1295,6 @@ Rent Payment Rules
 
 </h2>
 
-
-<!-- $100 WARNING -->
 <div class="late-warning">
 
 <p
@@ -1228,7 +1324,6 @@ value="100">
 </div>
 
 
-<!-- 3 DAY NOTICE -->
 <div
 class="three-day"
 style="margin-top:15px;">
@@ -1334,8 +1429,6 @@ Tenant Certification
 
 <div class="grid">
 
-
-<!-- TENANT NAME -->
 <div>
 
 <label
@@ -1364,7 +1457,6 @@ Enter your full legal name.
 </div>
 
 
-<!-- TENANT SIGNATURE -->
 <div>
 
 <label
@@ -1394,7 +1486,6 @@ Type your full name as your electronic signature.
 </div>
 
 
-<!-- SIGNATURE DATE -->
 <div>
 
 <label
@@ -1424,7 +1515,6 @@ Enter the date you are signing this agreement.
 </div>
 
 
-<!-- SECOND TENANT -->
 <div>
 
 <label
@@ -1452,7 +1542,6 @@ If another tenant will be listed on the agreement, enter their full name.
 </div>
 
 
-<!-- SECOND SIGNATURE -->
 <div>
 
 <label
@@ -1480,7 +1569,6 @@ The second tenant should type their full name as their electronic signature.
 </div>
 
 
-<!-- EMAIL -->
 <div>
 
 <label
@@ -1510,7 +1598,6 @@ Enter an email address where you can receive rental-related communication.
 </div>
 
 
-<!-- PHONE -->
 <div>
 
 <label
@@ -1557,8 +1644,6 @@ Landlord / Agent Details
 
 <div class="grid">
 
-
-<!-- LANDLORD NAME -->
 <div>
 
 <label
@@ -1589,7 +1674,6 @@ The landlord or rental agent responsible for this agreement.
 </div>
 
 
-<!-- LANDLORD SIGNATURE -->
 <div>
 
 <label
@@ -1620,7 +1704,6 @@ Pre-entered landlord or agent signature information.
 </div>
 
 
-<!-- TITLE -->
 <div>
 
 <label
@@ -1651,7 +1734,6 @@ The name or business title associated with the rental agreement.
 </div>
 
 
-<!-- LANDLORD DATE -->
 <div>
 
 <label
@@ -1806,6 +1888,40 @@ Nothing in this form is intended to waive or limit rights or duties that cannot 
 </div>
 
 
+<!-- REFERENCE NUMBER DISPLAY -->
+<div class="reference-box">
+
+<div
+class="reference-label"
+data-en="Your Agreement Reference Number"
+data-es="Número de Referencia de su Contrato"
+data-pt="Número de Referência do seu Contrato">
+
+Your Agreement Reference Number
+
+</div>
+
+<div
+class="reference-number"
+id="agreementReferenceDisplay">
+
+CR-2026-0000
+
+</div>
+
+<p
+class="description"
+data-en="Keep this number for your records. It will also be included with your submitted rental agreement."
+data-es="Guarde este número para sus registros. También se incluirá con el contrato de alquiler enviado."
+data-pt="Guarde este número para seus registros. Ele também será incluído no contrato de aluguel enviado.">
+
+Keep this number for your records. It will also be included with your submitted rental agreement.
+
+</p>
+
+</div>
+
+
 <!-- REQUIRED AGREEMENT CHECKBOX -->
 <div class="agreement-check">
 
@@ -1813,6 +1929,7 @@ Nothing in this form is intended to waive or limit rights or duties that cannot 
 
 <input
 type="checkbox"
+id="agreementCheckbox"
 name="tenant_agreement_confirmation"
 value="I agree to all terms and confirm the information is accurate"
 required>
@@ -1841,19 +1958,143 @@ You must check this box before you can submit the rental agreement.
 </div>
 
 
+<!-- EMAIL ID REMINDER -->
+<div class="id-confirmation">
+
+<strong
+data-en="⚠️ IMPORTANT — ID REQUIRED AFTER SUBMISSION"
+data-es="⚠️ IMPORTANTE — IDENTIFICACIÓN REQUERIDA DESPUÉS DEL ENVÍO"
+data-pt="⚠️ IMPORTANTE — DOCUMENTO DE IDENTIFICAÇÃO NECESSÁRIO APÓS O ENVIO">
+
+⚠️ IMPORTANT — ID REQUIRED AFTER SUBMISSION
+
+</strong>
+
+<p
+data-en="After submitting this rental agreement, you must email a clear photo of your driver's license or government-issued ID to the email address below."
+data-es="Después de enviar este contrato de alquiler, debe enviar una foto clara de su licencia de conducir o identificación emitida por el gobierno a la dirección de correo electrónico que aparece a continuación."
+data-pt="Após enviar este contrato de aluguel, você deve enviar uma foto nítida da sua carteira de motorista ou documento de identificação emitido pelo governo para o endereço de e-mail abaixo.">
+
+After submitting this rental agreement, you must email a clear photo of your driver's license or government-issued ID to the email address below.
+
+</p>
+
+<a
+class="id-email"
+href="mailto:carlosrents1@yahoo.com">
+
+carlosrents1@yahoo.com
+
+</a>
+
+</div>
+
+
+<!-- SUBMIT BUTTON -->
 <button
 type="submit"
-data-en="Submit Rental Agreement"
-data-es="Enviar Contrato de Alquiler"
-data-pt="Enviar Contrato de Alquiler">
+id="submitButton"
+disabled
+data-en="☐ Check Agreement Above"
+data-es="☐ Marque la Casilla de Acuerdo"
+data-pt="☐ Marque a Caixa de Acordo">
 
-Submit Rental Agreement
+☐ Check Agreement Above
 
 </button>
 
 </div>
 
 </form>
+
+
+<!-- FINAL CONFIRMATION SCREEN -->
+<div
+id="confirmationScreen"
+class="confirmation-screen"
+style="display:none;">
+
+<div class="confirmation-icon">
+✅
+</div>
+
+<h2
+data-en="Agreement Submitted Successfully"
+data-es="Contrato Enviado Exitosamente"
+data-pt="Contrato Enviado com Sucesso">
+
+Agreement Submitted Successfully
+
+</h2>
+
+<p
+data-en="Your rental agreement has been submitted to Carlos Rents."
+data-es="Su contrato de alquiler ha sido enviado a Carlos Rents."
+data-pt="Seu contrato de aluguel foi enviado para Carlos Rents.">
+
+Your rental agreement has been submitted to Carlos Rents.
+
+</p>
+
+
+<div class="confirmation-reference">
+
+<span
+data-en="Agreement Reference:"
+data-es="Referencia del Contrato:"
+data-pt="Referência do Contrato:">
+
+Agreement Reference:
+
+</span>
+
+<span id="confirmationReference">
+CR-2026-0000
+</span>
+
+</div>
+
+
+<div class="id-confirmation">
+
+<strong
+data-en="⚠️ IMPORTANT — SEND YOUR ID"
+data-es="⚠️ IMPORTANTE — ENVÍE SU IDENTIFICACIÓN"
+data-pt="⚠️ IMPORTANTE — ENVIE SEU DOCUMENTO">
+
+⚠️ IMPORTANT — SEND YOUR ID
+
+</strong>
+
+<p
+data-en="Your rental agreement has been submitted. The final step is to email a clear photo of your driver's license or government-issued ID to:"
+data-es="Su contrato de alquiler ha sido enviado. El último paso es enviar una foto clara de su licencia de conducir o identificación emitida por el gobierno a:"
+data-pt="Seu contrato de aluguel foi enviado. A etapa final é enviar uma foto nítida da sua carteira de motorista ou documento de identificação emitido pelo governo para:">
+
+Your rental agreement has been submitted. The final step is to email a clear photo of your driver's license or government-issued ID to:
+
+</p>
+
+<a
+class="id-email"
+href="mailto:carlosrents1@yahoo.com">
+
+carlosrents1@yahoo.com
+
+</a>
+
+<p
+data-en="Please include your agreement reference number in the email so Carlos Rents can match your ID with your rental agreement."
+data-es="Incluya su número de referencia del contrato en el correo electrónico para que Carlos Rents pueda relacionar su identificación con su contrato de alquiler."
+data-pt="Inclua o número de referência do seu contrato no e-mail para que a Carlos Rents possa relacionar seu documento de identificação ao seu contrato de aluguel.">
+
+Please include your agreement reference number in the email so Carlos Rents can match your ID with your rental agreement.
+
+</p>
+
+</div>
+
+</div>
 
 </main>
 
@@ -1865,7 +2106,10 @@ Submit Rental Agreement
 
 <script>
 
-/* LANGUAGE */
+/* =========================
+   LANGUAGE
+========================= */
+
 function changeLanguage(lang){
 
 document.documentElement.lang=lang;
@@ -1880,16 +2124,227 @@ el.textContent=text;
 
 });
 
+updateSubmitButton();
+
 }
 
 
-/* PROGRESS BAR */
+/* =========================
+   REFERENCE NUMBER
+========================= */
+
+function generateReferenceNumber(){
+
+const year = new Date().getFullYear();
+
+const randomNumber =
+Math.floor(1000 + Math.random() * 9000);
+
+return "CR-" + year + "-" + randomNumber;
+
+}
+
+const agreementReference =
+generateReferenceNumber();
+
+document.getElementById(
+"agreementReferenceDisplay"
+).textContent = agreementReference;
+
+document.getElementById(
+"agreementReferenceInput"
+).value = agreementReference;
+
+document.getElementById(
+"confirmationReference"
+).textContent = agreementReference;
+
+
+/* =========================
+   AGREEMENT CHECKBOX
+========================= */
+
+const agreementCheckbox =
+document.getElementById("agreementCheckbox");
+
+const submitButton =
+document.getElementById("submitButton");
+
+
+function updateSubmitButton(){
+
+const lang =
+document.documentElement.lang || "en";
+
+if(agreementCheckbox.checked){
+
+submitButton.disabled = false;
+
+const buttonText = {
+
+en:"Submit Rental Agreement",
+
+es:"Enviar Contrato de Alquiler",
+
+pt:"Enviar Contrato de Aluguel"
+
+};
+
+submitButton.textContent =
+buttonText[lang] || buttonText.en;
+
+}else{
+
+submitButton.disabled = true;
+
+const buttonText = {
+
+en:"☐ Check Agreement Above",
+
+es:"☐ Marque la Casilla de Acuerdo",
+
+pt:"☐ Marque a Caixa de Acordo"
+
+};
+
+submitButton.textContent =
+buttonText[lang] || buttonText.en;
+
+}
+
+}
+
+
+agreementCheckbox.addEventListener(
+"change",
+updateSubmitButton
+);
+
+
+/* =========================
+   FORM SUBMISSION
+========================= */
+
+const rentalForm =
+document.getElementById("rentalForm");
+
+const confirmationScreen =
+document.getElementById("confirmationScreen");
+
+
+rentalForm.addEventListener(
+"submit",
+async function(event){
+
+event.preventDefault();
+
+
+/* Make sure agreement box is checked */
+
+if(!agreementCheckbox.checked){
+
+agreementCheckbox.reportValidity();
+
+return;
+
+}
+
+
+/* Check all required fields */
+
+if(!rentalForm.checkValidity()){
+
+rentalForm.reportValidity();
+
+return;
+
+}
+
+
+/* Disable button while sending */
+
+submitButton.disabled = true;
+
+submitButton.textContent = "Submitting...";
+
+
+try{
+
+const response =
+await fetch(
+rentalForm.action,
+{
+method:"POST",
+body:new FormData(rentalForm),
+headers:{
+"Accept":"application/json"
+}
+}
+);
+
+
+if(response.ok){
+
+/* Hide form */
+
+rentalForm.style.display="none";
+
+
+/* Hide progress bar */
+
+document.querySelector(
+".progress-container"
+).style.display="none";
+
+
+/* Show confirmation */
+
+confirmationScreen.style.display="block";
+
+
+/* Scroll to confirmation */
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}else{
+
+throw new Error("Submission failed");
+
+}
+
+}catch(error){
+
+alert(
+"Your agreement could not be submitted. Please check your internet connection and try again."
+);
+
+updateSubmitButton();
+
+}
+
+}
+);
+
+
+/* =========================
+   PROGRESS BAR
+========================= */
+
 const steps = [
+
 document.getElementById("step1"),
+
 document.getElementById("step2"),
+
 document.getElementById("step3"),
+
 document.getElementById("step4"),
+
 document.getElementById("step5")
+
 ];
 
 const progressSteps =
@@ -1904,7 +2359,9 @@ function updateProgress(){
 let currentStep = 1;
 
 const scrollPosition =
-window.scrollY + window.innerHeight * 0.35;
+window.scrollY +
+window.innerHeight * 0.35;
+
 
 steps.forEach(function(section,index){
 
@@ -1920,13 +2377,16 @@ currentStep = index + 1;
 progressSteps.forEach(function(step,index){
 
 step.classList.remove("active");
+
 step.classList.remove("completed");
+
 
 if(index + 1 === currentStep){
 
 step.classList.add("active");
 
 }
+
 
 if(index + 1 < currentStep){
 
@@ -1940,12 +2400,14 @@ step.classList.add("completed");
 let percentage =
 ((currentStep - 1) / 4) * 84;
 
-progressFill.style.width = percentage + "%";
+progressFill.style.width =
+percentage + "%";
 
 }
 
 
 /* UPDATE WHEN SCROLLING */
+
 window.addEventListener(
 "scroll",
 updateProgress
@@ -1953,7 +2415,13 @@ updateProgress
 
 window.addEventListener(
 "load",
-updateProgress
+function(){
+
+updateProgress();
+
+updateSubmitButton();
+
+}
 );
 
 </script>
