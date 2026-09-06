@@ -7,7 +7,6 @@
 
 <style>
 *{box-sizing:border-box}
-
 html{scroll-behavior:smooth}
 
 body{
@@ -278,6 +277,40 @@ button:disabled{
   accent-color:#111827;
 }
 
+.id-checkbox-area{
+  margin-top:18px;
+  padding-top:16px;
+  border-top:2px solid rgba(153,27,27,.25);
+}
+
+.id-checkbox-label{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  font-weight:900;
+  line-height:1.5;
+  cursor:pointer;
+  color:#991b1b;
+}
+
+.id-checkbox-label input[type=checkbox]{
+  width:23px;
+  height:23px;
+  min-width:23px;
+  min-height:23px;
+  margin-top:2px;
+  cursor:pointer;
+  accent-color:#b91c1c;
+}
+
+.id-checkbox-note{
+  font-size:13px;
+  font-weight:bold;
+  margin:9px 0 0 35px;
+  color:#991b1b;
+  line-height:1.45;
+}
+
 .confirmation-screen{
   background:white;
   padding:35px 25px;
@@ -348,6 +381,16 @@ button:disabled{
   word-break:break-word;
 }
 
+.id-phone{
+  display:block;
+  font-size:20px;
+  font-weight:800;
+  color:#991b1b;
+  margin-top:10px;
+  text-decoration:underline;
+  word-break:break-word;
+}
+
 .top-id-warning{
   background:#fff1f2;
   border:3px solid #dc2626;
@@ -371,7 +414,8 @@ button:disabled{
   line-height:1.5;
 }
 
-.top-id-email{
+.top-id-email,
+.top-id-phone{
   display:block;
   font-size:19px;
   font-weight:900;
@@ -586,7 +630,8 @@ footer{
     font-size:14px;
   }
 
-  .top-id-email{
+  .top-id-email,
+  .top-id-phone{
     font-size:17px;
   }
 }
@@ -613,7 +658,6 @@ footer{
 
 </div>
 
-
 <!-- RED ID REQUIREMENT AT THE TOP -->
 
 <div class="top-id-warning">
@@ -623,9 +667,7 @@ footer{
     data-en="⚠️ IDENTIFICATION REQUIRED"
     data-es="⚠️ IDENTIFICACIÓN REQUERIDA"
     data-pt="⚠️ DOCUMENTO DE IDENTIFICAÇÃO NECESSÁRIO">
-
     ⚠️ IDENTIFICACIÓN REQUERIDA
-
   </div>
 
   <div
@@ -633,21 +675,22 @@ footer{
     data-en="BEFORE submitting, the tenant must provide a clear government-issued photo ID for identity verification and rental-record purposes."
     data-es="ANTES de enviar el contrato, el inquilino debe proporcionar una copia clara de una identificación con fotografía emitida por el gobierno para verificar su identidad y para los registros del alquiler."
     data-pt="ANTES de enviar o contrato, o inquilino deverá fornecer uma cópia nítida de um documento oficial com foto para verificação de identidade e para os registros do aluguel.">
-
     ANTES de enviar el contrato, el inquilino debe proporcionar una copia clara de una identificación con fotografía emitida por el gobierno para verificar su identidad y para los registros del alquiler.
-
   </div>
 
   <a
     class="top-id-email"
     href="mailto:carlosrents1@yahoo.com">
-
     carlosrents1@yahoo.com
+  </a>
 
+  <a
+    class="top-id-phone"
+    href="sms:+18134993860">
+    813-499-3860
   </a>
 
 </div>
-
 
 <header>
 
@@ -659,15 +702,12 @@ footer{
       data-en="Florida Residential Rental Agreement"
       data-es="Contrato de Alquiler Residencial de Florida"
       data-pt="Contrato de Aluguel Residencial da Flórida">
-
       Contrato de Alquiler Residencial de Florida
-
     </p>
 
   </div>
 
 </header>
-
 
 <div class="progress-container">
 
@@ -680,90 +720,59 @@ footer{
       id="progressFill">
     </div>
 
-
     <div class="progress-step active">
-
       <div class="progress-circle">1</div>
-
       <div
         data-en="Property"
         data-es="Propiedad"
         data-pt="Imóvel">
-
         Propiedad
-
       </div>
-
     </div>
 
-
     <div class="progress-step">
-
       <div class="progress-circle">2</div>
-
       <div
         data-en="Rent"
         data-es="Alquiler"
         data-pt="Aluguel">
-
         Alquiler
-
       </div>
-
     </div>
 
-
     <div class="progress-step">
-
       <div class="progress-circle">3</div>
-
       <div
         data-en="Household"
         data-es="Hogar"
         data-pt="Residência">
-
         Hogar
-
       </div>
-
     </div>
 
-
     <div class="progress-step">
-
       <div class="progress-circle">4</div>
-
       <div
         data-en="Rules"
         data-es="Reglas"
         data-pt="Regras">
-
         Reglas
-
       </div>
-
     </div>
 
-
     <div class="progress-step">
-
       <div class="progress-circle">5</div>
-
       <div
         data-en="Sign"
         data-es="Firmar"
         data-pt="Assinar">
-
         Firmar
-
       </div>
-
     </div>
 
   </div>
 
 </div>
-
 
 <main>
 
@@ -783,30 +792,23 @@ footer{
     name="agreement_reference"
     id="agreementReferenceInput">
 
-
   <div class="card" id="step1">
 
     <h2
       data-en="1. Property & Agreement"
       data-es="1. Propiedad y Contrato"
       data-pt="1. Imóvel e Contrato">
-
       1. Propiedad y Contrato
-
     </h2>
-
 
     <div class="grid">
 
       <div>
-
         <label
           data-en="Agreement Date"
           data-es="Fecha del Contrato"
           data-pt="Data do Contrato">
-
           Fecha del Contrato
-
         </label>
 
         <input
@@ -814,38 +816,28 @@ footer{
           name="agreement_date"
           id="agreementDate"
           required>
-
       </div>
 
-
       <div>
-
         <label
           data-en="Tenancy Start Date"
           data-es="Fecha de Inicio"
           data-pt="Data de Início">
-
           Fecha de Inicio
-
         </label>
 
         <input
           type="date"
           name="move_in_date"
           required>
-
       </div>
 
-
       <div>
-
         <label
           data-en="Landlord / Lessor Legal Name"
           data-es="Nombre Legal del Arrendador"
           data-pt="Nome Legal do Locador">
-
           Nombre Legal del Arrendador
-
         </label>
 
         <input
@@ -854,38 +846,28 @@ footer{
           readonly
           class="readonly"
           required>
-
       </div>
 
-
       <div>
-
         <label
           data-en="Tenant Full Legal Name"
           data-es="Nombre Legal del Inquilino"
           data-pt="Nome Legal do Inquilino">
-
           Nombre Legal del Inquilino
-
         </label>
 
         <input
           name="lessee"
           id="tenantLegalName"
           required>
-
       </div>
 
-
       <div class="full">
-
         <label
           data-en="Rental Property Address"
           data-es="Dirección de la Propiedad"
           data-pt="Endereço do Imóvel">
-
           Dirección de la Propiedad
-
         </label>
 
         <input
@@ -893,46 +875,34 @@ footer{
           id="propertyAddress"
           required
           placeholder="Street, City, State, ZIP">
-
       </div>
 
-
       <div>
-
         <label
           data-en="County"
           data-es="Condado"
           data-pt="Condado">
-
           Condado
-
         </label>
 
         <input
           name="property_county"
           required
           placeholder="Example: Hillsborough">
-
       </div>
 
-
       <div>
-
         <label
           data-en="Unit / Apartment (if applicable)"
           data-es="Unidad / Apartamento (si aplica)"
           data-pt="Unidade / Apartamento (se aplicável)">
-
           Unidad / Apartamento (si aplica)
-
         </label>
 
         <input name="unit_number">
-
       </div>
 
     </div>
-
 
     <div
       class="info"
@@ -942,33 +912,24 @@ footer{
         data-en="Landlord Notice Address"
         data-es="Dirección de Avisos del Arrendador"
         data-pt="Endereço de Avisos do Locador">
-
         Dirección de Avisos del Arrendador
-
       </strong>
-
 
       <p
         data-en="The landlord's name and address, or the name and address of an authorized notice recipient, must be provided to the tenant."
         data-es="El nombre y la dirección del propietario, o de una persona autorizada para recibir avisos, deben proporcionarse al inquilino."
         data-pt="O nome e endereço do locador, ou de uma pessoa autorizada a receber avisos, devem ser fornecidos ao inquilino.">
-
         El nombre y la dirección del propietario, o de una persona autorizada para recibir avisos, deben proporcionarse al inquilino.
-
       </p>
-
 
       <div class="grid">
 
         <div>
-
           <label
             data-en="Notice Recipient Name"
             data-es="Nombre del Destinatario"
             data-pt="Nome do Destinatário">
-
             Nombre del Destinatario
-
           </label>
 
           <input
@@ -977,19 +938,14 @@ footer{
             readonly
             class="readonly"
             required>
-
         </div>
 
-
         <div>
-
           <label
             data-en="Notice Mailing Address"
             data-es="Dirección Postal"
             data-pt="Endereço Postal">
-
             Dirección Postal
-
           </label>
 
           <input
@@ -998,7 +954,6 @@ footer{
             readonly
             class="readonly"
             required>
-
         </div>
 
       </div>
@@ -1007,30 +962,23 @@ footer{
 
   </div>
 
-
   <div class="card" id="step2">
 
     <h2
       data-en="2. Rent & Deposit"
       data-es="2. Alquiler y Depósito"
       data-pt="2. Aluguel e Depósito">
-
       2. Alquiler y Depósito
-
     </h2>
-
 
     <div class="grid">
 
       <div>
-
         <label
           data-en="Monthly Rent ($)"
           data-es="Alquiler Mensual ($)"
           data-pt="Aluguel Mensal ($)">
-
           Alquiler Mensual ($)
-
         </label>
 
         <input
@@ -1039,19 +987,14 @@ footer{
           min="0"
           name="monthly_rent"
           required>
-
       </div>
 
-
       <div>
-
         <label
           data-en="Rent Due Day"
           data-es="Día de Vencimiento"
           data-pt="Dia de Vencimento">
-
           Día de Vencimiento
-
         </label>
 
         <input
@@ -1060,19 +1003,14 @@ footer{
           max="31"
           name="rent_due_day"
           required>
-
       </div>
 
-
       <div>
-
         <label
           data-en="Payment Method"
           data-es="Método de Pago"
           data-pt="Método de Pagamento">
-
           Método de Pago
-
         </label>
 
         <select
@@ -1085,19 +1023,14 @@ footer{
           <option>Other</option>
 
         </select>
-
       </div>
 
-
       <div>
-
         <label
           data-en="Security Deposit ($)"
           data-es="Depósito de Seguridad ($)"
           data-pt="Depósito de Segurança ($)">
-
           Depósito de Seguridad ($)
-
         </label>
 
         <input
@@ -1105,11 +1038,9 @@ footer{
           step="0.01"
           min="0"
           name="security_deposit">
-
       </div>
 
     </div>
-
 
     <div
       class="notice"
@@ -1119,18 +1050,14 @@ footer{
         data-en="Late Rent"
         data-es="Alquiler Atrasado"
         data-pt="Aluguel Atrasado">
-
         Alquiler Atrasado
-
       </strong>
 
       <p
         data-en="If you choose to charge a late fee, the amount and conditions must be stated in this agreement and must comply with applicable Florida law."
         data-es="Si decide cobrar un cargo por atraso, el monto y las condiciones deben indicarse en este contrato y cumplir con la ley aplicable de Florida."
         data-pt="Se optar por cobrar uma taxa por atraso, o valor e as condições devem estar neste contrato e cumprir a lei aplicável da Flórida.">
-
         Si decide cobrar un cargo por atraso, el monto y las condiciones deben indicarse en este contrato y cumplir con la ley aplicable de Florida.
-
       </p>
 
       <p>
@@ -1141,7 +1068,6 @@ footer{
 
     </div>
 
-
     <div
       class="notice"
       style="margin-top:18px">
@@ -1150,22 +1076,17 @@ footer{
         data-en="Nonpayment"
         data-es="Falta de Pago"
         data-pt="Falta de Pagamento">
-
         Falta de Pago
-
       </strong>
 
       <p
         data-en="If rent is not paid, the landlord may use the notices and eviction procedures required by Florida law. This agreement does not waive or change statutory requirements."
         data-es="Si el alquiler no se paga, el propietario puede utilizar los avisos y procedimientos de desalojo exigidos por la ley de Florida. Este contrato no renuncia ni cambia los requisitos legales."
         data-pt="Se o aluguel não for pago, o locador poderá usar os avisos e procedimentos de despejo exigidos pela lei da Flórida. Este contrato não renuncia nem altera os requisitos legais.">
-
         Si el alquiler no se paga, el propietario puede utilizar los avisos y procedimientos de desalojo exigidos por la ley de Florida. Este contrato no renuncia ni cambia los requisitos legales.
-
       </p>
 
     </div>
-
 
     <div
       class="info"
@@ -1175,24 +1096,19 @@ footer{
         data-en="Security Deposit"
         data-es="Depósito de Seguridad"
         data-pt="Depósito de Segurança">
-
         Depósito de Seguridad
-
       </strong>
 
       <p
         data-en="Any security deposit will be held, claimed, and returned according to Florida law. Lawful claims may include unpaid rent or damage beyond ordinary wear and tear, subject to required notices and deadlines."
         data-es="Cualquier depósito de seguridad será retenido, reclamado y devuelto conforme a la ley de Florida. Las reclamaciones legales pueden incluir alquiler impago o daños más allá del desgaste normal, sujeto a los avisos y plazos requeridos."
         data-pt="Qualquer depósito de segurança será mantido, reivindicado e devolvido de acordo com a lei da Flórida. Reivindicações legais podem incluir aluguel não pago ou danos além do desgaste normal, sujeitos aos avisos e prazos exigidos.">
-
         Cualquier depósito de seguridad será retenido, reclamado y devuelto conforme a la ley de Florida. Las reclamaciones legales pueden incluir alquiler impago o daños más allá del desgaste normal, sujeto a los avisos y plazos requeridos.
-
       </p>
 
     </div>
 
   </div>
-
 
   <div class="card" id="step3">
 
@@ -1200,23 +1116,17 @@ footer{
       data-en="3. Household & Pets"
       data-es="3. Hogar y Mascotas"
       data-pt="3. Residência e Animais">
-
       3. Hogar y Mascotas
-
     </h2>
-
 
     <div class="grid">
 
       <div>
-
         <label
           data-en="Number of Adults"
           data-es="Número de Adultos"
           data-pt="Número de Adultos">
-
           Número de Adultos
-
         </label>
 
         <input
@@ -1224,19 +1134,14 @@ footer{
           min="0"
           name="adults"
           required>
-
       </div>
 
-
       <div>
-
         <label
           data-en="Number of Children"
           data-es="Número de Niños"
           data-pt="Número de Crianças">
-
           Número de Niños
-
         </label>
 
         <input
@@ -1244,19 +1149,14 @@ footer{
           min="0"
           name="children"
           required>
-
       </div>
 
-
       <div>
-
         <label
           data-en="Pets"
           data-es="Mascotas"
           data-pt="Animais">
-
           Mascotas
-
         </label>
 
         <select
@@ -1268,47 +1168,35 @@ footer{
           <option>No</option>
 
         </select>
-
       </div>
 
-
       <div>
-
         <label
           data-en="Pet Description"
           data-es="Descripción de Mascota"
           data-pt="Descrição do Animal">
-
           Descripción de Mascota
-
         </label>
 
         <input
           name="pet_description"
           placeholder="Type, breed, number, etc.">
-
       </div>
 
-
       <div class="full">
-
         <label
           data-en="Additional Authorized Occupants"
           data-es="Ocupantes Adicionales Autorizados"
           data-pt="Ocupantes Adicionais Autorizados">
-
           Ocupantes Adicionales Autorizados
-
         </label>
 
         <textarea
           name="additional_occupants"
           placeholder="Full legal names, if applicable"></textarea>
-
       </div>
 
     </div>
-
 
     <div
       class="notice"
@@ -1318,15 +1206,12 @@ footer{
         data-en="Only approved occupants may reside in the property, subject to applicable law. Tenant is responsible, to the extent permitted by law, for damage caused by the tenant, household members, guests, invitees, or pets."
         data-es="Solo los ocupantes aprobados pueden residir en la propiedad, sujeto a la ley aplicable. El inquilino es responsable, en la medida permitida por la ley, por daños causados por el inquilino, miembros del hogar, invitados, visitantes o mascotas."
         data-pt="Somente ocupantes aprovados podem residir no imóvel, sujeito à lei aplicável. O inquilino é responsável, na medida permitida por lei, por danos causados pelo inquilino, membros da residência, convidados, visitantes ou animais.">
-
         Solo los ocupantes aprobados pueden residir en la propiedad, sujeto a la ley aplicable. El inquilino es responsable, en la medida permitida por la ley, por daños causados por el inquilino, miembros del hogar, invitados, visitantes o mascotas.
-
       </p>
 
     </div>
 
   </div>
-
 
   <div class="card" id="step4">
 
@@ -1334,11 +1219,8 @@ footer{
       data-en="4. Basic Rental Rules"
       data-es="4. Reglas Básicas del Alquiler"
       data-pt="4. Regras Básicas do Aluguel">
-
       4. Reglas Básicas del Alquiler
-
     </h2>
-
 
     <div class="terms">
 
@@ -1346,61 +1228,45 @@ footer{
         data-en="Month-to-Month"
         data-es="Mes a Mes"
         data-pt="Mês a Mês">
-
         Mes a Mes
-
       </h3>
 
       <p
         data-en="This is a month-to-month residential tenancy. The tenancy continues from month to month until lawfully terminated."
         data-es="Este es un alquiler residencial de mes a mes. El alquiler continúa de mes a mes hasta que termine legalmente."
         data-pt="Esta é uma locação residencial mensal. A locação continua mês a mês até ser legalmente encerrada.">
-
         Este es un alquiler residencial de mes a mes. El alquiler continúa de mes a mes hasta que termine legalmente.
-
       </p>
-
 
       <h3
         data-en="Use & Occupancy"
         data-es="Uso y Ocupación"
         data-pt="Uso e Ocupação">
-
         Uso y Ocupación
-
       </h3>
 
       <p
         data-en="The property will be used as a residence. Tenant must comply with applicable laws and reasonable property rules."
         data-es="La propiedad se utilizará como vivienda. El inquilino debe cumplir con las leyes aplicables y las reglas razonables de la propiedad."
         data-pt="O imóvel será usado como residência. O inquilino deverá cumprir as leis aplicáveis e regras razoáveis do imóvel.">
-
         La propiedad se utilizará como vivienda. El inquilino debe cumplir con las leyes aplicables y las reglas razonables de la propiedad.
-
       </p>
-
 
       <h3
         data-en="Utilities"
         data-es="Servicios Públicos"
         data-pt="Serviços">
-
         Servicios Públicos
-
       </h3>
-
 
       <div class="grid">
 
         <div>
-
           <label
             data-en="Electricity"
             data-es="Electricidad"
             data-pt="Eletricidade">
-
             Electricidad
-
           </label>
 
           <select
@@ -1412,19 +1278,14 @@ footer{
             <option>Landlord</option>
 
           </select>
-
         </div>
 
-
         <div>
-
           <label
             data-en="Water"
             data-es="Agua"
             data-pt="Água">
-
             Agua
-
           </label>
 
           <select
@@ -1436,19 +1297,14 @@ footer{
             <option>Landlord</option>
 
           </select>
-
         </div>
 
-
         <div>
-
           <label
             data-en="Internet"
             data-es="Internet"
             data-pt="Internet">
-
             Internet
-
           </label>
 
           <select
@@ -1461,126 +1317,94 @@ footer{
             <option>Not Provided</option>
 
           </select>
-
         </div>
 
-
         <div>
-
           <label
             data-en="Other Utilities"
             data-es="Otros Servicios"
             data-pt="Outros Serviços">
-
             Other Utilities
-
           </label>
 
           <input name="other_utilities">
-
         </div>
 
       </div>
-
 
       <h3
         data-en="Maintenance & Damage"
         data-es="Mantenimiento y Daños"
         data-pt="Manutenção e Danos">
-
         Mantenimiento y Daños
-
       </h3>
 
       <p
         data-en="Landlord will maintain the premises as required by law. Tenant must keep the dwelling reasonably clean, use fixtures and appliances properly, and promptly report needed repairs. Tenant is responsible for damage caused by the tenant or persons/pets for whom the tenant is responsible, except ordinary wear and matters that are the landlord's legal responsibility."
         data-es="El propietario mantendrá la propiedad según lo exige la ley. El inquilino debe mantener la vivienda razonablemente limpia, usar correctamente los accesorios y electrodomésticos y reportar rápidamente las reparaciones necesarias. El inquilino es responsable de los daños causados por él o por las personas/mascotas bajo su responsabilidad, excepto el desgaste normal y asuntos que legalmente corresponden al propietario."
         data-pt="O locador manterá o imóvel conforme exigido por lei. O inquilino deve manter a residência razoavelmente limpa, usar corretamente instalações e eletrodomésticos e informar prontamente reparos necessários. O inquilino é responsável por danos causados por ele ou por pessoas/animais sob sua responsabilidade, exceto desgaste normal e assuntos que sejam responsabilidade legal do locador.">
-
         El propietario mantendrá la propiedad según lo exige la ley. El inquilino debe mantener la vivienda razonablemente limpia, usar correctamente los accesorios y electrodomésticos y reportar rápidamente las reparaciones necesarias. El inquilino es responsable de los daños causados por él o por las personas/mascotas bajo su responsabilidad, excepto el desgaste normal y asuntos que legalmente corresponden al propietario.
-
       </p>
-
 
       <h3
         data-en="Alterations & Subleasing"
         data-es="Alteraciones y Subalquiler"
         data-pt="Alterações e Sublocação">
-
         Alteraciones y Subalquiler
-
       </h3>
 
       <p
         data-en="Tenant may not make material alterations or sublease/assign the property without the landlord's written consent, except as otherwise required or protected by law."
         data-es="El inquilino no puede hacer alteraciones importantes ni subalquilar/ceder la propiedad sin el consentimiento escrito del propietario, salvo cuando la ley lo permita o exija."
         data-pt="O inquilino não poderá fazer alterações importantes nem sublocar/ceder o imóvel sem consentimento escrito do locador, salvo quando a lei permitir ou exigir.">
-
         El inquilino no puede hacer alteraciones importantes ni subalquilar/ceder la propiedad sin el consentimiento escrito del propietario, salvo cuando la ley lo permita o exija.
-
       </p>
-
 
       <h3
         data-en="Landlord Access"
         data-es="Acceso del Propietario"
         data-pt="Acesso do Locador">
-
         Acceso del Propietario
-
       </h3>
 
       <p
         data-en="Landlord may enter the dwelling only as permitted by Florida law and will provide notice when notice is legally required."
         data-es="El propietario puede entrar a la vivienda solo según lo permita la ley de Florida y dará aviso cuando la ley lo requiera."
         data-pt="O locador poderá entrar no imóvel somente conforme permitido pela lei da Flórida e fornecerá aviso quando exigido por lei.">
-
         El propietario puede entrar a la vivienda solo según lo permita la ley de Florida y dará aviso cuando la ley lo requiera.
-
       </p>
-
 
       <h3
         data-en="Termination & Remedies"
         data-es="Terminación y Recursos"
         data-pt="Término e Recursos">
-
         Terminación y Recursos
-
       </h3>
 
       <p
         data-en="Either party may exercise the rights and remedies available under this agreement and Florida law. Required notices, court procedures, and eviction procedures remain governed by law."
         data-es="Cualquiera de las partes puede ejercer los derechos y recursos disponibles conforme a este contrato y la ley de Florida. Los avisos, procedimientos judiciales y procedimientos de desalojo requeridos siguen regidos por la ley."
         data-pt="Qualquer das partes poderá exercer os direitos e recursos disponíveis conforme este contrato e a lei da Flórida. Avisos, procedimentos judiciais e despejo continuam regidos pela lei.">
-
         Cualquiera de las partes puede ejercer los derechos y recursos disponibles conforme a este contrato y la ley de Florida. Los avisos, procedimientos judiciales y procedimientos de desalojo requeridos siguen regidos por la ley.
-
       </p>
-
 
       <h3
         data-en="No Waiver of Legal Rights"
         data-es="No Renuncia de Derechos"
         data-pt="Sem Renúncia de Direitos">
-
         No Renuncia de Derechos
-
       </h3>
 
       <p
         data-en="Nothing in this agreement waives, limits, or eliminates a right, remedy, duty, or liability that Florida or federal law does not allow the parties to waive or limit."
         data-es="Nada en este contrato renuncia, limita o elimina un derecho, recurso, deber o responsabilidad que las leyes de Florida o federales no permitan renunciar o limitar."
         data-pt="Nada neste contrato renuncia, limita ou elimina direito, recurso, dever ou responsabilidade que a lei da Flórida ou federal não permita renunciar ou limitar.">
-
         Nada en este contrato renuncia, limita o elimina un derecho, recurso, deber o responsabilidad que las leyes de Florida o federales no permitan renunciar o limitar.
-
       </p>
 
     </div>
 
   </div>
-
 
   <div class="card">
 
@@ -1588,11 +1412,8 @@ footer{
       data-en="Required Disclosures"
       data-es="Divulgaciones Requeridas"
       data-pt="Divulgações Obrigatórias">
-
       Divulgaciones Requeridas
-
     </h2>
-
 
     <div class="info">
 
@@ -1600,25 +1421,19 @@ footer{
         data-en="Lead-based paint: If the property is covered by the federal pre-1978 lead disclosure rule, the required disclosure and EPA pamphlet must be provided separately before the tenant is obligated by the lease."
         data-es="Pintura con plomo: Si la propiedad está cubierta por la regla federal de divulgación para viviendas anteriores a 1978, la divulgación requerida y el folleto de la EPA deben proporcionarse por separado antes de que el inquilino quede obligado por el contrato."
         data-pt="Tinta com chumbo: Se o imóvel estiver sujeito à regra federal de divulgação para imóveis anteriores a 1978, a divulgação exigida e o folheto da EPA devem ser fornecidos separadamente antes que o inquilino fique obrigado pelo contrato.">
-
         Pintura con plomo: Si la propiedad está cubierta por la regla federal de divulgación para viviendas anteriores a 1978, la divulgación requerida y el folleto de la EPA deben proporcionarse por separado antes de que el inquilino quede obligado por el contrato.
-
       </p>
-
 
       <p
         data-en="Flood: Florida requires a separate flood disclosure for a rental agreement with a term of one year or longer. This form is month-to-month."
         data-es="Inundación: Florida exige una divulgación separada de inundaciones para contratos con un plazo de un año o más. Este formulario es de mes a mes."
         data-pt="Inundação: A Flórida exige uma divulgação separada de inundação para contratos com prazo de um ano ou mais. Este formulário é mensal.">
-
         Inundación: Florida exige una divulgación separada de inundaciones para contratos con un plazo de un año o más. Este formulario es de mes a mes.
-
       </p>
 
     </div>
 
   </div>
-
 
   <div class="card">
 
@@ -1626,11 +1441,8 @@ footer{
       data-en="Electronic Signature"
       data-es="Firma Electrónica"
       data-pt="Assinatura Eletrônica">
-
       Firma Electrónica
-
     </h2>
-
 
     <div class="agreement-check">
 
@@ -1642,14 +1454,11 @@ footer{
           value="Yes"
           required>
 
-
         <span
           data-en="I consent to completing and signing this rental agreement electronically. I understand that my typed name is intended to serve as my electronic signature."
           data-es="Acepto completar y firmar este contrato electrónicamente. Entiendo que mi nombre escrito pretende servir como mi firma electrónica."
           data-pt="Concordo em preencher e assinar este contrato eletronicamente. Entendo que meu nome digitado pretende servir como minha assinatura eletrônica.">
-
           Acepto completar y firmar este contrato electrónicamente. Entiendo que mi nombre escrito pretende servir como mi firma electrónica.
-
         </span>
 
       </label>
@@ -1658,18 +1467,14 @@ footer{
 
   </div>
 
-
   <div class="card">
 
     <h2
       data-en="Tenant & Landlord Signatures"
       data-es="Firmas del Inquilino y Propietario"
       data-pt="Assinaturas do Inquilino e Locador">
-
       Firmas del Inquilino y Propietario
-
     </h2>
-
 
     <div class="grid">
 
@@ -1679,9 +1484,7 @@ footer{
           data-en="Tenant Full Legal Name"
           data-es="Nombre Legal Completo"
           data-pt="Nome Legal Completo">
-
           Nombre Legal Completo
-
         </label>
 
         <input
@@ -1691,16 +1494,13 @@ footer{
 
       </div>
 
-
       <div>
 
         <label
           data-en="Tenant Email"
           data-es="Correo del Inquilino"
           data-pt="E-mail do Inquilino">
-
           Correo del Inquilino
-
         </label>
 
         <input
@@ -1710,16 +1510,13 @@ footer{
 
       </div>
 
-
       <div>
 
         <label
           data-en="Tenant Phone"
           data-es="Teléfono"
           data-pt="Telefone">
-
           Teléfono
-
         </label>
 
         <input
@@ -1729,16 +1526,13 @@ footer{
 
       </div>
 
-
       <div>
 
         <label
           data-en="Tenant Electronic Signature"
           data-es="Firma Electrónica"
           data-pt="Assinatura Eletrônica">
-
           Firma Electrónica
-
         </label>
 
         <input
@@ -1749,16 +1543,13 @@ footer{
 
       </div>
 
-
       <div>
 
         <label
           data-en="Tenant Signature Date"
           data-es="Fecha de Firma"
           data-pt="Data da Assinatura">
-
           Fecha de Firma
-
         </label>
 
         <input
@@ -1769,22 +1560,18 @@ footer{
 
       </div>
 
-
       <div>
 
         <label
           data-en="Second Tenant Name (if applicable)"
           data-es="Segundo Inquilino"
           data-pt="Segundo Inquilino">
-
           Segundo Inquilino
-
         </label>
 
         <input name="second_tenant">
 
       </div>
-
 
       <div>
 
@@ -1792,9 +1579,7 @@ footer{
           data-en="Second Tenant Signature (if applicable)"
           data-es="Firma del Segundo Inquilino"
           data-pt="Assinatura do Segundo Inquilino">
-
           Firma del Segundo Inquilino
-
         </label>
 
         <input name="second_signature">
@@ -1803,10 +1588,8 @@ footer{
 
     </div>
 
-
     <hr
       style="margin:25px 0;border:0;border-top:1px solid #ddd">
-
 
     <div class="grid">
 
@@ -1816,9 +1599,7 @@ footer{
           data-en="Landlord Legal Name"
           data-es="Nombre Legal del Propietario"
           data-pt="Nome Legal do Locador">
-
           Nombre Legal del Propietario
-
         </label>
 
         <input
@@ -1830,16 +1611,13 @@ footer{
 
       </div>
 
-
       <div>
 
         <label
           data-en="Landlord Electronic Signature"
           data-es="Firma Electrónica del Propietario"
           data-pt="Assinatura Eletrônica do Locador">
-
           Firma Electrónica del Propietario
-
         </label>
 
         <input
@@ -1851,16 +1629,13 @@ footer{
 
       </div>
 
-
       <div>
 
         <label
           data-en="Landlord Signature Date"
           data-es="Fecha de Firma del Propietario"
           data-pt="Data de Firma do Locador">
-
           Fecha de Firma del Propietario
-
         </label>
 
         <input
@@ -1875,18 +1650,14 @@ footer{
 
   </div>
 
-
   <div class="card">
 
     <h2
       data-en="Final Review & Submit"
       data-es="Revisión Final y Envío"
       data-pt="Revisão Final e Envio">
-
       Revisión Final y Envío
-
     </h2>
-
 
     <div class="notice">
 
@@ -1894,13 +1665,10 @@ footer{
         data-en="The tenant should review the entire agreement and retain a copy of the completed agreement and any applicable separate disclosures."
         data-es="El inquilino debe revisar todo el contrato y conservar una copia del contrato completado y de cualquier divulgación separada aplicable."
         data-pt="O inquilino deve revisar todo o contrato e guardar uma cópia do contrato preenchido e de quaisquer divulgações separadas aplicáveis.">
-
         El inquilino debe revisar todo el contrato y conservar una copia del contrato completado y de cualquier divulgación separada aplicable.
-
       </p>
 
     </div>
-
 
     <div class="reference-box">
 
@@ -1909,43 +1677,33 @@ footer{
         data-en="Rental Agreement Reference"
         data-es="Referencia del Contrato de Alquiler"
         data-pt="Referência do Contrato de Aluguel">
-
         Referencia del Contrato de Alquiler
-
       </div>
-
 
       <div
         class="reference-number"
         id="agreementReferenceDisplay">
-
         Ingrese el nombre del inquilino y la dirección de la propiedad
-
       </div>
-
 
       <div
         class="description"
         data-en="This reference is created automatically from the tenant name and rental property address."
         data-es="Esta referencia se crea automáticamente con el nombre del inquilino y la dirección de la propiedad."
         data-pt="Esta referência é criada automaticamente com o nome do inquilino e o endereço do imóvel.">
-
         Esta referencia se crea automáticamente con el nombre del inquilino y la dirección de la propiedad.
-
       </div>
-
 
       <button
         type="button"
         class="copy-reference-button"
         id="copyReferenceButton">
-
         📋 Copiar Referencia
-
       </button>
 
     </div>
 
+    <!-- AGREEMENT CHECKBOX -->
 
     <div class="agreement-check">
 
@@ -1958,67 +1716,95 @@ footer{
           value="I have read and agree to this rental agreement."
           required>
 
-
         <span
           data-en="I have read this rental agreement, the information I provided is true and accurate to the best of my knowledge, and I agree to the terms subject to applicable Florida and federal law."
           data-es="He leído este contrato, la información que proporcioné es verdadera y correcta según mi leal saber y entender, y acepto los términos sujetos a las leyes de Florida y federales aplicables."
           data-pt="Li este contrato, as informações fornecidas são verdadeiras e corretas segundo meu melhor conhecimento e concordo com os termos sujeitos às leis aplicáveis da Flórida e federais.">
-
           He leído este contrato, la información que proporcioné es verdadera y correcta según mi leal saber y entender, y acepto los términos sujetos a las leyes de Florida y federales aplicables.
-
         </span>
 
       </label>
 
     </div>
 
+    <!-- ID RED BOX -->
 
     <div class="id-confirmation">
 
       <strong
-        data-en="IDENTIFICATION"
-        data-es="IDENTIFICACIÓN"
-        data-pt="IDENTIFICAÇÃO">
-
-        IDENTIFICACIÓN
-
+        data-en="⚠️ IDENTIFICATION REQUIRED BEFORE SUBMISSION"
+        data-es="⚠️ IDENTIFICACIÓN REQUERIDA ANTES DE ENVIAR"
+        data-pt="⚠️ DOCUMENTO DE IDENTIFICAÇÃO NECESSÁRIO ANTES DO ENVIO">
+        ⚠️ IDENTIFICACIÓN REQUERIDA ANTES DE ENVIAR
       </strong>
-
 
       <p
         data-en="BEFORE submitting, provide the requested government-issued photo ID to Carlos Rents for identity verification and rental records."
         data-es="ANTES de enviar el contrato, proporcione la identificación con fotografía emitida por el gobierno solicitada a Carlos Rents para verificar su identidad y para los registros del alquiler."
         data-pt="ANTES de enviar o contrato, forneça o documento oficial com foto solicitado ao Carlos Rents para verificação de identidade e registros do aluguel.">
-
         ANTES de enviar el contrato, proporcione la identificación con fotografía emitida por el gobierno solicitada a Carlos Rents para verificar su identidad y para los registros del alquiler.
-
       </p>
-
 
       <a
         class="id-email"
         href="mailto:carlosrents1@yahoo.com">
-
         carlosrents1@yahoo.com
-
       </a>
+
+      <a
+        class="id-phone"
+        href="sms:+18134993860">
+        813-499-3860
+      </a>
+
+      <!-- NEW REQUIRED ID CONFIRMATION CHECKBOX -->
+
+      <div class="id-checkbox-area">
+
+        <label class="id-checkbox-label">
+
+          <input
+            type="checkbox"
+            id="idProvidedCheckbox"
+            name="government_id_provided"
+            value="Yes"
+            required>
+
+          <span
+            data-en="I confirm that I submitted my government-issued photo ID to Carlos Rents BEFORE submitting this rental agreement."
+            data-es="Confirmo que envié mi identificación con fotografía emitida por el gobierno a Carlos Rents ANTES de enviar este contrato de alquiler."
+            data-pt="Confirmo que enviei meu documento oficial com foto ao Carlos Rents ANTES de enviar este contrato de aluguel.">
+            Confirmo que envié mi identificación con fotografía emitida por el gobierno a Carlos Rents ANTES de enviar este contrato de alquiler.
+          </span>
+
+        </label>
+
+        <div
+          class="id-checkbox-note"
+          data-en="You must check this box before the rental agreement can be submitted."
+          data-es="Debe marcar esta casilla antes de poder enviar el contrato de alquiler."
+          data-pt="Você deve marcar esta caixa antes de poder enviar o contrato de aluguel.">
+          Debe marcar esta casilla antes de poder enviar el contrato de alquiler.
+        </div>
+
+      </div>
 
     </div>
 
+    <!-- SUBMIT BUTTON -->
 
     <button
       type="submit"
       id="submitButton"
       disabled>
-
-      ☐ Marque la Casilla de Acuerdo
-
+      ☐ Complete las Casillas Requeridas
     </button>
 
   </div>
 
 </form>
 
+<!-- CONFIRMATION SCREEN -->
 
 <div
   id="confirmationScreen"
@@ -2029,26 +1815,19 @@ footer{
     ✅
   </div>
 
-
   <h2
     data-en="Rental Agreement Submitted"
     data-es="Contrato Enviado"
     data-pt="Contrato Enviado">
-
     Contrato Enviado
-
   </h2>
-
 
   <p
     data-en="Your rental agreement has been submitted to Carlos Rents."
     data-es="Su contrato de alquiler ha sido enviado a Carlos Rents."
     data-pt="Seu contrato de aluguel foi enviado ao Carlos Rents.">
-
     Su contrato de alquiler ha sido enviado a Carlos Rents.
-
   </p>
-
 
   <div class="confirmation-reference">
 
@@ -2056,52 +1835,32 @@ footer{
       data-en="Agreement Reference:"
       data-es="Referencia:"
       data-pt="Referência:">
-
       Referencia:
-
     </span>
 
     <span id="confirmationReference">
-
       Ingrese el nombre del inquilino y la dirección de la propiedad
-
     </span>
 
   </div>
-
 
   <div class="id-confirmation">
 
     <strong
-      data-en="FINAL STEP — SEND YOUR ID"
-      data-es="PASO FINAL — ENVÍE SU IDENTIFICACIÓN"
-      data-pt="ETAPA FINAL — ENVIE SEU DOCUMENTO">
-
-      PASO FINAL — ENVÍE SU IDENTIFICACIÓN
-
+      data-en="IDENTIFICATION CONFIRMED"
+      data-es="IDENTIFICACIÓN CONFIRMADA"
+      data-pt="IDENTIFICAÇÃO CONFIRMADA">
+      IDENTIFICACIÓN CONFIRMADA
     </strong>
 
-
     <p
-      data-en="Please email your government-issued photo ID and include your agreement reference."
-      data-es="Envíe por correo electrónico su identificación con fotografía emitida por el gobierno e incluya su referencia del contrato."
-      data-pt="Envie por e-mail seu documento oficial com foto e inclua sua referência do contrato.">
-
-      Envíe por correo electrónico su identificación con fotografía emitida por el gobierno e incluya su referencia del contrato.
-
+      data-en="Your ID confirmation was completed before submission. Please keep your agreement reference for your records."
+      data-es="Su confirmación de identificación se completó antes del envío. Conserve la referencia de su contrato para sus registros."
+      data-pt="Sua confirmação de identificação foi concluída antes do envio. Guarde a referência do contrato para seus registros.">
+      Su confirmación de identificación se completó antes del envío. Conserve la referencia de su contrato para sus registros.
     </p>
 
-
-    <a
-      class="id-email"
-      href="mailto:carlosrents1@yahoo.com">
-
-      carlosrents1@yahoo.com
-
-    </a>
-
   </div>
-
 
   <div class="confirmation-buttons">
 
@@ -2109,19 +1868,14 @@ footer{
       type="button"
       class="print-button"
       id="printConfirmationButton">
-
       🖨️ Imprimir / Guardar
-
     </button>
-
 
     <button
       type="button"
       class="new-agreement-button"
       id="newAgreementButton">
-
       ↻ Nuevo Contrato
-
     </button>
 
   </div>
@@ -2130,11 +1884,9 @@ footer{
 
 </main>
 
-
 <footer>
   © Carlos Rents • Florida Residential Rental Agreement
 </footer>
-
 
 <script>
 
@@ -2159,7 +1911,6 @@ function changeLanguage(lang){
 
 }
 
-
 function setToday(){
 
   const now=new Date();
@@ -2175,7 +1926,6 @@ function setToday(){
   const today=
     `${year}-${month}-${day}`;
 
-
   [
     "agreementDate",
     "signatureDate",
@@ -2186,15 +1936,12 @@ function setToday(){
       document.getElementById(id);
 
     if(el && !el.value){
-
       el.value=today;
-
     }
 
   });
 
 }
-
 
 function cleanReferencePart(value){
 
@@ -2203,7 +1950,6 @@ function cleanReferencePart(value){
     .replace(/\s+/g," ");
 
 }
-
 
 function getTenantName(){
 
@@ -2218,7 +1964,6 @@ function getTenantName(){
 
 }
 
-
 function getPropertyAddress(){
 
   const field=
@@ -2232,7 +1977,6 @@ function getPropertyAddress(){
 
 }
 
-
 function currentAgreementReference(){
 
   const tenant=
@@ -2241,31 +1985,20 @@ function currentAgreementReference(){
   const address=
     getPropertyAddress();
 
-
   if(tenant && address){
-
     return `${tenant} — ${address}`;
-
   }
-
 
   if(tenant){
-
     return tenant;
-
   }
-
 
   if(address){
-
     return address;
-
   }
-
 
   const lang=
     document.documentElement.lang || "es";
-
 
   const emptyMessages={
 
@@ -2277,83 +2010,64 @@ function currentAgreementReference(){
 
   };
 
-
   return emptyMessages[lang] ||
     emptyMessages.es;
 
 }
-
 
 function updateAgreementReferenceDisplay(){
 
   const reference=
     currentAgreementReference();
 
-
   const display=
     document.getElementById(
       "agreementReferenceDisplay"
     );
-
 
   const hiddenInput=
     document.getElementById(
       "agreementReferenceInput"
     );
 
-
   const confirmation=
     document.getElementById(
       "confirmationReference"
     );
 
-
   if(display){
-
     display.textContent=
       reference;
-
   }
-
 
   if(hiddenInput){
-
     hiddenInput.value=
       reference;
-
   }
 
-
   if(confirmation){
-
     confirmation.textContent=
       reference;
-
   }
 
 }
-
 
 const tenantLegalNameField=
   document.querySelector(
     '[name="lessee"]'
   );
 
-
 const tenantSignatureName=
   document.getElementById(
     "tenantSignatureName"
   );
-
 
 const tenantElectronicSignature=
   document.getElementById(
     "tenantElectronicSignature"
   );
 
-
 let lastAutoFilledTenantName="";
-
 
 function autoFillTenantFields(){
 
@@ -2364,48 +2078,35 @@ function autoFillTenantFields(){
         : ""
     );
 
-
   if(!tenantSignatureName ||
      !tenantElectronicSignature){
-
     return;
-
   }
-
 
   const signatureNameWasAutoFilled=
     !tenantSignatureName.value ||
     tenantSignatureName.value===
     lastAutoFilledTenantName;
 
-
   const signatureWasAutoFilled=
     !tenantElectronicSignature.value ||
     tenantElectronicSignature.value===
     lastAutoFilledTenantName;
 
-
   if(signatureNameWasAutoFilled){
-
     tenantSignatureName.value=
       name;
-
   }
-
 
   if(signatureWasAutoFilled){
-
     tenantElectronicSignature.value=
       name;
-
   }
-
 
   lastAutoFilledTenantName=
     name;
 
 }
-
 
 if(tenantLegalNameField){
 
@@ -2422,12 +2123,10 @@ if(tenantLegalNameField){
 
 }
 
-
 const propertyAddressField=
   document.querySelector(
     '[name="property_address"]'
   );
-
 
 if(propertyAddressField){
 
@@ -2438,15 +2137,12 @@ if(propertyAddressField){
 
 }
 
-
 const copyReferenceButton=
   document.getElementById(
     "copyReferenceButton"
   );
 
-
 let copyButtonTimer=null;
-
 
 function getCopyButtonLabels(){
 
@@ -2465,13 +2161,11 @@ function getCopyButtonLabels(){
     pt:{
       normal:"📋 Copiar Referência",
       success:"✅ Copiado!"
-
     }
 
   };
 
 }
-
 
 function updateCopyButtonText(){
 
@@ -2490,20 +2184,16 @@ function updateCopyButtonText(){
 
 }
 
-
 async function copyAgreementReference(){
 
   const reference=
     currentAgreementReference();
 
-
   const lang=
     document.documentElement.lang || "es";
 
-
   const labels=
     getCopyButtonLabels();
-
 
   try{
 
@@ -2537,13 +2227,10 @@ async function copyAgreementReference(){
 
     }
 
-
     copyReferenceButton.textContent=
       labels[lang].success;
 
-
     clearTimeout(copyButtonTimer);
-
 
     copyButtonTimer=
       setTimeout(function(){
@@ -2551,7 +2238,6 @@ async function copyAgreementReference(){
         updateCopyButtonText();
 
       },1800);
-
 
   }catch(error){
 
@@ -2567,7 +2253,6 @@ async function copyAgreementReference(){
 
 }
 
-
 if(copyReferenceButton){
 
   copyReferenceButton.addEventListener(
@@ -2577,18 +2262,20 @@ if(copyReferenceButton){
 
 }
 
-
 const agreementCheckbox=
   document.getElementById(
     "agreementCheckbox"
   );
 
+const idProvidedCheckbox=
+  document.getElementById(
+    "idProvidedCheckbox"
+  );
 
 const submitButton=
   document.getElementById(
     "submitButton"
   );
-
 
 function updateSubmitButton(){
 
@@ -2596,47 +2283,50 @@ function updateSubmitButton(){
     document.documentElement.lang ||
     "es";
 
-
   const labels={
 
     en:{
       checked:"Submit Rental Agreement",
-      unchecked:"☐ Check Agreement Above"
+      unchecked:"☐ Complete Required Checkboxes Above"
     },
 
     es:{
       checked:"Enviar Contrato de Alquiler",
-      unchecked:"☐ Marque la Casilla de Acuerdo"
+      unchecked:"☐ Complete las Casillas Requeridas"
     },
 
     pt:{
       checked:"Enviar Contrato de Aluguel",
-      unchecked:"☐ Marque a Caixa de Acordo"
+      unchecked:"☐ Complete as Caixas Obrigatórias"
     }
 
   };
 
+  const canSubmit=
+    agreementCheckbox.checked &&
+    idProvidedCheckbox.checked;
 
   submitButton.disabled=
-    !agreementCheckbox.checked;
-
+    !canSubmit;
 
   submitButton.textContent=
-    agreementCheckbox.checked
+    canSubmit
       ? labels[lang].checked
       : labels[lang].unchecked;
 
 }
-
 
 agreementCheckbox.addEventListener(
   "change",
   updateSubmitButton
 );
 
+idProvidedCheckbox.addEventListener(
+  "change",
+  updateSubmitButton
+);
 
 let isSubmitting=false;
-
 
 function disableSubmitPermanently(){
 
@@ -2649,18 +2339,15 @@ function disableSubmitPermanently(){
 
 }
 
-
 const rentalForm=
   document.getElementById(
     "rentalForm"
   );
 
-
 const confirmationScreen=
   document.getElementById(
     "confirmationScreen"
   );
-
 
 rentalForm.addEventListener(
   "submit",
@@ -2668,13 +2355,9 @@ rentalForm.addEventListener(
 
     event.preventDefault();
 
-
     if(isSubmitting){
-
       return;
-
     }
-
 
     if(!agreementCheckbox.checked){
 
@@ -2684,6 +2367,13 @@ rentalForm.addEventListener(
 
     }
 
+    if(!idProvidedCheckbox.checked){
+
+      idProvidedCheckbox.reportValidity();
+
+      return;
+
+    }
 
     if(!rentalForm.checkValidity()){
 
@@ -2693,16 +2383,13 @@ rentalForm.addEventListener(
 
     }
 
-
     isSubmitting=true;
 
     submitButton.disabled=true;
 
-
     const lang=
       document.documentElement.lang ||
       "es";
-
 
     const submittingLabels={
 
@@ -2714,20 +2401,16 @@ rentalForm.addEventListener(
 
     };
 
-
     submitButton.textContent=
       submittingLabels[lang];
-
 
     try{
 
       const tenant=
         getTenantName();
 
-
       const address=
         getPropertyAddress();
-
 
       if(!tenant){
 
@@ -2737,7 +2420,6 @@ rentalForm.addEventListener(
 
       }
 
-
       if(!address){
 
         throw new Error(
@@ -2746,54 +2428,46 @@ rentalForm.addEventListener(
 
       }
 
-
       autoFillTenantFields();
-
 
       const reference=
         `${tenant} — ${address}`;
 
-
       document.getElementById(
         "agreementReferenceInput"
-      ).value=reference;
-
+      ).value=
+        reference;
 
       document.getElementById(
         "agreementReferenceDisplay"
-      ).textContent=reference;
-
+      ).textContent=
+        reference;
 
       document.getElementById(
         "confirmationReference"
-      ).textContent=reference;
-
+      ).textContent=
+        reference;
 
       const emailSubject=
         `New Carlos Rents Rental Agreement — ${tenant}`;
-
 
       document.getElementById(
         "emailSubject"
       ).value=
         emailSubject;
 
-
       const formData=
         new FormData(rentalForm);
-
 
       formData.set(
         "agreement_reference",
         reference
       );
 
-
       formData.set(
         "_subject",
         emailSubject
       );
-
 
       const response=
         await fetch(
@@ -2807,9 +2481,7 @@ rentalForm.addEventListener(
           }
         );
 
-
       let result={};
-
 
       try{
 
@@ -2822,7 +2494,6 @@ rentalForm.addEventListener(
 
       }
 
-
       if(!response.ok){
 
         throw new Error(
@@ -2832,19 +2503,15 @@ rentalForm.addEventListener(
 
       }
 
-
       disableSubmitPermanently();
-
 
       rentalForm.style.display=
         "none";
-
 
       const progressContainer=
         document.querySelector(
           ".progress-container"
         );
-
 
       if(progressContainer){
 
@@ -2853,10 +2520,8 @@ rentalForm.addEventListener(
 
       }
 
-
       confirmationScreen.style.display=
         "block";
-
 
       confirmationScreen
         .scrollIntoView({
@@ -2864,14 +2529,11 @@ rentalForm.addEventListener(
           block:"start"
         });
 
-
     }catch(error){
 
       console.error(error);
 
-
       isSubmitting=false;
-
 
       const errorMessages={
 
@@ -2879,16 +2541,14 @@ rentalForm.addEventListener(
 
         es:"No se pudo enviar el contrato. Verifique su conexión a Internet e inténtelo nuevamente.",
 
-        pt:"Não foi possível enviar o contrato. Verifique sua conexão com a Internet e tente nuevamente."
+        pt:"Não foi possível enviar o contrato. Verifique sua conexão com a Internet e tente novamente."
 
       };
-
 
       alert(
         errorMessages[lang] ||
         errorMessages.en
       );
-
 
       updateSubmitButton();
 
@@ -2897,12 +2557,10 @@ rentalForm.addEventListener(
   }
 );
 
-
 const printConfirmationButton=
   document.getElementById(
     "printConfirmationButton"
   );
-
 
 if(printConfirmationButton){
 
@@ -2917,12 +2575,10 @@ if(printConfirmationButton){
 
 }
 
-
 const newAgreementButton=
   document.getElementById(
     "newAgreementButton"
   );
-
 
 if(newAgreementButton){
 
@@ -2937,7 +2593,6 @@ if(newAgreementButton){
 
 }
 
-
 const steps=[
 
   document.getElementById("step1"),
@@ -2950,28 +2605,23 @@ const steps=[
 
 ];
 
-
 const progressSteps=
   document.querySelectorAll(
     ".progress-step"
   );
-
 
 const progressFill=
   document.getElementById(
     "progressFill"
   );
 
-
 function updateProgress(){
 
   let currentStep=1;
 
-
   const scrollPosition=
-    window.scrollY +
+    window.scrollY+
     window.innerHeight*.35;
-
 
   steps.forEach(
     function(section,index){
@@ -2989,7 +2639,6 @@ function updateProgress(){
     }
   );
 
-
   if(
     scrollPosition>
     document.body.scrollHeight-
@@ -3001,7 +2650,6 @@ function updateProgress(){
 
   }
 
-
   progressSteps.forEach(
     function(step,index){
 
@@ -3009,7 +2657,6 @@ function updateProgress(){
         "active",
         "completed"
       );
-
 
       if(
         index+1===currentStep
@@ -3020,7 +2667,6 @@ function updateProgress(){
         );
 
       }
-
 
       if(
         index+1<currentStep
@@ -3035,18 +2681,15 @@ function updateProgress(){
     }
   );
 
-
   progressFill.style.width=
     (((currentStep-1)/4)*84)+"%";
 
 }
 
-
 window.addEventListener(
   "scroll",
   updateProgress
 );
-
 
 window.addEventListener(
   "load",
