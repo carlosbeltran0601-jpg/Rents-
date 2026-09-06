@@ -103,6 +103,7 @@ textarea{
   border-radius:7px;
   font-size:16px;
   background:white;
+  min-height:46px;
 }
 
 textarea{
@@ -115,11 +116,13 @@ select:focus,
 textarea:focus{
   outline:none;
   border-color:#111827;
+  box-shadow:0 0 0 2px rgba(17,24,39,.08);
 }
 
 button{
   width:100%;
   padding:15px;
+  min-height:50px;
   background:#111827;
   color:white;
   border:0;
@@ -127,6 +130,11 @@ button{
   font-size:17px;
   font-weight:bold;
   cursor:pointer;
+  touch-action:manipulation;
+}
+
+button:hover:not(:disabled){
+  background:#1f2937;
 }
 
 button:disabled{
@@ -149,6 +157,7 @@ button:disabled{
 
 .lang select{
   width:auto;
+  min-height:44px;
 }
 
 .notice{
@@ -228,6 +237,20 @@ button:disabled{
   line-height:1.4;
 }
 
+.copy-reference-button{
+  margin-top:12px;
+  width:auto;
+  min-width:180px;
+  padding:11px 18px;
+  min-height:46px;
+  background:#374151;
+  font-size:15px;
+}
+
+.copy-reference-button:hover:not(:disabled){
+  background:#111827;
+}
+
 .agreement-check{
   background:#f9fafb;
   border:2px solid #d1d5db;
@@ -249,6 +272,7 @@ button:disabled{
   width:22px;
   height:22px;
   min-width:22px;
+  min-height:22px;
   margin-top:2px;
   cursor:pointer;
   accent-color:#111827;
@@ -288,10 +312,26 @@ button:disabled{
   word-break:break-word;
 }
 
+.confirmation-buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:20px;
+}
+
+.print-button{
+  background:#111827;
+}
+
+.new-agreement-button{
+  background:#6b7280;
+}
+
 .id-confirmation{
-  background:#fff7ed;
-  border:2px solid #f97316;
-  border-left:6px solid #f97316;
+  background:#fff1f2;
+  border:2px solid #dc2626;
+  border-left:6px solid #dc2626;
+  color:#991b1b;
   padding:18px;
   border-radius:8px;
   margin-top:20px;
@@ -305,6 +345,40 @@ button:disabled{
   color:#991b1b;
   margin-top:10px;
   text-decoration:underline;
+  word-break:break-word;
+}
+
+.top-id-warning{
+  background:#fff1f2;
+  border:3px solid #dc2626;
+  border-left:8px solid #b91c1c;
+  padding:18px 15px;
+  text-align:center;
+  color:#991b1b;
+  box-shadow:0 3px 10px rgba(220,38,38,.18);
+}
+
+.top-id-title{
+  font-size:22px;
+  font-weight:900;
+  margin-bottom:8px;
+  color:#b91c1c;
+}
+
+.top-id-text{
+  font-size:15px;
+  font-weight:bold;
+  line-height:1.5;
+}
+
+.top-id-email{
+  display:block;
+  font-size:19px;
+  font-weight:900;
+  margin-top:9px;
+  color:#991b1b;
+  text-decoration:underline;
+  word-break:break-word;
 }
 
 .progress-container{
@@ -405,6 +479,35 @@ footer{
   font-size:14px;
 }
 
+@media print{
+
+  body{
+    background:white;
+  }
+
+  .lang,
+  .top-id-warning,
+  header,
+  .progress-container,
+  footer,
+  .confirmation-buttons{
+    display:none !important;
+  }
+
+  main{
+    max-width:100%;
+    margin:0;
+    padding:0;
+  }
+
+  .confirmation-screen{
+    display:block !important;
+    box-shadow:none;
+    margin:0;
+    max-width:100%;
+  }
+}
+
 @media(max-width:650px){
 
   header{
@@ -470,14 +573,30 @@ footer{
   .reference-number{
     font-size:18px;
   }
+
+  .confirmation-buttons{
+    grid-template-columns:1fr;
+  }
+
+  .top-id-title{
+    font-size:20px;
+  }
+
+  .top-id-text{
+    font-size:14px;
+  }
+
+  .top-id-email{
+    font-size:17px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- LANGUAGE -->
 <div class="lang">
+
 <label
   for="language"
   data-en="Language"
@@ -491,46 +610,45 @@ footer{
   <option value="en">English</option>
   <option value="pt">Português</option>
 </select>
-</div>
-
-
-<!-- ID REQUIREMENT -->
-<div style="
-  background:#eff6ff;
-  border-bottom:3px solid #2563eb;
-  padding:18px 15px;
-  text-align:center;
-  color:#1e3a8a;
-">
-
-  <div
-    style="font-size:21px;font-weight:800;margin-bottom:8px"
-    data-en="IDENTIFICATION REQUIRED"
-    data-es="IDENTIFICACIÓN REQUERIDA"
-    data-pt="DOCUMENTO DE IDENTIFICAÇÃO NECESSÁRIO">
-    IDENTIFICACIÓN REQUERIDA
-  </div>
-
-  <div
-    style="font-size:15px;font-weight:bold;line-height:1.5"
-    data-en="After submitting, the tenant must provide a clear government-issued photo ID for identity verification and rental-record purposes."
-    data-es="Después de enviar el contrato, el inquilino debe proporcionar una copia clara de una identificación con fotografía emitida por el gobierno para verificar su identidad y para los registros del alquiler."
-    data-pt="Após enviar o contrato, o inquilino deverá fornecer uma cópia nítida de um documento oficial com foto para verificação de identidade e para os registros do aluguel.">
-    Después de enviar el contrato, el inquilino debe proporcionar una copia clara de una identificación con fotografía emitida por el gobierno para verificar su identidad y para los registros del alquiler.
-  </div>
-
-  <div style="font-size:18px;font-weight:800;margin-top:8px">
-    <a
-      href="mailto:carlosrents1@yahoo.com"
-      style="color:#1e3a8a;text-decoration:underline">
-      carlosrents1@yahoo.com
-    </a>
-  </div>
 
 </div>
 
 
-<!-- HEADER -->
+<!-- RED ID REQUIREMENT AT THE TOP -->
+
+<div class="top-id-warning">
+
+  <div
+    class="top-id-title"
+    data-en="⚠️ IDENTIFICATION REQUIRED"
+    data-es="⚠️ IDENTIFICACIÓN REQUERIDA"
+    data-pt="⚠️ DOCUMENTO DE IDENTIFICAÇÃO NECESSÁRIO">
+
+    ⚠️ IDENTIFICACIÓN REQUERIDA
+
+  </div>
+
+  <div
+    class="top-id-text"
+    data-en="BEFORE submitting, the tenant must provide a clear government-issued photo ID for identity verification and rental-record purposes."
+    data-es="ANTES de enviar el contrato, el inquilino debe proporcionar una copia clara de una identificación con fotografía emitida por el gobierno para verificar su identidad y para los registros del alquiler."
+    data-pt="ANTES de enviar o contrato, o inquilino deverá fornecer uma cópia nítida de um documento oficial com foto para verificação de identidade e para os registros do aluguel.">
+
+    ANTES de enviar el contrato, el inquilino debe proporcionar una copia clara de una identificación con fotografía emitida por el gobierno para verificar su identidad y para los registros del alquiler.
+
+  </div>
+
+  <a
+    class="top-id-email"
+    href="mailto:carlosrents1@yahoo.com">
+
+    carlosrents1@yahoo.com
+
+  </a>
+
+</div>
+
+
 <header>
 
   <div class="header-overlay">
@@ -541,7 +659,9 @@ footer{
       data-en="Florida Residential Rental Agreement"
       data-es="Contrato de Alquiler Residencial de Florida"
       data-pt="Contrato de Aluguel Residencial da Flórida">
+
       Contrato de Alquiler Residencial de Florida
+
     </p>
 
   </div>
@@ -549,7 +669,6 @@ footer{
 </header>
 
 
-<!-- PROGRESS -->
 <div class="progress-container">
 
   <div class="progress">
@@ -570,7 +689,9 @@ footer{
         data-en="Property"
         data-es="Propiedad"
         data-pt="Imóvel">
+
         Propiedad
+
       </div>
 
     </div>
@@ -584,7 +705,9 @@ footer{
         data-en="Rent"
         data-es="Alquiler"
         data-pt="Aluguel">
+
         Alquiler
+
       </div>
 
     </div>
@@ -598,7 +721,9 @@ footer{
         data-en="Household"
         data-es="Hogar"
         data-pt="Residência">
+
         Hogar
+
       </div>
 
     </div>
@@ -612,7 +737,9 @@ footer{
         data-en="Rules"
         data-es="Reglas"
         data-pt="Regras">
+
         Reglas
+
       </div>
 
     </div>
@@ -626,7 +753,9 @@ footer{
         data-en="Sign"
         data-es="Firmar"
         data-pt="Assinar">
+
         Firmar
+
       </div>
 
     </div>
@@ -643,8 +772,6 @@ footer{
   action="https://formspree.io/f/xeaqzogr"
   method="POST">
 
-  <!-- FORM DATA -->
-
   <input
     type="hidden"
     name="_subject"
@@ -657,17 +784,15 @@ footer{
     id="agreementReferenceInput">
 
 
-  <!-- =========================
-       STEP 1
-       ========================= -->
-
   <div class="card" id="step1">
 
     <h2
       data-en="1. Property & Agreement"
       data-es="1. Propiedad y Contrato"
       data-pt="1. Imóvel e Contrato">
+
       1. Propiedad y Contrato
+
     </h2>
 
 
@@ -679,7 +804,9 @@ footer{
           data-en="Agreement Date"
           data-es="Fecha del Contrato"
           data-pt="Data do Contrato">
+
           Fecha del Contrato
+
         </label>
 
         <input
@@ -697,7 +824,9 @@ footer{
           data-en="Tenancy Start Date"
           data-es="Fecha de Inicio"
           data-pt="Data de Início">
+
           Fecha de Inicio
+
         </label>
 
         <input
@@ -714,7 +843,9 @@ footer{
           data-en="Landlord / Lessor Legal Name"
           data-es="Nombre Legal del Arrendador"
           data-pt="Nome Legal do Locador">
+
           Nombre Legal del Arrendador
+
         </label>
 
         <input
@@ -733,7 +864,9 @@ footer{
           data-en="Tenant Full Legal Name"
           data-es="Nombre Legal del Inquilino"
           data-pt="Nome Legal do Inquilino">
+
           Nombre Legal del Inquilino
+
         </label>
 
         <input
@@ -750,7 +883,9 @@ footer{
           data-en="Rental Property Address"
           data-es="Dirección de la Propiedad"
           data-pt="Endereço do Imóvel">
+
           Dirección de la Propiedad
+
         </label>
 
         <input
@@ -768,7 +903,9 @@ footer{
           data-en="County"
           data-es="Condado"
           data-pt="Condado">
+
           Condado
+
         </label>
 
         <input
@@ -785,7 +922,9 @@ footer{
           data-en="Unit / Apartment (if applicable)"
           data-es="Unidad / Apartamento (si aplica)"
           data-pt="Unidade / Apartamento (se aplicável)">
+
           Unidad / Apartamento (si aplica)
+
         </label>
 
         <input name="unit_number">
@@ -795,8 +934,6 @@ footer{
     </div>
 
 
-    <!-- NOTICE ADDRESS -->
-
     <div
       class="info"
       style="margin-top:18px">
@@ -805,7 +942,9 @@ footer{
         data-en="Landlord Notice Address"
         data-es="Dirección de Avisos del Arrendador"
         data-pt="Endereço de Avisos do Locador">
+
         Dirección de Avisos del Arrendador
+
       </strong>
 
 
@@ -827,7 +966,9 @@ footer{
             data-en="Notice Recipient Name"
             data-es="Nombre del Destinatario"
             data-pt="Nome do Destinatário">
+
             Nombre del Destinatario
+
           </label>
 
           <input
@@ -846,7 +987,9 @@ footer{
             data-en="Notice Mailing Address"
             data-es="Dirección Postal"
             data-pt="Endereço Postal">
+
             Dirección Postal
+
           </label>
 
           <input
@@ -865,17 +1008,15 @@ footer{
   </div>
 
 
-  <!-- =========================
-       STEP 2
-       ========================= -->
-
   <div class="card" id="step2">
 
     <h2
       data-en="2. Rent & Deposit"
       data-es="2. Alquiler y Depósito"
       data-pt="2. Aluguel e Depósito">
+
       2. Alquiler y Depósito
+
     </h2>
 
 
@@ -887,7 +1028,9 @@ footer{
           data-en="Monthly Rent ($)"
           data-es="Alquiler Mensual ($)"
           data-pt="Aluguel Mensal ($)">
+
           Alquiler Mensual ($)
+
         </label>
 
         <input
@@ -906,7 +1049,9 @@ footer{
           data-en="Rent Due Day"
           data-es="Día de Vencimiento"
           data-pt="Dia de Vencimento">
+
           Día de Vencimiento
+
         </label>
 
         <input
@@ -925,7 +1070,9 @@ footer{
           data-en="Payment Method"
           data-es="Método de Pago"
           data-pt="Método de Pagamento">
+
           Método de Pago
+
         </label>
 
         <select
@@ -948,7 +1095,9 @@ footer{
           data-en="Security Deposit ($)"
           data-es="Depósito de Seguridad ($)"
           data-pt="Depósito de Segurança ($)">
+
           Depósito de Seguridad ($)
+
         </label>
 
         <input
@@ -970,7 +1119,9 @@ footer{
         data-en="Late Rent"
         data-es="Alquiler Atrasado"
         data-pt="Aluguel Atrasado">
+
         Alquiler Atrasado
+
       </strong>
 
       <p
@@ -999,7 +1150,9 @@ footer{
         data-en="Nonpayment"
         data-es="Falta de Pago"
         data-pt="Falta de Pagamento">
+
         Falta de Pago
+
       </strong>
 
       <p
@@ -1022,7 +1175,9 @@ footer{
         data-en="Security Deposit"
         data-es="Depósito de Seguridad"
         data-pt="Depósito de Segurança">
+
         Depósito de Seguridad
+
       </strong>
 
       <p
@@ -1039,17 +1194,15 @@ footer{
   </div>
 
 
-  <!-- =========================
-       STEP 3
-       ========================= -->
-
   <div class="card" id="step3">
 
     <h2
       data-en="3. Household & Pets"
       data-es="3. Hogar y Mascotas"
       data-pt="3. Residência e Animais">
+
       3. Hogar y Mascotas
+
     </h2>
 
 
@@ -1061,7 +1214,9 @@ footer{
           data-en="Number of Adults"
           data-es="Número de Adultos"
           data-pt="Número de Adultos">
+
           Número de Adultos
+
         </label>
 
         <input
@@ -1079,7 +1234,9 @@ footer{
           data-en="Number of Children"
           data-es="Número de Niños"
           data-pt="Número de Crianças">
+
           Número de Niños
+
         </label>
 
         <input
@@ -1097,7 +1254,9 @@ footer{
           data-en="Pets"
           data-es="Mascotas"
           data-pt="Animais">
+
           Mascotas
+
         </label>
 
         <select
@@ -1119,7 +1278,9 @@ footer{
           data-en="Pet Description"
           data-es="Descripción de Mascota"
           data-pt="Descrição do Animal">
+
           Descripción de Mascota
+
         </label>
 
         <input
@@ -1135,13 +1296,14 @@ footer{
           data-en="Additional Authorized Occupants"
           data-es="Ocupantes Adicionales Autorizados"
           data-pt="Ocupantes Adicionais Autorizados">
+
           Ocupantes Adicionales Autorizados
+
         </label>
 
         <textarea
           name="additional_occupants"
-          placeholder="Full legal names, if applicable">
-        </textarea>
+          placeholder="Full legal names, if applicable"></textarea>
 
       </div>
 
@@ -1166,17 +1328,15 @@ footer{
   </div>
 
 
-  <!-- =========================
-       STEP 4
-       ========================= -->
-
   <div class="card" id="step4">
 
     <h2
       data-en="4. Basic Rental Rules"
       data-es="4. Reglas Básicas del Alquiler"
       data-pt="4. Regras Básicas do Aluguel">
+
       4. Reglas Básicas del Alquiler
+
     </h2>
 
 
@@ -1186,7 +1346,9 @@ footer{
         data-en="Month-to-Month"
         data-es="Mes a Mes"
         data-pt="Mês a Mês">
+
         Mes a Mes
+
       </h3>
 
       <p
@@ -1203,7 +1365,9 @@ footer{
         data-en="Use & Occupancy"
         data-es="Uso y Ocupación"
         data-pt="Uso e Ocupação">
+
         Uso y Ocupación
+
       </h3>
 
       <p
@@ -1220,7 +1384,9 @@ footer{
         data-en="Utilities"
         data-es="Servicios Públicos"
         data-pt="Serviços">
+
         Servicios Públicos
+
       </h3>
 
 
@@ -1228,7 +1394,14 @@ footer{
 
         <div>
 
-          <label>Electricity</label>
+          <label
+            data-en="Electricity"
+            data-es="Electricidad"
+            data-pt="Eletricidade">
+
+            Electricidad
+
+          </label>
 
           <select
             name="electricity_paid_by"
@@ -1245,7 +1418,14 @@ footer{
 
         <div>
 
-          <label>Water</label>
+          <label
+            data-en="Water"
+            data-es="Agua"
+            data-pt="Água">
+
+            Agua
+
+          </label>
 
           <select
             name="water_paid_by"
@@ -1262,7 +1442,14 @@ footer{
 
         <div>
 
-          <label>Internet</label>
+          <label
+            data-en="Internet"
+            data-es="Internet"
+            data-pt="Internet">
+
+            Internet
+
+          </label>
 
           <select
             name="internet_paid_by"
@@ -1280,7 +1467,14 @@ footer{
 
         <div>
 
-          <label>Other Utilities</label>
+          <label
+            data-en="Other Utilities"
+            data-es="Otros Servicios"
+            data-pt="Outros Serviços">
+
+            Other Utilities
+
+          </label>
 
           <input name="other_utilities">
 
@@ -1293,7 +1487,9 @@ footer{
         data-en="Maintenance & Damage"
         data-es="Mantenimiento y Daños"
         data-pt="Manutenção e Danos">
+
         Mantenimiento y Daños
+
       </h3>
 
       <p
@@ -1310,7 +1506,9 @@ footer{
         data-en="Alterations & Subleasing"
         data-es="Alteraciones y Subalquiler"
         data-pt="Alterações e Sublocação">
+
         Alteraciones y Subalquiler
+
       </h3>
 
       <p
@@ -1327,7 +1525,9 @@ footer{
         data-en="Landlord Access"
         data-es="Acceso del Propietario"
         data-pt="Acesso do Locador">
+
         Acceso del Propietario
+
       </h3>
 
       <p
@@ -1344,7 +1544,9 @@ footer{
         data-en="Termination & Remedies"
         data-es="Terminación y Recursos"
         data-pt="Término e Recursos">
+
         Terminación y Recursos
+
       </h3>
 
       <p
@@ -1361,7 +1563,9 @@ footer{
         data-en="No Waiver of Legal Rights"
         data-es="No Renuncia de Derechos"
         data-pt="Sem Renúncia de Direitos">
+
         No Renuncia de Derechos
+
       </h3>
 
       <p
@@ -1378,17 +1582,15 @@ footer{
   </div>
 
 
-  <!-- =========================
-       REQUIRED DISCLOSURES
-       ========================= -->
-
   <div class="card">
 
     <h2
       data-en="Required Disclosures"
       data-es="Divulgaciones Requeridas"
       data-pt="Divulgações Obrigatórias">
+
       Divulgaciones Requeridas
+
     </h2>
 
 
@@ -1418,17 +1620,15 @@ footer{
   </div>
 
 
-  <!-- =========================
-       ELECTRONIC SIGNATURE
-       ========================= -->
-
   <div class="card">
 
     <h2
       data-en="Electronic Signature"
       data-es="Firma Electrónica"
       data-pt="Assinatura Eletrônica">
+
       Firma Electrónica
+
     </h2>
 
 
@@ -1459,17 +1659,15 @@ footer{
   </div>
 
 
-  <!-- =========================
-       SIGNATURES
-       ========================= -->
-
   <div class="card">
 
     <h2
       data-en="Tenant & Landlord Signatures"
       data-es="Firmas del Inquilino y Propietario"
       data-pt="Assinaturas do Inquilino e Locador">
+
       Firmas del Inquilino y Propietario
+
     </h2>
 
 
@@ -1481,11 +1679,14 @@ footer{
           data-en="Tenant Full Legal Name"
           data-es="Nombre Legal Completo"
           data-pt="Nome Legal Completo">
+
           Nombre Legal Completo
+
         </label>
 
         <input
           name="tenant_name"
+          id="tenantSignatureName"
           required>
 
       </div>
@@ -1497,7 +1698,9 @@ footer{
           data-en="Tenant Email"
           data-es="Correo del Inquilino"
           data-pt="E-mail do Inquilino">
+
           Correo del Inquilino
+
         </label>
 
         <input
@@ -1514,7 +1717,9 @@ footer{
           data-en="Tenant Phone"
           data-es="Teléfono"
           data-pt="Telefone">
+
           Teléfono
+
         </label>
 
         <input
@@ -1531,11 +1736,14 @@ footer{
           data-en="Tenant Electronic Signature"
           data-es="Firma Electrónica"
           data-pt="Assinatura Eletrônica">
+
           Firma Electrónica
+
         </label>
 
         <input
           name="tenant_signature"
+          id="tenantElectronicSignature"
           placeholder="Type full legal name"
           required>
 
@@ -1548,7 +1756,9 @@ footer{
           data-en="Tenant Signature Date"
           data-es="Fecha de Firma"
           data-pt="Data da Assinatura">
+
           Fecha de Firma
+
         </label>
 
         <input
@@ -1566,7 +1776,9 @@ footer{
           data-en="Second Tenant Name (if applicable)"
           data-es="Segundo Inquilino"
           data-pt="Segundo Inquilino">
+
           Segundo Inquilino
+
         </label>
 
         <input name="second_tenant">
@@ -1580,7 +1792,9 @@ footer{
           data-en="Second Tenant Signature (if applicable)"
           data-es="Firma del Segundo Inquilino"
           data-pt="Assinatura do Segundo Inquilino">
+
           Firma del Segundo Inquilino
+
         </label>
 
         <input name="second_signature">
@@ -1602,7 +1816,9 @@ footer{
           data-en="Landlord Legal Name"
           data-es="Nombre Legal del Propietario"
           data-pt="Nome Legal do Locador">
+
           Nombre Legal del Propietario
+
         </label>
 
         <input
@@ -1621,7 +1837,9 @@ footer{
           data-en="Landlord Electronic Signature"
           data-es="Firma Electrónica del Propietario"
           data-pt="Assinatura Eletrônica do Locador">
+
           Firma Electrónica del Propietario
+
         </label>
 
         <input
@@ -1640,7 +1858,9 @@ footer{
           data-en="Landlord Signature Date"
           data-es="Fecha de Firma del Propietario"
           data-pt="Data de Firma do Locador">
+
           Fecha de Firma del Propietario
+
         </label>
 
         <input
@@ -1656,17 +1876,15 @@ footer{
   </div>
 
 
-  <!-- =========================
-       FINAL REVIEW
-       ========================= -->
-
   <div class="card">
 
     <h2
       data-en="Final Review & Submit"
       data-es="Revisión Final y Envío"
       data-pt="Revisão Final e Envio">
+
       Revisión Final y Envío
+
     </h2>
 
 
@@ -1683,8 +1901,6 @@ footer{
 
     </div>
 
-
-    <!-- LIVE REFERENCE -->
 
     <div class="reference-box">
 
@@ -1718,10 +1934,18 @@ footer{
 
       </div>
 
+
+      <button
+        type="button"
+        class="copy-reference-button"
+        id="copyReferenceButton">
+
+        📋 Copiar Referencia
+
+      </button>
+
     </div>
 
-
-    <!-- AGREEMENT CHECKBOX -->
 
     <div class="agreement-check">
 
@@ -1749,24 +1973,24 @@ footer{
     </div>
 
 
-    <!-- ID -->
-
     <div class="id-confirmation">
 
       <strong
         data-en="IDENTIFICATION"
         data-es="IDENTIFICACIÓN"
         data-pt="IDENTIFICAÇÃO">
+
         IDENTIFICACIÓN
+
       </strong>
 
 
       <p
-        data-en="After submission, provide the requested government-issued photo ID to Carlos Rents for identity verification and rental records."
-        data-es="Después de enviar el contrato, proporcione la identificación con fotografía emitida por el gobierno solicitada a Carlos Rents para verificar su identidad y para los registros del alquiler."
-        data-pt="Após o envio, forneça o documento oficial com foto solicitado ao Carlos Rents para verificação de identidade e registros do aluguel.">
+        data-en="BEFORE submitting, provide the requested government-issued photo ID to Carlos Rents for identity verification and rental records."
+        data-es="ANTES de enviar el contrato, proporcione la identificación con fotografía emitida por el gobierno solicitada a Carlos Rents para verificar su identidad y para los registros del alquiler."
+        data-pt="ANTES de enviar o contrato, forneça o documento oficial com foto solicitado ao Carlos Rents para verificação de identidade e registros do aluguel.">
 
-        Después de enviar el contrato, proporcione la identificación con fotografía emitida por el gobierno solicitada a Carlos Rents para verificar su identidad y para los registros del alquiler.
+        ANTES de enviar el contrato, proporcione la identificación con fotografía emitida por el gobierno solicitada a Carlos Rents para verificar su identidad y para los registros del alquiler.
 
       </p>
 
@@ -1774,13 +1998,13 @@ footer{
       <a
         class="id-email"
         href="mailto:carlosrents1@yahoo.com">
+
         carlosrents1@yahoo.com
+
       </a>
 
     </div>
 
-
-    <!-- SUBMIT -->
 
     <button
       type="submit"
@@ -1795,10 +2019,6 @@ footer{
 
 </form>
 
-
-<!-- =========================
-     CONFIRMATION
-     ========================= -->
 
 <div
   id="confirmationScreen"
@@ -1882,6 +2102,30 @@ footer{
 
   </div>
 
+
+  <div class="confirmation-buttons">
+
+    <button
+      type="button"
+      class="print-button"
+      id="printConfirmationButton">
+
+      🖨️ Imprimir / Guardar
+
+    </button>
+
+
+    <button
+      type="button"
+      class="new-agreement-button"
+      id="newAgreementButton">
+
+      ↻ Nuevo Contrato
+
+    </button>
+
+  </div>
+
 </div>
 
 </main>
@@ -1893,10 +2137,6 @@ footer{
 
 
 <script>
-
-/* =========================================
-   LANGUAGE
-   ========================================= */
 
 function changeLanguage(lang){
 
@@ -1914,15 +2154,11 @@ function changeLanguage(lang){
   });
 
   updateSubmitButton();
-
+  updateCopyButtonText();
   updateAgreementReferenceDisplay();
 
 }
 
-
-/* =========================================
-   TODAY'S DATE
-   ========================================= */
 
 function setToday(){
 
@@ -1959,10 +2195,6 @@ function setToday(){
 
 }
 
-
-/* =========================================
-   LIVE AGREEMENT REFERENCE
-   ========================================= */
 
 function cleanReferencePart(value){
 
@@ -2052,10 +2284,6 @@ function currentAgreementReference(){
 }
 
 
-/* =========================================
-   UPDATE REFERENCE EVERY TIME USER TYPES
-   ========================================= */
-
 function updateAgreementReferenceDisplay(){
 
   const reference=
@@ -2106,30 +2334,99 @@ function updateAgreementReferenceDisplay(){
 }
 
 
-/* =========================================
-   LIVE INPUT LISTENERS
-   ========================================= */
-
 const tenantLegalNameField=
   document.querySelector(
     '[name="lessee"]'
   );
 
 
-const propertyAddressField=
-  document.querySelector(
-    '[name="property_address"]'
+const tenantSignatureName=
+  document.getElementById(
+    "tenantSignatureName"
   );
+
+
+const tenantElectronicSignature=
+  document.getElementById(
+    "tenantElectronicSignature"
+  );
+
+
+let lastAutoFilledTenantName="";
+
+
+function autoFillTenantFields(){
+
+  const name=
+    cleanReferencePart(
+      tenantLegalNameField
+        ? tenantLegalNameField.value
+        : ""
+    );
+
+
+  if(!tenantSignatureName ||
+     !tenantElectronicSignature){
+
+    return;
+
+  }
+
+
+  const signatureNameWasAutoFilled=
+    !tenantSignatureName.value ||
+    tenantSignatureName.value===
+    lastAutoFilledTenantName;
+
+
+  const signatureWasAutoFilled=
+    !tenantElectronicSignature.value ||
+    tenantElectronicSignature.value===
+    lastAutoFilledTenantName;
+
+
+  if(signatureNameWasAutoFilled){
+
+    tenantSignatureName.value=
+      name;
+
+  }
+
+
+  if(signatureWasAutoFilled){
+
+    tenantElectronicSignature.value=
+      name;
+
+  }
+
+
+  lastAutoFilledTenantName=
+    name;
+
+}
 
 
 if(tenantLegalNameField){
 
   tenantLegalNameField.addEventListener(
     "input",
-    updateAgreementReferenceDisplay
+    function(){
+
+      updateAgreementReferenceDisplay();
+
+      autoFillTenantFields();
+
+    }
   );
 
 }
+
+
+const propertyAddressField=
+  document.querySelector(
+    '[name="property_address"]'
+  );
 
 
 if(propertyAddressField){
@@ -2142,9 +2439,144 @@ if(propertyAddressField){
 }
 
 
-/* =========================================
-   SUBMIT BUTTON
-   ========================================= */
+const copyReferenceButton=
+  document.getElementById(
+    "copyReferenceButton"
+  );
+
+
+let copyButtonTimer=null;
+
+
+function getCopyButtonLabels(){
+
+  return {
+
+    en:{
+      normal:"📋 Copy Reference",
+      success:"✅ Copied!"
+    },
+
+    es:{
+      normal:"📋 Copiar Referencia",
+      success:"✅ ¡Copiado!"
+    },
+
+    pt:{
+      normal:"📋 Copiar Referência",
+      success:"✅ Copiado!"
+
+    }
+
+  };
+
+}
+
+
+function updateCopyButtonText(){
+
+  if(!copyReferenceButton){
+    return;
+  }
+
+  const lang=
+    document.documentElement.lang || "es";
+
+  const labels=
+    getCopyButtonLabels();
+
+  copyReferenceButton.textContent=
+    labels[lang].normal;
+
+}
+
+
+async function copyAgreementReference(){
+
+  const reference=
+    currentAgreementReference();
+
+
+  const lang=
+    document.documentElement.lang || "es";
+
+
+  const labels=
+    getCopyButtonLabels();
+
+
+  try{
+
+    if(
+      navigator.clipboard &&
+      window.isSecureContext
+    ){
+
+      await navigator.clipboard.writeText(
+        reference
+      );
+
+    }else{
+
+      const temp=
+        document.createElement("textarea");
+
+      temp.value=reference;
+
+      temp.style.position="fixed";
+      temp.style.opacity="0";
+
+      document.body.appendChild(temp);
+
+      temp.focus();
+      temp.select();
+
+      document.execCommand("copy");
+
+      temp.remove();
+
+    }
+
+
+    copyReferenceButton.textContent=
+      labels[lang].success;
+
+
+    clearTimeout(copyButtonTimer);
+
+
+    copyButtonTimer=
+      setTimeout(function(){
+
+        updateCopyButtonText();
+
+      },1800);
+
+
+  }catch(error){
+
+    alert(
+      lang==="es"
+        ? "No se pudo copiar la referencia."
+        : lang==="pt"
+          ? "Não foi possível copiar a referência."
+          : "The reference could not be copied."
+    );
+
+  }
+
+}
+
+
+if(copyReferenceButton){
+
+  copyReferenceButton.addEventListener(
+    "click",
+    copyAgreementReference
+  );
+
+}
+
 
 const agreementCheckbox=
   document.getElementById(
@@ -2203,10 +2635,20 @@ agreementCheckbox.addEventListener(
 );
 
 
-/* =========================================
-   FORM SUBMISSION
-   DIRECTLY TO FORMSPREE
-   ========================================= */
+let isSubmitting=false;
+
+
+function disableSubmitPermanently(){
+
+  isSubmitting=true;
+
+  submitButton.disabled=true;
+
+  submitButton.style.pointerEvents=
+    "none";
+
+}
+
 
 const rentalForm=
   document.getElementById(
@@ -2227,6 +2669,13 @@ rentalForm.addEventListener(
     event.preventDefault();
 
 
+    if(isSubmitting){
+
+      return;
+
+    }
+
+
     if(!agreementCheckbox.checked){
 
       agreementCheckbox.reportValidity();
@@ -2244,6 +2693,8 @@ rentalForm.addEventListener(
 
     }
 
+
+    isSubmitting=true;
 
     submitButton.disabled=true;
 
@@ -2296,14 +2747,8 @@ rentalForm.addEventListener(
       }
 
 
-      /*
+      autoFillTenantFields();
 
-        CREATE THE REFERENCE DIRECTLY.
-
-        NO NUMBER.
-        NO GOOGLE APPS SCRIPT.
-
-      */
 
       const reference=
         `${tenant} — ${address}`;
@@ -2323,13 +2768,6 @@ rentalForm.addEventListener(
         "confirmationReference"
       ).textContent=reference;
 
-
-      /*
-
-        EMAIL SUBJECT USES
-        THE TENANT'S MAIN LEGAL NAME.
-
-      */
 
       const emailSubject=
         `New Carlos Rents Rental Agreement — ${tenant}`;
@@ -2356,14 +2794,6 @@ rentalForm.addEventListener(
         emailSubject
       );
 
-
-      /*
-
-        SEND DIRECTLY TO FORMSPREE.
-
-        GOOGLE APPS SCRIPT IS NOT USED.
-
-      */
 
       const response=
         await fetch(
@@ -2403,6 +2833,9 @@ rentalForm.addEventListener(
       }
 
 
+      disableSubmitPermanently();
+
+
       rentalForm.style.display=
         "none";
 
@@ -2437,13 +2870,16 @@ rentalForm.addEventListener(
       console.error(error);
 
 
+      isSubmitting=false;
+
+
       const errorMessages={
 
         en:"Your agreement could not be submitted. Please check your internet connection and try again.",
 
         es:"No se pudo enviar el contrato. Verifique su conexión a Internet e inténtelo nuevamente.",
 
-        pt:"Não foi possível enviar o contrato. Verifique sua conexão com a Internet e tente novamente."
+        pt:"Não foi possível enviar o contrato. Verifique sua conexão com a Internet e tente nuevamente."
 
       };
 
@@ -2462,9 +2898,45 @@ rentalForm.addEventListener(
 );
 
 
-/* =========================================
-   PROGRESS BAR
-   ========================================= */
+const printConfirmationButton=
+  document.getElementById(
+    "printConfirmationButton"
+  );
+
+
+if(printConfirmationButton){
+
+  printConfirmationButton.addEventListener(
+    "click",
+    function(){
+
+      window.print();
+
+    }
+  );
+
+}
+
+
+const newAgreementButton=
+  document.getElementById(
+    "newAgreementButton"
+  );
+
+
+if(newAgreementButton){
+
+  newAgreementButton.addEventListener(
+    "click",
+    function(){
+
+      window.location.reload();
+
+    }
+  );
+
+}
+
 
 const steps=[
 
@@ -2576,10 +3048,6 @@ window.addEventListener(
 );
 
 
-/* =========================================
-   STARTUP
-   ========================================= */
-
 window.addEventListener(
   "load",
   function(){
@@ -2590,9 +3058,13 @@ window.addEventListener(
 
     updateAgreementReferenceDisplay();
 
+    autoFillTenantFields();
+
     updateProgress();
 
     updateSubmitButton();
+
+    updateCopyButtonText();
 
   }
 );
