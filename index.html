@@ -500,6 +500,350 @@ footer{
   font-size:14px
 }
 
+
+/* ================================
+   PRINT BUTTON
+   ================================ */
+
+.print-button-container{
+  max-width:900px;
+  margin:15px auto;
+  padding:0 10px;
+}
+
+.print-button{
+  background:#2563eb;
+  font-size:17px;
+  padding:14px;
+}
+
+.print-button:hover{
+  background:#1d4ed8;
+}
+
+
+/* ================================
+   PRINT / SAVE AS PDF
+   SPANISH FIRST / ENGLISH SECOND
+   ================================ */
+
+#printAgreement{
+  display:none;
+}
+
+
+/*
+   The normal website is untouched on screen.
+   The special print copies only appear when printing.
+*/
+
+@media print{
+
+  @page{
+    size:Letter;
+    margin:0.55in;
+  }
+
+  html{
+    background:white !important;
+  }
+
+  body{
+    background:white !important;
+    color:#000 !important;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:11pt;
+  }
+
+  /*
+     Hide the normal website while printing.
+  */
+
+  .lang,
+  .top-id-warning,
+  .progress-container,
+  .print-button-container,
+  header,
+  #rentalForm,
+  #confirmationScreen,
+  footer{
+    display:none !important;
+  }
+
+  /*
+     Show the two special print copies.
+  */
+
+  #printAgreement{
+    display:block !important;
+    width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    background:white !important;
+    color:#000 !important;
+  }
+
+  /*
+     Spanish = first printed section.
+     English = second printed section.
+     The second copy starts on a new physical page.
+  */
+
+  .print-copy{
+    display:block !important;
+    width:100% !important;
+    background:white !important;
+    color:#000 !important;
+  }
+
+  .print-copy + .print-copy{
+    break-before:page !important;
+    page-break-before:always !important;
+  }
+
+  .print-copy-header{
+    text-align:center;
+    border-bottom:2px solid #000;
+    padding:0 0 12px;
+    margin:0 0 15px;
+  }
+
+  .print-copy-header h1{
+    margin:0;
+    color:#000;
+    font-size:25pt;
+    font-weight:800;
+  }
+
+  .print-copy-header p{
+    margin:4px 0 0;
+    color:#000;
+    font-size:11pt;
+    font-weight:bold;
+  }
+
+  .print-copy-header .print-language{
+    margin-top:5px;
+    font-size:9pt;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
+
+  .print-copy .card{
+    background:white !important;
+    color:#000 !important;
+    padding:14px 0 !important;
+    margin:0 0 10px !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    page-break-inside:auto;
+  }
+
+  .print-copy .card h2{
+    color:#000 !important;
+    font-size:16pt;
+    border-bottom:1px solid #000;
+    padding-bottom:5px;
+    margin:0 0 12px;
+    page-break-after:avoid;
+  }
+
+  .print-copy .grid{
+    gap:10px 14px;
+  }
+
+  .print-copy label{
+    font-size:10pt;
+    color:#000 !important;
+  }
+
+  .print-copy .required-text,
+  .print-copy .required-error-message{
+    display:none !important;
+  }
+
+  .print-copy input,
+  .print-copy select,
+  .print-copy textarea{
+    color:#000 !important;
+    background:white !important;
+    border:0 !important;
+    border-bottom:1px solid #000 !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    padding:7px 3px !important;
+    font-size:11pt !important;
+    min-height:30px;
+  }
+
+  .print-copy textarea{
+    min-height:65px !important;
+    border:1px solid #777 !important;
+    padding:7px !important;
+  }
+
+  .print-copy select{
+    appearance:none;
+    -webkit-appearance:none;
+  }
+
+  .print-copy input[type="checkbox"]{
+    appearance:none !important;
+    -webkit-appearance:none !important;
+    width:17px !important;
+    height:17px !important;
+    min-width:17px !important;
+    min-height:17px !important;
+    border:1.5px solid #000 !important;
+    border-radius:2px !important;
+    display:inline-block !important;
+    vertical-align:middle;
+    background:white !important;
+    margin:2px 0 0 0 !important;
+  }
+
+  .print-copy input[type="checkbox"]:checked{
+    background:white !important;
+    position:relative;
+  }
+
+  .print-copy input[type="checkbox"]:checked::after{
+    content:"✓";
+    color:#000;
+    font-size:15px;
+    font-weight:bold;
+    position:absolute;
+    left:2px;
+    top:-3px;
+  }
+
+  .print-copy .checkbox-label,
+  .print-copy .id-checkbox-label{
+    color:#000 !important;
+    gap:9px;
+    font-size:10.5pt;
+  }
+
+  .print-copy .notice,
+  .print-copy .info,
+  .print-copy .warning,
+  .print-copy .id-confirmation,
+  .print-copy .terms,
+  .print-copy .agreement-check{
+    background:white !important;
+    color:#000 !important;
+    border:1px solid #777 !important;
+    border-left:3px solid #000 !important;
+    border-radius:0 !important;
+    padding:10px !important;
+    margin-top:10px !important;
+    page-break-inside:avoid;
+  }
+
+  .print-copy .notice p,
+  .print-copy .info p,
+  .print-copy .warning p,
+  .print-copy .id-confirmation p{
+    margin:6px 0;
+  }
+
+  .print-copy .terms{
+    border:0 !important;
+    padding:0 !important;
+  }
+
+  .print-copy .terms h3{
+    font-size:12pt;
+    margin:14px 0 4px;
+    page-break-after:avoid;
+  }
+
+  .print-copy .terms p{
+    margin:4px 0 9px;
+  }
+
+  .print-copy .reference-box{
+    background:white !important;
+    border:1px solid #000 !important;
+    border-radius:0 !important;
+    padding:10px !important;
+    text-align:left !important;
+    page-break-inside:avoid;
+  }
+
+  .print-copy .reference-label{
+    color:#000 !important;
+  }
+
+  .print-copy .reference-number{
+    color:#000 !important;
+    font-size:13pt;
+  }
+
+  .print-copy .description{
+    color:#333 !important;
+  }
+
+  .print-copy .signature-match-note{
+    display:none !important;
+  }
+
+  .print-copy .readonly{
+    background:white !important;
+    color:#000 !important;
+    cursor:default !important;
+  }
+
+  .print-copy input[name="tenant_signature"],
+  .print-copy input[name="landlord_signature"],
+  .print-copy input[name="second_signature"]{
+    min-height:38px !important;
+  }
+
+  .print-copy .id-email,
+  .print-copy .id-phone,
+  .print-copy a{
+    color:#000 !important;
+    text-decoration:none !important;
+    font-size:10pt !important;
+  }
+
+  .print-copy .id-checkbox-area{
+    border-top:1px solid #777 !important;
+  }
+
+  .print-copy .required-incomplete{
+    border:0 !important;
+    border-bottom:1px solid #000 !important;
+    background:white !important;
+    box-shadow:none !important;
+  }
+
+  .print-copy .reference-box,
+  .print-copy .agreement-check,
+  .print-copy .id-confirmation,
+  .print-copy .info,
+  .print-copy .notice{
+    page-break-inside:avoid;
+  }
+
+  .print-copy hr{
+    border:0 !important;
+    border-top:1px solid #777 !important;
+  }
+
+  .print-copy button{
+    display:none !important;
+  }
+
+}
+
+
+/* ================================
+   MOBILE
+   ================================ */
+
 @media(max-width:650px){
 
   header{
@@ -623,13 +967,31 @@ footer{
 
     <p data-en="Florida Residential Rental Agreement"
        data-es="Contrato de Alquiler Residencial de Florida"
-       data-pt="Contrato de Aluguel Residencial da Flórida">
+       data-pt="Contrato de Alquiler Residencial de Florida">
       Contrato de Alquiler Residencial de Florida
     </p>
 
   </div>
 
 </header>
+
+
+<div class="print-button-container">
+
+  <button type="button"
+          class="print-button"
+          onclick="printAgreement()">
+
+    🖨️
+    <span data-en="Print / Save as PDF"
+          data-es="Imprimir / Guardar como PDF"
+          data-pt="Imprimir / Salvar como PDF">
+      Imprimir / Guardar como PDF
+    </span>
+
+  </button>
+
+</div>
 
 
 <div class="progress-container">
@@ -707,8 +1069,6 @@ footer{
        id="agreementReferenceInput">
 
 
-<!-- STEP 1 -->
-
 <div class="card" id="step1">
 
 <h2 data-en="1. Property & Agreement"
@@ -717,27 +1077,23 @@ footer{
   1. Propiedad y Contrato
 </h2>
 
-
 <div class="grid">
-
 
 <div>
 
 <label>
+<span data-en="Agreement Date"
+      data-es="Fecha del Contrato"
+      data-pt="Data do Contrato">
+  Fecha del Contrato
+</span>
 
-  <span data-en="Agreement Date"
-        data-es="Fecha del Contrato"
-        data-pt="Data do Contrato">
-    Fecha del Contrato
-  </span>
-
-  <span class="required-text"
-        data-en="Required"
-        data-es="Obligatorio"
-        data-pt="Obrigatório">
-    Obligatorio
-  </span>
-
+<span class="required-text"
+      data-en="Required"
+      data-es="Obligatorio"
+      data-pt="Obrigatório">
+  Obligatorio
+</span>
 </label>
 
 <input type="date"
@@ -751,20 +1107,18 @@ footer{
 <div>
 
 <label>
+<span data-en="Tenancy Start Date"
+      data-es="Fecha de Inicio"
+      data-pt="Data de Início">
+  Fecha de Inicio
+</span>
 
-  <span data-en="Tenancy Start Date"
-        data-es="Fecha de Inicio"
-        data-pt="Data de Início">
-    Fecha de Inicio
-  </span>
-
-  <span class="required-text"
-        data-en="Required"
-        data-es="Obligatorio"
-        data-pt="Obrigatório">
-    Obligatorio
-  </span>
-
+<span class="required-text"
+      data-en="Required"
+      data-es="Obligatorio"
+      data-pt="Obrigatório">
+  Obligatorio
+</span>
 </label>
 
 <input type="date"
@@ -775,18 +1129,14 @@ footer{
 </div>
 
 
-<!-- LANDLORD INFORMATION - LOCKED -->
-
 <div>
 
 <label>
-
-  <span data-en="Landlord / Lessor Legal Name"
-        data-es="Nombre Legal del Arrendador"
-        data-pt="Nome Legal do Locador">
-    Nombre Legal del Arrendador
-  </span>
-
+<span data-en="Landlord / Lessor Legal Name"
+      data-es="Nombre Legal del Arrendador"
+      data-pt="Nome Legal do Locador">
+  Nombre Legal del Arrendador
+</span>
 </label>
 
 <input name="lessor"
@@ -800,20 +1150,18 @@ footer{
 <div>
 
 <label>
+<span data-en="Tenant Full Legal Name"
+      data-es="Nombre Legal del Inquilino"
+      data-pt="Nome Legal do Inquilino">
+  Nombre Legal del Inquilino
+</span>
 
-  <span data-en="Tenant Full Legal Name"
-        data-es="Nombre Legal del Inquilino"
-        data-pt="Nome Legal do Inquilino">
-    Nombre Legal del Inquilino
-  </span>
-
-  <span class="required-text"
-        data-en="Required"
-        data-es="Obligatorio"
-        data-pt="Obrigatório">
-    Obligatorio
-  </span>
-
+<span class="required-text"
+      data-en="Required"
+      data-es="Obligatorio"
+      data-pt="Obrigatório">
+  Obligatorio
+</span>
 </label>
 
 <input name="lessee"
@@ -826,20 +1174,18 @@ footer{
 <div class="full">
 
 <label>
+<span data-en="Rental Property Address"
+      data-es="Dirección de la Propiedad"
+      data-pt="Endereço do Imóvel">
+  Dirección de la Propiedad
+</span>
 
-  <span data-en="Rental Property Address"
-        data-es="Dirección de la Propiedad"
-        data-pt="Endereço do Imóvel">
-    Dirección de la Propiedad
-  </span>
-
-  <span class="required-text"
-        data-en="Required"
-        data-es="Obligatorio"
-        data-pt="Obrigatório">
-    Obligatorio
-  </span>
-
+<span class="required-text"
+      data-en="Required"
+      data-es="Obligatorio"
+      data-pt="Obrigatório">
+  Obligatorio
+</span>
 </label>
 
 <input name="property_address"
@@ -853,20 +1199,18 @@ footer{
 <div>
 
 <label>
+<span data-en="County"
+      data-es="Condado"
+      data-pt="Condado">
+  Condado
+</span>
 
-  <span data-en="County"
-        data-es="Condado"
-        data-pt="Condado">
-    Condado
-  </span>
-
-  <span class="required-text"
-        data-en="Required"
-        data-es="Obligatorio"
-        data-pt="Obrigatório">
-    Obligatorio
-  </span>
-
+<span class="required-text"
+      data-en="Required"
+      data-es="Obligatorio"
+      data-pt="Obrigatório">
+  Obligatorio
+</span>
 </label>
 
 <input name="property_county"
@@ -879,13 +1223,11 @@ footer{
 <div>
 
 <label>
-
-  <span data-en="Unit / Apartment (if applicable)"
-        data-es="Unidad / Apartamento (si aplica)"
-        data-pt="Unidade / Apartamento (se aplicável)">
-    Unidad / Apartamento (si aplica)
-  </span>
-
+<span data-en="Unit / Apartment (if applicable)"
+      data-es="Unidad / Apartamento (si aplica)"
+      data-pt="Unidade / Apartamento (se aplicável)">
+  Unidad / Apartamento (si aplica)
+</span>
 </label>
 
 <input name="unit_number">
@@ -903,29 +1245,22 @@ footer{
   Dirección de Avisos del Arrendador
 </strong>
 
-
 <p data-en="The landlord's name and address, or the name and address of an authorized notice recipient, must be provided to the tenant."
    data-es="El nombre y la dirección del propietario, o de una persona autorizada para recibir avisos, deben proporcionarse al inquilino."
    data-pt="O nome e endereço do locador, ou de uma pessoa autorizada a receber avisos, devem ser fornecidos ao inquilino.">
   El nombre y la dirección del propietario, o de una persona autorizada para recibir avisos, deben proporcionarse al inquilino.
 </p>
 
-
 <div class="grid">
-
-
-<!-- LANDLORD NOTICE RECIPIENT - LOCKED -->
 
 <div>
 
 <label>
-
-  <span data-en="Notice Recipient Name"
-        data-es="Nombre del Destinatario"
-        data-pt="Nome do Destinatário">
-    Nombre del Destinatario
-  </span>
-
+<span data-en="Notice Recipient Name"
+      data-es="Nombre del Destinatario"
+      data-pt="Nome do Destinatário">
+  Nombre del Destinatario
+</span>
 </label>
 
 <input name="notice_recipient_name"
@@ -936,18 +1271,14 @@ footer{
 </div>
 
 
-<!-- LANDLORD MAILING ADDRESS - LOCKED -->
-
 <div>
 
 <label>
-
-  <span data-en="Notice Mailing Address"
-        data-es="Dirección Postal"
-        data-pt="Endereço Postal">
-    Dirección Postal
-  </span>
-
+<span data-en="Notice Mailing Address"
+      data-es="Dirección Postal"
+      data-pt="Endereço Postal">
+  Dirección Postal
+</span>
 </label>
 
 <input name="notice_mailing_address"
@@ -958,13 +1289,10 @@ footer{
 </div>
 
 </div>
-
 </div>
 
 </div>
 
-
-<!-- STEP 2 -->
 
 <div class="card" id="step2">
 
@@ -974,27 +1302,23 @@ footer{
   2. Alquiler y Depósito
 </h2>
 
-
 <div class="grid">
-
 
 <div>
 
 <label>
+<span data-en="Monthly Rent ($)"
+      data-es="Alquiler Mensual ($)"
+      data-pt="Aluguel Mensal ($)">
+  Alquiler Mensual ($)
+</span>
 
-  <span data-en="Monthly Rent ($)"
-        data-es="Alquiler Mensual ($)"
-        data-pt="Aluguel Mensal ($)">
-    Alquiler Mensual ($)
-  </span>
-
-  <span class="required-text"
-        data-en="Required"
-        data-es="Obligatorio"
-        data-pt="Obrigatório">
-    Obligatorio
-  </span>
-
+<span class="required-text"
+      data-en="Required"
+      data-es="Obligatorio"
+      data-pt="Obrigatório">
+  Obligatorio
+</span>
 </label>
 
 <input type="number"
@@ -1009,20 +1333,18 @@ footer{
 <div>
 
 <label>
+<span data-en="Rent Due Day"
+      data-es="Día de Vencimiento"
+      data-pt="Dia de Vencimento">
+  Día de Vencimiento
+</span>
 
-  <span data-en="Rent Due Day"
-        data-es="Día de Vencimiento"
-        data-pt="Dia de Vencimento">
-    Día de Vencimiento
-  </span>
-
-  <span class="required-text"
-        data-en="Required"
-        data-es="Obligatorio"
-        data-pt="Obrigatório">
-    Obligatorio
-  </span>
-
+<span class="required-text"
+      data-en="Required"
+      data-es="Obligatorio"
+      data-pt="Obrigatório">
+  Obligatorio
+</span>
 </label>
 
 <input type="number"
@@ -1037,25 +1359,21 @@ footer{
 <div>
 
 <label>
+<span data-en="Payment Method"
+      data-es="Método de Pago"
+      data-pt="Método de Pagamento">
+  Método de Pago
+</span>
 
-  <span data-en="Payment Method"
-        data-es="Método de Pago"
-        data-pt="Método de Pagamento">
-    Método de Pago
-  </span>
-
-  <span class="required-text"
-        data-en="Required"
-        data-es="Obligatorio"
-        data-pt="Obrigatório">
-    Obligatorio
-  </span>
-
+<span class="required-text"
+      data-en="Required"
+      data-es="Obligatorio"
+      data-pt="Obrigatório">
+  Obligatorio
+</span>
 </label>
 
-
-<select name="payment_method"
-        required>
+<select name="payment_method" required>
 
 <option value=""
         data-en="Select"
@@ -1090,13 +1408,11 @@ footer{
 <div>
 
 <label>
-
-  <span data-en="Security Deposit ($)"
-        data-es="Depósito de Seguridad ($)"
-        data-pt="Depósito de Segurança ($)">
-    Depósito de Seguridad ($)
-  </span>
-
+<span data-en="Security Deposit ($)"
+      data-es="Depósito de Seguridad ($)"
+      data-pt="Depósito de Segurança ($)">
+  Depósito de Seguridad ($)
+</span>
 </label>
 
 <input type="number"
@@ -1117,20 +1433,16 @@ footer{
   Alquiler Atrasado
 </strong>
 
-
 <p data-en="If you choose to charge a late fee, the amount and conditions must be stated in this agreement and must comply with applicable Florida law."
    data-es="Si decide cobrar un cargo por atraso, el monto y las condiciones deben indicarse en este contrato y cumplir con la ley aplicable de Florida."
    data-pt="Se optar por cobrar uma taxa por atraso, o valor e as condições devem estar neste contrato e cumprir a lei aplicável da Flórida.">
   Si decide cobrar un cargo por atraso, el monto y las condiciones deben indicarse en este contrato y cumplir con la ley aplicable de Florida.
 </p>
 
-
 <p>
-
-<strong>
+<strong data-print-late-fee>
 Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent Florida law permits this provision for the particular rental.
 </strong>
-
 </p>
 
 </div>
@@ -1143,7 +1455,6 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
         data-pt="Falta de Pagamento">
   Falta de Pago
 </strong>
-
 
 <p data-en="If rent is not paid, the landlord may use the notices and eviction procedures required by Florida law. This agreement does not waive or change statutory requirements."
    data-es="Si el alquiler no se paga, el propietario puede utilizar los avisos y procedimientos de desalojo exigidos por la ley de Florida. Este contrato no renuncia ni cambia los requisitos legales."
@@ -1162,7 +1473,6 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
   Depósito de Seguridad
 </strong>
 
-
 <p data-en="Any security deposit will be held, claimed, and returned according to Florida law. Lawful claims may include unpaid rent or damage beyond ordinary wear and tear, subject to required notices and deadlines."
    data-es="Cualquier depósito de seguridad será retenido, reclamado y devuelto conforme a la ley de Florida. Las reclamaciones legales pueden incluir alquiler impago o daños más allá del desgaste normal, sujeto a los avisos y plazos requeridos."
    data-pt="Qualquer depósito de segurança será mantido, reivindicado e devolvido de acordo com a lei da Flórida. Reivindicações legais podem incluir aluguel não pago ou danos além do desgaste normal, sujeitos aos avisos e prazos exigidos.">
@@ -1174,8 +1484,6 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 </div>
 
 
-<!-- STEP 3 -->
-
 <div class="card" id="step3">
 
 <h2 data-en="3. Household & Pets"
@@ -1184,27 +1492,23 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
   3. Hogar y Mascotas
 </h2>
 
-
 <div class="grid">
-
 
 <div>
 
 <label>
+<span data-en="Number of Adults"
+      data-es="Número de Adultos"
+      data-pt="Número de Adultos">
+  Número de Adultos
+</span>
 
-  <span data-en="Number of Adults"
-        data-es="Número de Adultos"
-        data-pt="Número de Adultos">
-    Número de Adultos
-  </span>
-
-  <span class="required-text"
-        data-en="Required"
-        data-es="Obligatorio"
-        data-pt="Obrigatório">
-    Obligatorio
-  </span>
-
+<span class="required-text"
+      data-en="Required"
+      data-es="Obligatorio"
+      data-pt="Obrigatório">
+  Obligatorio
+</span>
 </label>
 
 <input type="number"
@@ -1218,20 +1522,18 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 <div>
 
 <label>
+<span data-en="Number of Children"
+      data-es="Número de Niños"
+      data-pt="Número de Crianças">
+  Número de Niños
+</span>
 
-  <span data-en="Number of Children"
-        data-es="Número de Niños"
-        data-pt="Número de Crianças">
-    Número de Niños
-  </span>
-
-  <span class="required-text"
-        data-en="Required"
-        data-es="Obligatorio"
-        data-pt="Obrigatório">
-    Obligatorio
-  </span>
-
+<span class="required-text"
+      data-en="Required"
+      data-es="Obligatorio"
+      data-pt="Obrigatório">
+  Obligatorio
+</span>
 </label>
 
 <input type="number"
@@ -1245,25 +1547,21 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 <div>
 
 <label>
+<span data-en="Pets"
+      data-es="Mascotas"
+      data-pt="Animais">
+  Mascotas
+</span>
 
-  <span data-en="Pets"
-        data-es="Mascotas"
-        data-pt="Animais">
-    Mascotas
-  </span>
-
-  <span class="required-text"
-        data-en="Required"
-        data-es="Obligatorio"
-        data-pt="Obrigatório">
-    Obligatorio
-  </span>
-
+<span class="required-text"
+      data-en="Required"
+      data-es="Obligatorio"
+      data-pt="Obrigatório">
+  Obligatorio
+</span>
 </label>
 
-
-<select name="pets"
-        required>
+<select name="pets" required>
 
 <option value=""
         data-en="Select"
@@ -1294,13 +1592,11 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 <div>
 
 <label>
-
-  <span data-en="Pet Description"
-        data-es="Descripción de Mascota"
-        data-pt="Descrição do Animal">
-    Descripción de Mascota
-  </span>
-
+<span data-en="Pet Description"
+      data-es="Descripción de Mascota"
+      data-pt="Descrição do Animal">
+  Descripción de Mascota
+</span>
 </label>
 
 <input name="pet_description"
@@ -1312,13 +1608,11 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 <div class="full">
 
 <label>
-
-  <span data-en="Additional Authorized Occupants"
-        data-es="Ocupantes Adicionales Autorizados"
-        data-pt="Ocupantes Adicionais Autorizados">
-    Ocupantes Adicionales Autorizados
-  </span>
-
+<span data-en="Additional Authorized Occupants"
+      data-es="Ocupantes Adicionales Autorizados"
+      data-pt="Ocupantes Adicionais Autorizados">
+  Ocupantes Adicionales Autorizados
+</span>
 </label>
 
 <textarea name="additional_occupants"
@@ -1342,8 +1636,6 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 </div>
 
 
-<!-- STEP 4 -->
-
 <div class="card" id="step4">
 
 <h2 data-en="4. Basic Rental Rules"
@@ -1352,16 +1644,13 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
   4. Reglas Básicas del Alquiler
 </h2>
 
-
 <div class="terms">
-
 
 <h3 data-en="Month-to-Month"
     data-es="Mes a Mes"
     data-pt="Mês a Mês">
   Mes a Mes
 </h3>
-
 
 <p data-en="This is a month-to-month residential tenancy. The tenancy continues from month to month until lawfully terminated."
    data-es="Este es un alquiler residencial de mes a mes. El alquiler continúa de mes a mes hasta que termine legalmente."
@@ -1376,7 +1665,6 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
   Uso y Ocupación
 </h3>
 
-
 <p data-en="The property will be used as a residence. Tenant must comply with applicable laws and reasonable property rules."
    data-es="La propiedad se utilizará como vivienda. El inquilino debe cumplir con las leyes aplicables y las reglas razonables de la propiedad."
    data-pt="O imóvel será usado como residência. O inquilino deverá cumprir as leis aplicáveis e regras razoáveis do imóvel.">
@@ -1390,32 +1678,26 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
   Servicios Públicos
 </h3>
 
-
 <div class="grid">
 
-
 <div>
 
 <label>
+<span data-en="Electricity"
+      data-es="Electricidad"
+      data-pt="Eletricidade">
+  Electricidad
+</span>
 
-  <span data-en="Electricity"
-        data-es="Electricidad"
-        data-pt="Eletricidade">
-    Electricidad
-  </span>
-
-  <span class="required-text"
-        data-en="Required"
-        data-es="Obligatorio"
-        data-pt="Obrigatório">
-    Obligatorio
-  </span>
-
+<span class="required-text"
+      data-en="Required"
+      data-es="Obligatorio"
+      data-pt="Obrigatório">
+  Obligatorio
+</span>
 </label>
 
-
-<select name="electricity_paid_by"
-        required>
+<select name="electricity_paid_by" required>
 
 <option value=""
         data-en="Select"
@@ -1446,25 +1728,21 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 <div>
 
 <label>
+<span data-en="Water"
+      data-es="Agua"
+      data-pt="Água">
+  Agua
+</span>
 
-  <span data-en="Water"
-        data-es="Agua"
-        data-pt="Água">
-    Agua
-  </span>
-
-  <span class="required-text"
-        data-en="Required"
-        data-es="Obligatorio"
-        data-pt="Obrigatório">
-    Obligatorio
-  </span>
-
+<span class="required-text"
+      data-en="Required"
+      data-es="Obligatorio"
+      data-pt="Obrigatório">
+  Obligatorio
+</span>
 </label>
 
-
-<select name="water_paid_by"
-        required>
+<select name="water_paid_by" required>
 
 <option value=""
         data-en="Select"
@@ -1495,25 +1773,21 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 <div>
 
 <label>
+<span data-en="Internet"
+      data-es="Internet"
+      data-pt="Internet">
+  Internet
+</span>
 
-  <span data-en="Internet"
-        data-es="Internet"
-        data-pt="Internet">
-    Internet
-  </span>
-
-  <span class="required-text"
-        data-en="Required"
-        data-es="Obligatorio"
-        data-pt="Obrigatório">
-    Obligatorio
-  </span>
-
+<span class="required-text"
+      data-en="Required"
+      data-es="Obligatorio"
+      data-pt="Obrigatório">
+  Obligatorio
+</span>
 </label>
 
-
-<select name="internet_paid_by"
-        required>
+<select name="internet_paid_by" required>
 
 <option value=""
         data-en="Select"
@@ -1551,13 +1825,11 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 <div>
 
 <label>
-
-  <span data-en="Other Utilities"
-        data-es="Otros Servicios Públicos"
-        data-pt="Outros Serviços">
-    Otros Servicios Públicos
-  </span>
-
+<span data-en="Other Utilities"
+      data-es="Otros Servicios Públicos"
+      data-pt="Outros Serviços">
+  Otros Servicios Públicos
+</span>
 </label>
 
 <input name="other_utilities">
@@ -1573,7 +1845,6 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
   Mantenimiento y Daños
 </h3>
 
-
 <p data-en="Landlord will maintain the premises as required by law. Tenant must keep the dwelling reasonably clean, use fixtures and appliances properly, and promptly report needed repairs. Tenant is responsible for damage caused by the tenant or persons/pets for whom the tenant is responsible, except ordinary wear and matters that are the landlord's legal responsibility."
    data-es="El propietario mantendrá la propiedad según lo exige la ley. El inquilino debe mantener la vivienda razonablemente limpia, usar correctamente los accesorios y electrodomésticos y reportar rápidamente las reparaciones necesarias. El inquilino es responsable de los daños causados por él o por las personas/mascotas bajo su responsabilidad, excepto el desgaste normal y asuntos que legalmente corresponden al propietario."
    data-pt="O locador manterá o imóvel conforme exigido por lei. O inquilino deve manter a residência razoavelmente limpa, usar corretamente instalações e eletrodomésticos e informar prontamente reparos necessários. O inquilino é responsável por danos causados por ele ou por pessoas/animais sob sua responsabilidade, exceto desgaste normal e assuntos que sejam responsabilidade legal do locador.">
@@ -1586,7 +1857,6 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
     data-pt="Alterações e Sublocação">
   Alteraciones y Subalquiler
 </h3>
-
 
 <p data-en="Tenant may not make material alterations or sublease/assign the property without the landlord's written consent, except as otherwise required or protected by law."
    data-es="El inquilino no puede hacer alteraciones importantes ni subalquilar/ceder la propiedad sin el consentimiento escrito del propietario, salvo cuando la ley lo permita o exija."
@@ -1601,7 +1871,6 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
   Acceso del Propietario
 </h3>
 
-
 <p data-en="Landlord may enter the dwelling only as permitted by Florida law and will provide notice when notice is legally required."
    data-es="El propietario puede entrar a la vivienda solo según lo permita la ley de Florida y dará aviso cuando la ley lo requiera."
    data-pt="O locador poderá entrar no imóvel somente conforme permitido pela lei da Flórida e fornecerá aviso quando exigido por lei.">
@@ -1614,7 +1883,6 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
     data-pt="Término e Recursos">
   Terminación y Recursos
 </h3>
-
 
 <p data-en="Either party may exercise the rights and remedies available under this agreement and Florida law. Required notices, court procedures, and eviction procedures remain governed by law."
    data-es="Cualquiera de las partes puede ejercer los derechos y recursos disponibles conforme a este contrato y la ley de Florida. Los avisos, procedimientos judiciales y procedimientos de desalojo requeridos siguen regidos por la ley."
@@ -1629,20 +1897,15 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
   No Renuncia de Derechos
 </h3>
 
-
 <p data-en="Nothing in this agreement waives, limits, or eliminates a right, remedy, duty, or liability that Florida or federal law does not allow the parties to waive or limit."
    data-es="Nada en este contrato renuncia, limita o elimina un derecho, recurso, deber o responsabilidad que las leyes de Florida o federales no permitan renunciar o limitar."
    data-pt="Nada neste contrato renuncia, limita ou elimina direito, recurso, dever ou responsabilidade que a lei da Flórida ou federal não permita renunciar ou limitar.">
   Nada en este contrato renuncia, limita o elimina un derecho, recurso, deber o responsabilidad que las leyes de Florida o federales no permitan renunciar o limitar.
 </p>
 
-
+</div>
 </div>
 
-</div>
-
-
-<!-- REQUIRED DISCLOSURES -->
 
 <div class="card">
 
@@ -1652,7 +1915,6 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
   Divulgaciones Requeridas
 </h2>
 
-
 <div class="info">
 
 <p data-en="Lead-based paint: If the property is covered by the federal pre-1978 lead disclosure rule, the required disclosure and EPA pamphlet must be provided separately before the tenant is obligated by the lease."
@@ -1661,7 +1923,6 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
   Pintura con plomo: Si la propiedad está cubierta por la regla federal de divulgación para viviendas anteriores a 1978, la divulgación requerida y el folleto de la EPA deben proporcionarse por separado antes de que el inquilino quede obligado por el contrato.
 </p>
 
-
 <p data-en="Flood: Florida requires a separate flood disclosure for a rental agreement with a term of one year or longer. This form is month-to-month."
    data-es="Inundación: Florida exige una divulgación separada de inundaciones para contratos con un plazo de un año o más. Este formulario es de mes a mes."
    data-pt="Inundação: A Flórida exige uma divulgação separada de inundação para contratos com prazo de um ano ou mais. Este formulário é de mes a mes.">
@@ -1669,11 +1930,8 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 </p>
 
 </div>
-
 </div>
 
-
-<!-- ELECTRONIC SIGNATURE -->
 
 <div class="card">
 
@@ -1682,7 +1940,6 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
     data-pt="Assinatura Eletrônica">
   Firma Electrónica
 </h2>
-
 
 <div class="agreement-check">
 
@@ -1696,18 +1953,14 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 
 <span data-en="I consent to completing and signing this rental agreement electronically. I understand that my typed legal name will serve as my electronic signature."
       data-es="Acepto completar y firmar este contrato electrónicamente. Entiendo que mi nombre legal escrito servirá como mi firma electrónica."
-      data-pt="Concordo em preencher e assinar este contrato eletronicamente. Entendo que meu nome legal digitado servirá como minha assinatura eletrônica.">
+      data-pt="Concordo em preencher e firmar este contrato eletronicamente. Entendo que meu nome legal digitado servirá como minha assinatura eletrônica.">
   Acepto completar y firmar este contrato electrónicamente. Entiendo que mi nombre legal escrito servirá como mi firma electrónica.
 </span>
 
 </label>
-
+</div>
 </div>
 
-</div>
-
-
-<!-- SIGNATURES -->
 
 <div class="card">
 
@@ -1717,29 +1970,24 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
   Firmas del Inquilino y Propietario
 </h2>
 
-
 <div class="grid">
-
 
 <div>
 
 <label>
+<span data-en="Tenant Full Legal Name"
+      data-es="Nombre Legal Completo del Inquilino"
+      data-pt="Nome Legal Completo do Inquilino">
+  Nombre Legal Completo del Inquilino
+</span>
 
-  <span data-en="Tenant Full Legal Name"
-        data-es="Nombre Legal Completo del Inquilino"
-        data-pt="Nome Legal Completo do Inquilino">
-    Nombre Legal Completo del Inquilino
-  </span>
-
-  <span class="required-text"
-        data-en="Required"
-        data-es="Obligatorio"
-        data-pt="Obrigatório">
-    Obligatorio
-  </span>
-
+<span class="required-text"
+      data-en="Required"
+      data-es="Obligatorio"
+      data-pt="Obrigatório">
+  Obligatorio
+</span>
 </label>
-
 
 <input name="tenant_name"
        id="tenantName"
@@ -1753,22 +2001,19 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 <div>
 
 <label>
+<span data-en="Tenant Email"
+      data-es="Correo del Inquilino"
+      data-pt="E-mail do Inquilino">
+  Correo del Inquilino
+</span>
 
-  <span data-en="Tenant Email"
-        data-es="Correo del Inquilino"
-        data-pt="E-mail do Inquilino">
-    Correo del Inquilino
-  </span>
-
-  <span class="required-text"
-        data-en="Required"
-        data-es="Obligatorio"
-        data-pt="Obrigatório">
-    Obligatorio
-  </span>
-
+<span class="required-text"
+      data-en="Required"
+      data-es="Obligatorio"
+      data-pt="Obrigatório">
+  Obligatorio
+</span>
 </label>
-
 
 <input type="email"
        name="tenant_email"
@@ -1780,22 +2025,19 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 <div>
 
 <label>
+<span data-en="Tenant Phone"
+      data-es="Teléfono del Inquilino"
+      data-pt="Telefone do Inquilino">
+  Teléfono del Inquilino
+</span>
 
-  <span data-en="Tenant Phone"
-        data-es="Teléfono del Inquilino"
-        data-pt="Telefone do Inquilino">
-    Teléfono del Inquilino
-  </span>
-
-  <span class="required-text"
-        data-en="Required"
-        data-es="Obligatorio"
-        data-pt="Obrigatório">
-    Obligatorio
-  </span>
-
+<span class="required-text"
+      data-en="Required"
+      data-es="Obligatorio"
+      data-pt="Obrigatório">
+  Obligatorio
+</span>
 </label>
-
 
 <input type="tel"
        name="tenant_phone"
@@ -1807,22 +2049,19 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 <div>
 
 <label>
+<span data-en="Tenant Electronic Signature"
+      data-es="Firma Electrónica del Inquilino"
+      data-pt="Assinatura Eletrônica do Inquilino">
+  Firma Electrónica del Inquilino
+</span>
 
-  <span data-en="Tenant Electronic Signature"
-        data-es="Firma Electrónica del Inquilino"
-        data-pt="Assinatura Eletrônica do Inquilino">
-    Firma Electrónica del Inquilino
-  </span>
-
-  <span class="required-text"
-        data-en="Required"
-        data-es="Obligatorio"
-        data-pt="Obrigatório">
-    Obligatorio
-  </span>
-
+<span class="required-text"
+      data-en="Required"
+      data-es="Obligatorio"
+      data-pt="Obrigatório">
+  Obligatorio
+</span>
 </label>
-
 
 <input name="tenant_signature"
        id="tenantSignature"
@@ -1830,11 +2069,10 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
        class="readonly"
        required>
 
-
 <div class="signature-match-note"
      data-en="This field automatically matches the Tenant Full Legal Name above."
      data-es="Este campo coincide automáticamente con el Nombre Legal Completo del Inquilino indicado arriba."
-     data-pt="Este campo corresponde automaticamente ao Nome Legal Completo do Inquilino informado acima.">
+     data-pt="Este campo corresponde automaticamente ao Nome Legal do Inquilino informado acima.">
   Este campo coincide automáticamente con el Nombre Legal Completo del Inquilino indicado arriba.
 </div>
 
@@ -1844,22 +2082,19 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 <div>
 
 <label>
+<span data-en="Tenant Signature Date"
+      data-es="Fecha de Firma del Inquilino"
+      data-pt="Data da Assinatura do Inquilino">
+  Fecha de Firma del Inquilino
+</span>
 
-  <span data-en="Tenant Signature Date"
-        data-es="Fecha de Firma del Inquilino"
-        data-pt="Data da Assinatura do Inquilino">
-    Fecha de Firma del Inquilino
-  </span>
-
-  <span class="required-text"
-        data-en="Required"
-        data-es="Obligatorio"
-        data-pt="Obrigatório">
-    Obligatorio
-  </span>
-
+<span class="required-text"
+      data-en="Required"
+      data-es="Obligatorio"
+      data-pt="Obrigatório">
+  Obligatorio
+</span>
 </label>
-
 
 <input type="date"
        name="signature_date"
@@ -1872,15 +2107,12 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 <div>
 
 <label>
-
-  <span data-en="Second Tenant Name (if applicable)"
-        data-es="Segundo Inquilino (si aplica)"
-        data-pt="Segundo Inquilino (se aplicável)">
-    Segundo Inquilino (si aplica)
-  </span>
-
+<span data-en="Second Tenant Name (if applicable)"
+      data-es="Segundo Inquilino (si aplica)"
+      data-pt="Segundo Inquilino (se aplicável)">
+  Segundo Inquilino (si aplica)
+</span>
 </label>
-
 
 <input name="second_tenant">
 
@@ -1890,15 +2122,12 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 <div>
 
 <label>
-
-  <span data-en="Second Tenant Signature (if applicable)"
-        data-es="Firma del Segundo Inquilino (si aplica)"
-        data-pt="Assinatura do Segundo Inquilino (se aplicável)">
-    Firma del Segundo Inquilino (si aplica)
-  </span>
-
+<span data-en="Second Tenant Signature (if applicable)"
+      data-es="Firma del Segundo Inquilino (si aplica)"
+      data-pt="Assinatura do Segundo Inquilino (se aplicável)">
+  Firma del Segundo Inquilino (si aplica)
+</span>
 </label>
-
 
 <input name="second_signature">
 
@@ -1910,23 +2139,17 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 <hr style="margin:25px 0;border:0;border-top:1px solid #ddd">
 
 
-<!-- LANDLORD SIGNATURE INFORMATION - LOCKED -->
-
 <div class="grid">
-
 
 <div>
 
 <label>
-
-  <span data-en="Landlord Legal Name"
-        data-es="Nombre Legal del Propietario"
-        data-pt="Nome Legal do Locador">
-    Nombre Legal del Propietario
-  </span>
-
+<span data-en="Landlord Legal Name"
+      data-es="Nombre Legal del Propietario"
+      data-pt="Nome Legal do Locador">
+  Nombre Legal del Propietario
+</span>
 </label>
-
 
 <input name="landlord_name"
        value="Carlos"
@@ -1939,15 +2162,12 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 <div>
 
 <label>
-
-  <span data-en="Landlord Electronic Signature"
-        data-es="Firma Electrónica del Propietario"
-        data-pt="Assinatura Eletrônica do Locador">
-    Firma Electrónica del Propietario
-  </span>
-
+<span data-en="Landlord Electronic Signature"
+      data-es="Firma Electrónica del Propietario"
+      data-pt="Assinatura Eletrônica do Locador">
+  Firma Electrónica del Propietario
+</span>
 </label>
-
 
 <input name="landlord_signature"
        value="Carlos"
@@ -1960,15 +2180,12 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 <div>
 
 <label>
-
-  <span data-en="Landlord Signature Date"
-        data-es="Fecha de Firma del Propietario"
-        data-pt="Data de Assinatura do Locador">
-    Fecha de Firma del Propietario
-  </span>
-
+<span data-en="Landlord Signature Date"
+      data-es="Fecha de Firma del Propietario"
+      data-pt="Data de Assinatura do Locador">
+  Fecha de Firma del Propietario
+</span>
 </label>
-
 
 <input type="date"
        name="landlord_date"
@@ -1983,8 +2200,6 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 </div>
 
 
-<!-- FINAL -->
-
 <div class="card">
 
 <h2 data-en="Final Review & Submit"
@@ -1992,7 +2207,6 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
     data-pt="Revisão Final e Envio">
   Revisión Final y Envío
 </h2>
-
 
 <div class="notice">
 
@@ -2014,12 +2228,10 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
   Referencia del Contrato
 </div>
 
-
 <div class="reference-number"
      id="agreementReferenceDisplay">
   Complete el nombre del inquilino y la dirección
 </div>
-
 
 <div class="description"
      data-en="This reference updates automatically using the tenant's legal name and rental property address."
@@ -2060,19 +2272,16 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
   IDENTIFICACIÓN CONFIRMADA
 </strong>
 
-
 <p data-en="BEFORE submitting, provide the requested government-issued photo ID to Carlos Rents for identity verification and rental records."
    data-es="ANTES de enviar el contrato, proporcione la identificación con fotografía emitida por el gobierno solicitada a Carlos Rents para verificar su identidad y para los registros del alquiler."
    data-pt="ANTES de enviar o contrato, forneça o documento oficial com foto solicitado ao Carlos Rents para verificação de identidade e registros do aluguel.">
   ANTES de enviar el contrato, proporcione la identificación con fotografía emitida por el gobierno solicitada a Carlos Rents para verificar su identidad y para los registros del alquiler.
 </p>
 
-
 <a class="id-email"
    href="mailto:carlosrents1@yahoo.com">
   carlosrents1@yahoo.com
 </a>
-
 
 <a class="id-phone"
    href="sms:+18134993860">
@@ -2097,7 +2306,6 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 </span>
 
 </label>
-
 
 <div class="id-checkbox-note"
      data-en="You must check this box before the rental agreement can be submitted."
@@ -2131,7 +2339,10 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
 </form>
 
 
-<!-- CONFIRMATION -->
+<!-- PRINT COPIES ARE CREATED HERE ONLY WHEN PRINTING -->
+
+<div id="printAgreement" aria-hidden="true"></div>
+
 
 <div id="confirmationScreen"
      class="confirmation-screen"
@@ -2141,20 +2352,17 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
   ✅
 </div>
 
-
 <h2 data-en="Rental Agreement Submitted"
     data-es="Contrato de Alquiler Enviado"
     data-pt="Contrato de Aluguel Enviado">
   Contrato de Alquiler Enviado
 </h2>
 
-
 <p data-en="Your rental agreement has been submitted to Carlos Rents."
    data-es="Su contrato de alquiler ha sido enviado a Carlos Rents."
    data-pt="Seu contrato de aluguel foi enviado ao Carlos Rents.">
   Su contrato de alquiler ha sido enviado a Carlos Rents.
 </p>
-
 
 <div class="confirmation-reference">
 
@@ -2164,13 +2372,11 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
   Referencia:
 </span>
 
-
 <span id="confirmationReference">
   —
 </span>
 
 </div>
-
 
 <div class="id-confirmation">
 
@@ -2179,7 +2385,6 @@ Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent F
         data-pt="IDENTIFICAÇÃO CONFIRMADA">
   IDENTIFICACIÓN CONFIRMADA
 </strong>
-
 
 <p data-en="Your identification confirmation was completed before submission. Keep your agreement reference for your records."
    data-es="Su confirmación de identificación se completó antes del envío. Guarde su referencia del contrato para sus registros."
@@ -2246,29 +2451,464 @@ const confirmationReference =
 const subjectField =
   document.getElementById("subjectField");
 
+const printAgreementContainer =
+  document.getElementById("printAgreement");
 
 let validationAttempted = false;
 
 
-function changeLanguage(lang){
+/* ================================
+   PRINT / SAVE AS PDF
+   ================================ */
 
-  document.documentElement.lang = lang;
+/*
+   Copies the live values from the real
+   form into the print-only copy.
+*/
 
-  document.querySelectorAll("[data-"+lang+"]")
-    .forEach(function(el){
+function syncPrintValues(sourceForm, printCopy){
 
-      const text =
-        el.getAttribute("data-"+lang);
+  const sourceFields =
+    sourceForm.querySelectorAll(
+      "input, select, textarea"
+    );
 
-      if(text){
-        el.textContent = text;
+  const printFields =
+    printCopy.querySelectorAll(
+      "input, select, textarea"
+    );
+
+
+  sourceFields.forEach(function(sourceField,index){
+
+    const targetField =
+      printFields[index];
+
+    if(!targetField){
+      return;
+    }
+
+
+    if(sourceField.type === "checkbox"){
+
+      targetField.checked =
+        sourceField.checked;
+
+    }else if(sourceField.tagName === "SELECT"){
+
+      targetField.value =
+        sourceField.value;
+
+    }else{
+
+      targetField.value =
+        sourceField.value;
+
+    }
+
+  });
+
+}
+
+
+/*
+   Translate all elements that contain
+   data-es / data-en / data-pt.
+*/
+
+function translatePrintCopy(copy,lang){
+
+  copy.querySelectorAll(
+    "[data-"+lang+"]"
+  ).forEach(function(el){
+
+    const translated =
+      el.getAttribute(
+        "data-"+lang
+      );
+
+    if(translated !== null){
+
+      el.textContent =
+        translated;
+
+    }
+
+  });
+
+
+  /*
+     The late-fee sentence in the original
+     agreement did not have language
+     attributes, so it is translated here
+     only for the print version.
+  */
+
+  const lateFee =
+    copy.querySelector(
+      "[data-print-late-fee]"
+    );
+
+  if(lateFee){
+
+    if(lang === "es"){
+
+      lateFee.textContent =
+        "Cargo por atraso: $20 o el 20% del alquiler mensual, lo que sea mayor, únicamente en la medida en que la ley de Florida permita esta disposición para el alquiler particular.";
+
+    }else{
+
+      lateFee.textContent =
+        "Late fee: $20 or 20% of monthly rent, whichever is greater, only to the extent Florida law permits this provision for the particular rental.";
+
+    }
+
+  }
+
+
+  /*
+     Translate the generated agreement
+     reference message when the user has
+     not entered the required information.
+  */
+
+  const reference =
+    copy.querySelector(
+      ".reference-number"
+    );
+
+  const tenant =
+    tenantLegalNameField.value.trim();
+
+  const address =
+    propertyAddressField.value.trim();
+
+
+  if(reference && (!tenant || !address)){
+
+    if(lang === "es"){
+
+      if(tenant){
+        reference.textContent =
+          tenant +
+          " — Dirección de la Propiedad";
+      }else if(address){
+        reference.textContent =
+          "Nombre del Inquilino — " +
+          address;
+      }else{
+        reference.textContent =
+          "Complete el nombre del inquilino y la dirección";
       }
 
+    }else{
+
+      if(tenant){
+        reference.textContent =
+          tenant +
+          " — Property Address";
+      }else if(address){
+        reference.textContent =
+          "Tenant Name — " +
+          address;
+      }else{
+        reference.textContent =
+          "Enter tenant name and property address";
+      }
+
+    }
+
+  }
+
+}
+
+
+/*
+   Builds TWO print copies:
+
+   1. Spanish
+   2. English
+
+   The Spanish copy is always first,
+   regardless of which language the
+   website is currently displaying.
+*/
+
+function buildPrintCopies(){
+
+  printAgreementContainer.innerHTML = "";
+
+
+  /*
+     Update automatic fields before copying.
+  */
+
+  updateTenantSignature();
+  updateAgreementReference();
+
+
+  const languages = [
+    {
+      code:"es",
+      name:"Español",
+      side:"Frente"
+    },
+    {
+      code:"en",
+      name:"English",
+      side:"Back"
+    }
+  ];
+
+
+  languages.forEach(function(language,index){
+
+    const copy =
+      document.createElement("div");
+
+    copy.className =
+      "print-copy";
+
+
+    /*
+       Print-only title.
+    */
+
+    const printHeader =
+      document.createElement("div");
+
+    printHeader.className =
+      "print-copy-header";
+
+    printHeader.innerHTML =
+      "<h1>Carlos Rents</h1>" +
+      "<p>" +
+      (
+        language.code === "es"
+          ? "Contrato de Alquiler Residencial de Florida"
+          : "Florida Residential Rental Agreement"
+      ) +
+      "</p>" +
+      "<div class=\"print-language\">" +
+      language.name +
+      " — " +
+      language.side +
+      "</div>";
+
+
+    copy.appendChild(
+      printHeader
+    );
+
+
+    /*
+       Clone only the contents of the
+       actual form.
+
+       This keeps the normal website
+       completely unchanged.
+    */
+
+    copy.insertAdjacentHTML(
+      "beforeend",
+      rentalForm.innerHTML
+    );
+
+
+    /*
+       Remove hidden form fields from
+       the printed copy.
+    */
+
+    copy.querySelectorAll(
+      'input[type="hidden"]'
+    ).forEach(function(el){
+
+      el.remove();
+
     });
+
+
+    /*
+       The submit button must never appear
+       in the printed agreement.
+    */
+
+    copy.querySelectorAll(
+      "#submitButton"
+    ).forEach(function(el){
+
+      el.remove();
+
+    });
+
+
+    /*
+       The final live status message is
+       not part of the printed agreement.
+    */
+
+    copy.querySelectorAll(
+      "#finalStatus"
+    ).forEach(function(el){
+
+      el.remove();
+
+    });
+
+
+    /*
+       Remove duplicate IDs from the print
+       copy so they cannot interfere with
+       the real interactive form.
+    */
+
+    copy.querySelectorAll("[id]").forEach(function(el){
+
+      el.removeAttribute("id");
+
+    });
+
+
+    /*
+       Copy the current user-entered
+       values and checkbox states.
+    */
+
+    syncPrintValues(
+      rentalForm,
+      copy
+    );
+
+
+    /*
+       Translate the entire print copy.
+    */
+
+    translatePrintCopy(
+      copy,
+      language.code
+    );
+
+
+    /*
+       Make sure the displayed reference
+       uses the actual current reference.
+    */
+
+    const reference =
+      copy.querySelector(
+        ".reference-number"
+      );
+
+    if(reference){
+
+      reference.textContent =
+        agreementReferenceInput.value;
+
+    }
+
+
+    printAgreementContainer.appendChild(
+      copy
+    );
+
+  });
+
+}
+
+
+function printAgreement(){
+
+  /*
+     Update all automatically generated
+     information before opening the printer.
+  */
+
+  updateTenantSignature();
+  updateAgreementReference();
+
+  /*
+     Build Spanish first and English second.
+  */
+
+  buildPrintCopies();
+
+
+  /*
+     Give the browser a tiny moment to
+     finish rendering the two print copies.
+  */
+
+  setTimeout(function(){
+
+    window.print();
+
+  },150);
+
+}
+
+
+/*
+   Make sure automatically generated
+   fields and print copies are updated
+   before printing.
+*/
+
+window.addEventListener(
+  "beforeprint",
+  function(){
+
+    updateTenantSignature();
+    updateAgreementReference();
+    buildPrintCopies();
+
+  }
+);
+
+
+/*
+   Clean up the print-only copies after
+   the print dialog closes.
+*/
+
+window.addEventListener(
+  "afterprint",
+  function(){
+
+    printAgreementContainer.innerHTML =
+      "";
+
+  }
+);
+
+
+function changeLanguage(lang){
+
+  document.documentElement.lang =
+    lang;
+
+  document.querySelectorAll(
+    "[data-"+lang+"]"
+  ).forEach(function(el){
+
+    const text =
+      el.getAttribute(
+        "data-"+lang
+      );
+
+    if(text){
+      el.textContent =
+        text;
+    }
+
+  });
 
   updateRequiredLabelLanguage();
 
   updateSubmitButton();
+
+  updateAgreementReference();
 
   if(validationAttempted){
     updateRequiredHighlights();
