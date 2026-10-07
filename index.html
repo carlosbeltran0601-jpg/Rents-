@@ -147,6 +147,75 @@ button:disabled{
   cursor:not-allowed
 }
 
+
+/* ================================
+   MENU
+   ================================ */
+
+.menu-container{
+  position:absolute;
+  top:10px;
+  left:10px;
+  z-index:1000;
+}
+
+.menu-button{
+  width:auto;
+  padding:10px 15px;
+  background:#111827;
+  color:white;
+  border:0;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 3px 10px rgba(0,0,0,.2);
+}
+
+.menu-button:hover{
+  background:#1f2937;
+}
+
+.menu-panel{
+  display:none;
+  position:absolute;
+  top:48px;
+  left:0;
+  width:245px;
+  background:white;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 8px 25px rgba(0,0,0,.22);
+  border:1px solid #ddd;
+}
+
+.menu-panel.open{
+  display:block;
+}
+
+.menu-panel a{
+  display:block;
+  padding:15px 17px;
+  color:#111827;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:15px;
+  border-bottom:1px solid #eee;
+}
+
+.menu-panel a:last-child{
+  border-bottom:0;
+}
+
+.menu-panel a:hover{
+  background:#f3f4f6;
+}
+
+
+/* ================================
+   LANGUAGE
+   ================================ */
+
 .lang{
   text-align:right;
   background:white;
@@ -515,9 +584,6 @@ footer{
   display:none;
 }
 
-
-/* Printable blank field */
-
 .pdf-field{
   margin:0 0 12px;
 }
@@ -672,6 +738,7 @@ footer{
   }
 
   .lang,
+  .menu-container,
   .top-id-warning,
   .progress-container,
   .print-button-container,
@@ -772,11 +839,68 @@ footer{
 
   .confirmation-screen h2{font-size:25px}
 
+  .menu-button{
+    padding:9px 12px;
+    font-size:14px;
+  }
+
+  .menu-panel{
+    width:220px;
+  }
+
 }
 </style>
 </head>
 
 <body>
+
+<!-- ================================
+     MENU
+     ================================ -->
+
+<div class="menu-container" id="menuContainer">
+
+  <button
+    type="button"
+    class="menu-button"
+    onclick="toggleMenu()">
+
+    ☰
+    <span
+      data-en="Menu"
+      data-es="Menú"
+      data-pt="Menu">
+      Menú
+    </span>
+
+  </button>
+
+  <div class="menu-panel" id="menuPanel">
+
+    <a href="index.html">
+      🏠
+      <span
+        data-en="Rental Agreement"
+        data-es="Contrato de Alquiler"
+        data-pt="Contrato de Aluguel">
+        Contrato de Alquiler
+      </span>
+    </a>
+
+    <a href="school-verification.html">
+      🎓
+      <span
+        data-en="School Verification"
+        data-es="Verificación Escolar"
+        data-pt="Verificação Escolar">
+        Verificación Escolar
+      </span>
+    </a>
+
+  </div>
+
+</div>
+
 
 <div class="lang">
 
@@ -1595,7 +1719,7 @@ Fecha de Firma del Propietario
      class="final-status"
      data-en="Check all three required boxes to unlock the Submit button."
      data-es="Marque las tres casillas obligatorias para desbloquear el botón de envío."
-     data-pt="Marque as três caixas obrigatórias para desbloquear o botão de envio.">
+     data-pt="Marque as três casillas obrigatórias para desbloquear o botão de envío.">
   Marque las tres casillas obligatorias para desbloquear el botón de envío.
 </div>
 
@@ -1608,8 +1732,6 @@ Fecha de Firma del Propietario
 
 </form>
 
-
-<!-- PRINT COPIES -->
 
 <div id="printAgreement" aria-hidden="true"></div>
 
@@ -1671,6 +1793,43 @@ Fecha de Firma del Propietario
 
 
 <script>
+
+/* ================================
+   MENU
+   ================================ */
+
+function toggleMenu(){
+
+  const menuPanel=
+    document.getElementById("menuPanel");
+
+  menuPanel.classList.toggle("open");
+
+}
+
+
+document.addEventListener(
+  "click",
+  function(event){
+
+    const menuContainer=
+      document.getElementById("menuContainer");
+
+    const menuPanel=
+      document.getElementById("menuPanel");
+
+    if(
+      menuContainer &&
+      !menuContainer.contains(event.target)
+    ){
+
+      menuPanel.classList.remove("open");
+
+    }
+
+  }
+);
+
 
 const rentalForm=document.getElementById("rentalForm");
 const agreementCheckbox=document.getElementById("agreementCheckbox");
@@ -2404,15 +2563,6 @@ function buildPrintCopies(){
 
   printAgreementContainer.innerHTML="";
 
-  /*
-     IMPORTANT:
-     We deliberately do NOT copy any live
-     form values into the PDF.
-
-     This makes the printable agreement
-     completely blank every single time.
-  */
-
   const spanish=buildSpanishPDF();
   const english=buildEnglishPDF();
 
@@ -2422,15 +2572,6 @@ function buildPrintCopies(){
 
 
 function printAgreement(){
-
-  /*
-     Do NOT call setToday(),
-     updateTenantSignature(),
-     or updateAgreementReference()
-     for the PDF.
-
-     The PDF is intentionally blank.
-  */
 
   buildPrintCopies();
 
@@ -2458,7 +2599,6 @@ window.addEventListener(
 
 /* =========================================================
    NORMAL WEBSITE FUNCTIONS
-   Everything below continues to work normally.
    ========================================================= */
 
 function changeLanguage(lang){
