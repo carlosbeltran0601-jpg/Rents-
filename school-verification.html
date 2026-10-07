@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Carlos Rents — School Residency Verification</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#222;
+  background:#f3f4f6;
+}
+
+.header{
+  background:#111827;
+  color:white;
+  padding:30px 20px;
+  text-align:center;
+}
+
+.header h1{
+  margin:0;
+  font-size:34px;
+}
+
+.header p{
+  margin:8px 0 0;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.container{
+  max-width:850px;
+  margin:25px auto;
+  padding:0 15px;
+}
+
+.card{
+  background:white;
+  border-radius:12px;
+  padding:28px;
+  box-shadow:0 4px 15px rgba(0,0,0,.10);
+}
+
+h2{
+  margin-top:0;
+  border-bottom:2px solid #111827;
+  padding-bottom:8px;
+}
+
+h3{
+  margin-top:25px;
+  color:#111827;
+}
+
+label{
+  display:block;
+  font-weight:bold;
+  margin-bottom:6px;
+}
+
+.field{
+  margin-bottom:18px;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  font-size:16px;
+  border:1px solid #aaa;
+  border-radius:7px;
+}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.statement{
+  background:#eff6ff;
+  border-left:5px solid #2563eb;
+  padding:16px;
+  line-height:1.6;
+  margin:20px 0;
+}
+
+.contact{
+  background:#f3f4f6;
+  border:1px solid #d1d5db;
+  padding:18px;
+  border-radius:8px;
+  line-height:1.7;
+}
+
+.signature-area{
+  margin-top:35px;
+}
+
+.signature-line{
+  border-bottom:1px solid #222;
+  height:45px;
+  margin-bottom:6px;
+}
+
+.buttons{
+  display:flex;
+  gap:12px;
+  margin-top:25px;
+}
+
+button,
+.back-button{
+  flex:1;
+  padding:14px;
+  border:0;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  text-align:center;
+  text-decoration:none;
+}
+
+.print-button{
+  background:#111827;
+  color:white;
+}
+
+.back-button{
+  background:#e5e7eb;
+  color:#111827;
+}
+
+footer{
+  text-align:center;
+  color:#6b7280;
+  padding:25px;
+  font-size:13px;
+}
+
+@media(max-width:650px){
+
+  .row{
+    grid-template-columns:1fr;
+  }
+
+  .card{
+    padding:20px;
+  }
+
+  .header h1{
+    font-size:28px;
+  }
+
+  .buttons{
+    flex-direction:column;
+  }
+}
+
+
+/* PRINT */
+
+@media print{
+
+  @page{
+    size:Letter;
+    margin:.6in;
+  }
+
+  body{
+    background:white;
+  }
+
+  .header{
+    background:white !important;
+    color:black !important;
+    border-bottom:2px solid black;
+    padding:10px 0 15px;
+  }
+
+  .header h1{
+    font-size:25px;
+  }
+
+  .container{
+    margin:0;
+    max-width:none;
+    padding:0;
+  }
+
+  .card{
+    box-shadow:none;
+    padding:0;
+  }
+
+  .buttons,
+  footer{
+    display:none !important;
+  }
+
+  input{
+    border:0;
+    border-bottom:1px solid black;
+    border-radius:0;
+    padding:8px 2px;
+    background:white;
+  }
+
+  .statement,
+  .contact{
+    background:white;
+    border:1px solid #777;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+  <h1>CARLOS RENTS</h1>
+
+  <p>School Residency Verification</p>
+
+</header>
+
+
+<div class="container">
+
+<div class="card">
+
+<h2>School Residency Verification</h2>
+
+<p>
+This form is provided to verify the residential address of a
+parent/guardian and student for school enrollment or school-related
+residency verification purposes.
+</p>
+
+
+<h3>Parent / Guardian Information</h3>
+
+<div class="field">
+
+<label for="parentName">
+Parent / Guardian Full Legal Name
+</label>
+
+<input
+  type="text"
+  id="parentName"
+  name="parent_name"
+>
+
+</div>
+
+
+<div class="field">
+
+<label for="parentPhone">
+Parent / Guardian Phone Number
+</label>
+
+<input
+  type="tel"
+  id="parentPhone"
+  name="parent_phone"
+>
+
+</div>
+
+
+<h3>Student Information</h3>
+
+<div class="field">
+
+<label for="studentName">
+Student Full Legal Name
+</label>
+
+<input
+  type="text"
+  id="studentName"
+  name="student_name"
+>
+
+</div>
+
+
+<div class="field">
+
+<label for="schoolName">
+School Name
+</label>
+
+<input
+  type="text"
+  id="schoolName"
+  name="school_name"
+>
+
+</div>
+
+
+<h3>Residence Information</h3>
+
+<div class="field">
+
+<label for="propertyAddress">
+Rental Property Address
+</label>
+
+<input
+  type="text"
+  id="propertyAddress"
+  name="property_address"
+>
+
+</div>
+
+
+<div class="row">
+
+<div class="field">
+
+<label for="cityStateZip">
+City, State, ZIP
+</label>
+
+<input
+  type="text"
+  id="cityStateZip"
+  name="city_state_zip"
+>
+
+</div>
+
+
+<div class="field">
+
+<label for="residencyDate">
+Date Residency Began
+</label>
+
+<input
+  type="date"
+  id="residencyDate"
+  name="residency_date"
+>
+
+</div>
+
+</div>
+
+
+<div class="statement">
+
+<strong>Landlord Verification</strong>
+
+<p>
+I, <strong>Geydis Airado</strong>, as the landlord or authorized
+representative of <strong>Carlos Rents</strong>, verify that the
+parent/guardian listed above resides at the rental property address
+listed on this form.
+</p>
+
+<p>
+This verification is provided at the tenant's request for school
+enrollment and/or school residency verification purposes.
+</p>
+
+</div>
+
+
+<h3>Landlord Information</h3>
+
+<div class="contact">
+
+<strong>Landlord:</strong> Geydis Airado<br>
+
+<strong>Business:</strong> Carlos Rents<br>
+
+<strong>Phone:</strong> 813-420-1563<br>
+
+<strong>Email:</strong> Geydisa@yahoo.com
+
+</div>
+
+
+<div class="signature-area">
+
+<div class="row">
+
+<div>
+
+<label>Landlord Signature</label>
+
+<div class="signature-line"></div>
+
+</div>
+
+
+<div>
+
+<label>Date</label>
+
+<div class="signature-line"></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="buttons">
+
+<button
+  class="print-button"
+  type="button"
+  onclick="window.print()">
+  🖨️ Print / Save as PDF
+</button>
+
+<a
+  href="index.html"
+  class="back-button">
+  ← Back to Carlos Rents
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<footer>
+
+© Carlos Rents • Florida Residential Rental Services
+
+</footer>
+
+</body>
+</html>
