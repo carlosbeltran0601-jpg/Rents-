@@ -18,10 +18,104 @@ body{
   background:#f3f4f6;
 }
 
+/* =========================
+   MENU
+========================= */
+
+.menu-container{
+  position:fixed !important;
+  top:15px !important;
+  left:15px !important;
+  z-index:999999 !important;
+}
+
+.menu-button{
+  width:auto !important;
+  min-width:110px;
+  padding:12px 18px !important;
+  background:#111827 !important;
+  color:white !important;
+  border:2px solid white !important;
+  border-radius:10px !important;
+  font-size:16px !important;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 4px 15px rgba(0,0,0,.4);
+}
+
+.menu-button:hover{
+  background:#374151 !important;
+}
+
+.menu-panel{
+  display:none;
+  position:absolute;
+  top:52px;
+  left:0;
+  width:250px;
+  background:white !important;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 8px 25px rgba(0,0,0,.3);
+  border:2px solid #111827;
+}
+
+.menu-panel.open{
+  display:block !important;
+}
+
+.menu-panel a{
+  display:block;
+  padding:16px;
+  color:#111827 !important;
+  background:white !important;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:16px;
+  border-bottom:1px solid #ddd;
+}
+
+.menu-panel a:last-child{
+  border-bottom:none;
+}
+
+.menu-panel a:hover{
+  background:#f3f4f6 !important;
+}
+
+
+/* =========================
+   LANGUAGE SELECTOR
+========================= */
+
+.language-box{
+  position:fixed;
+  top:15px;
+  right:15px;
+  z-index:999998;
+}
+
+.language-select{
+  padding:11px 12px;
+  border-radius:9px;
+  border:2px solid white;
+  background:#111827;
+  color:white;
+  font-size:14px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 4px 15px rgba(0,0,0,.35);
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
 .header{
   background:#111827;
   color:white;
-  padding:30px 20px;
+  padding:75px 20px 30px;
   text-align:center;
 }
 
@@ -35,6 +129,11 @@ body{
   font-size:16px;
   font-weight:bold;
 }
+
+
+/* =========================
+   MAIN
+========================= */
 
 .container{
   max-width:850px;
@@ -89,6 +188,11 @@ input[readonly]{
   gap:18px;
 }
 
+
+/* =========================
+   VERIFICATION
+========================= */
+
 .statement{
   background:#eff6ff;
   border-left:5px solid #2563eb;
@@ -119,6 +223,18 @@ input[readonly]{
   font-weight:bold;
 }
 
+.note{
+  margin-top:12px;
+  font-size:13px;
+  color:#6b7280;
+  line-height:1.5;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
 .buttons{
   display:flex;
   flex-wrap:wrap;
@@ -140,16 +256,6 @@ button,
   text-decoration:none;
 }
 
-.save-button{
-  background:#166534;
-  color:white;
-}
-
-.load-button{
-  background:#2563eb;
-  color:white;
-}
-
 .clear-button{
   background:#dc2626;
   color:white;
@@ -165,23 +271,22 @@ button,
   color:#111827;
 }
 
-.status{
-  display:none;
-  margin-top:15px;
-  padding:12px;
-  border-radius:8px;
-  background:#dcfce7;
-  color:#166534;
-  font-weight:bold;
-  text-align:center;
+.clear-button:hover{
+  background:#b91c1c;
 }
 
-.note{
-  margin-top:12px;
-  font-size:13px;
-  color:#6b7280;
-  line-height:1.5;
+.print-button:hover{
+  background:#374151;
 }
+
+.back-button:hover{
+  background:#d1d5db;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
   text-align:center;
@@ -189,6 +294,11 @@ footer{
   padding:25px;
   font-size:13px;
 }
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:650px){
 
@@ -204,6 +314,10 @@ footer{
     font-size:28px;
   }
 
+  .header{
+    padding-top:80px;
+  }
+
   .buttons{
     flex-direction:column;
   }
@@ -212,10 +326,20 @@ footer{
   .back-button{
     width:100%;
   }
+
+  .language-select{
+    max-width:135px;
+  }
+
+  .menu-panel{
+    width:235px;
+  }
 }
 
 
-/* PRINT */
+/* =========================
+   PRINT
+========================= */
 
 @media print{
 
@@ -226,6 +350,11 @@ footer{
 
   body{
     background:white;
+  }
+
+  .menu-container,
+  .language-box{
+    display:none !important;
   }
 
   .header{
@@ -251,9 +380,8 @@ footer{
   }
 
   .buttons,
-  .status,
-  .note,
-  footer{
+  footer,
+  .note{
     display:none !important;
   }
 
@@ -287,107 +415,281 @@ footer{
 
 <body>
 
+
+<!-- =========================
+     MENU
+========================= -->
+
+<div class="menu-container" id="menuContainer">
+
+  <button
+    type="button"
+    class="menu-button"
+    onclick="toggleMenu()">
+
+    ☰
+
+    <span
+      data-en="Menu"
+      data-es="Menú"
+      data-pt="Menu">
+
+      Menu
+
+    </span>
+
+  </button>
+
+
+  <div class="menu-panel" id="menuPanel">
+
+    <a href="index.html">
+
+      🏠
+
+      <span
+        data-en="Rental Agreement"
+        data-es="Contrato de Alquiler"
+        data-pt="Contrato de Aluguel">
+
+        Rental Agreement
+
+      </span>
+
+    </a>
+
+
+    <a href="school-verification.html">
+
+      🎓
+
+      <span
+        data-en="School Verification"
+        data-es="Verificación Escolar"
+        data-pt="Verificação Escolar">
+
+        School Verification
+
+      </span>
+
+    </a>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     LANGUAGE
+========================= -->
+
+<div class="language-box">
+
+  <select
+    id="languageSelect"
+    class="language-select"
+    onchange="changeLanguage(this.value)">
+
+    <option value="en">🇺🇸 English</option>
+    <option value="es">🇪🇸 Español</option>
+    <option value="pt">🇵🇹 Português</option>
+
+  </select>
+
+</div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header class="header">
 
   <h1>CARLOS RENTS</h1>
 
-  <p>School Residency Verification</p>
+  <p
+    data-en="School Residency Verification"
+    data-es="Verificación de Residencia Escolar"
+    data-pt="Verificação de Residência Escolar">
+
+    School Residency Verification
+
+  </p>
 
 </header>
 
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
 
 <div class="container">
 
 <div class="card">
 
-<h2>School Residency Verification</h2>
 
-<p>
-This form is provided by the landlord to verify the residential address
-of a parent/guardian and student for school enrollment or school-related
-residency verification purposes.
+<h2
+  data-en="School Residency Verification"
+  data-es="Verificación de Residencia Escolar"
+  data-pt="Verificação de Residência Escolar">
+
+  School Residency Verification
+
+</h2>
+
+
+<p
+  data-en="This form is provided by the landlord to verify the residential address of a parent/guardian and student for school enrollment or school-related residency verification purposes."
+  data-es="Este formulario es proporcionado por el propietario para verificar la dirección residencial del padre/tutor y del estudiante para fines de inscripción escolar o verificación de residencia escolar."
+  data-pt="Este formulário é fornecido pelo proprietário para verificar o endereço residencial do pai/responsável e do aluno para fins de matrícula escolar ou verificação de residência escolar.">
+
+  This form is provided by the landlord to verify the residential address
+  of a parent/guardian and student for school enrollment or school-related
+  residency verification purposes.
+
 </p>
 
 
-<h3>Parent / Guardian Information</h3>
+<!-- =========================
+     PARENT
+========================= -->
+
+<h3
+  data-en="Parent / Guardian Information"
+  data-es="Información del Padre / Tutor"
+  data-pt="Informações do Pai / Responsável">
+
+  Parent / Guardian Information
+
+</h3>
+
 
 <div class="field">
 
-<label for="parentName">
-Parent / Guardian Full Legal Name
+<label
+  for="parentName"
+  data-en="Parent / Guardian Full Legal Name"
+  data-es="Nombre Legal Completo del Padre / Tutor"
+  data-pt="Nome Legal Completo do Pai / Responsável">
+
+  Parent / Guardian Full Legal Name
+
 </label>
 
 <input
   type="text"
   id="parentName"
   name="parent_name"
-  autocomplete="name"
->
+  autocomplete="name">
 
 </div>
 
 
 <div class="field">
 
-<label for="parentPhone">
-Parent / Guardian Phone Number
+<label
+  for="parentPhone"
+  data-en="Parent / Guardian Phone Number"
+  data-es="Número de Teléfono del Padre / Tutor"
+  data-pt="Número de Telefone do Pai / Responsável">
+
+  Parent / Guardian Phone Number
+
 </label>
 
 <input
   type="tel"
   id="parentPhone"
   name="parent_phone"
-  autocomplete="tel"
->
+  autocomplete="tel">
 
 </div>
 
 
-<h3>Student Information</h3>
+<!-- =========================
+     STUDENT
+========================= -->
+
+<h3
+  data-en="Student Information"
+  data-es="Información del Estudiante"
+  data-pt="Informações do Aluno">
+
+  Student Information
+
+</h3>
+
 
 <div class="field">
 
-<label for="studentName">
-Student Full Legal Name
+<label
+  for="studentName"
+  data-en="Student Full Legal Name"
+  data-es="Nombre Legal Completo del Estudiante"
+  data-pt="Nome Legal Completo do Aluno">
+
+  Student Full Legal Name
+
 </label>
 
 <input
   type="text"
   id="studentName"
-  name="student_name"
->
+  name="student_name">
 
 </div>
 
 
 <div class="field">
 
-<label for="schoolName">
-School Name
+<label
+  for="schoolName"
+  data-en="School Name"
+  data-es="Nombre de la Escuela"
+  data-pt="Nome da Escola">
+
+  School Name
+
 </label>
 
 <input
   type="text"
   id="schoolName"
-  name="school_name"
->
+  name="school_name">
 
 </div>
 
 
-<h3>Residence Information</h3>
+<!-- =========================
+     RESIDENCE
+========================= -->
+
+<h3
+  data-en="Residence Information"
+  data-es="Información de Residencia"
+  data-pt="Informações da Residência">
+
+  Residence Information
+
+</h3>
+
 
 <div class="field">
 
-<label for="propertyAddress">
-Rental Property Address
+<label
+  for="propertyAddress"
+  data-en="Rental Property Address"
+  data-es="Dirección de la Propiedad de Alquiler"
+  data-pt="Endereço da Propriedade Alugada">
+
+  Rental Property Address
+
 </label>
 
 <input
   type="text"
   id="propertyAddress"
-  name="property_address"
->
+  name="property_address">
 
 </div>
 
@@ -396,69 +698,186 @@ Rental Property Address
 
 <div class="field">
 
-<label for="cityStateZip">
-City, State, ZIP
+<label
+  for="cityStateZip"
+  data-en="City, State, ZIP"
+  data-es="Ciudad, Estado, Código Postal"
+  data-pt="Cidade, Estado, CEP">
+
+  City, State, ZIP
+
 </label>
 
 <input
   type="text"
   id="cityStateZip"
-  name="city_state_zip"
->
+  name="city_state_zip">
 
 </div>
 
 
 <div class="field">
 
-<label for="residencyDate">
-Date Residency Began
+<label
+  for="residencyDate"
+  data-en="Date Residency Began"
+  data-es="Fecha de Inicio de Residencia"
+  data-pt="Data de Início da Residência">
+
+  Date Residency Began
+
 </label>
 
 <input
   type="date"
   id="residencyDate"
-  name="residency_date"
->
+  name="residency_date">
 
 </div>
 
 </div>
 
+
+<!-- =========================
+     LANDLORD VERIFICATION
+========================= -->
 
 <div class="statement">
 
-<strong>Landlord Verification</strong>
+<strong
+  data-en="Landlord Verification"
+  data-es="Verificación del Propietario"
+  data-pt="Verificação do Proprietário">
+
+  Landlord Verification
+
+</strong>
+
 
 <p>
-I, <strong>Geydis Airado</strong>, as the landlord or authorized
-representative of <strong>Carlos Rents</strong>, verify that the
-parent/guardian listed above resides at the rental property address
-listed on this form.
+
+<span
+  data-en="I,"
+  data-es="Yo,"
+  data-pt="Eu,">
+
+  I,
+
+</span>
+
+<strong>Geydis Airado</strong>
+
+<span
+  data-en=", as the landlord or authorized representative of"
+  data-es=", como propietario o representante autorizado de"
+  data-pt=", como proprietário ou representante autorizado de">
+
+  , as the landlord or authorized representative of
+
+</span>
+
+<strong>Carlos Rents</strong>
+
+<span
+  data-en=", verify that the parent/guardian listed above resides at the rental property address listed on this form."
+  data-es=", verifico que el padre/tutor indicado anteriormente reside en la dirección de la propiedad de alquiler indicada en este formulario."
+  data-pt=", verifico que o pai/responsável indicado acima reside no endereço da propriedade alugada informado neste formulário.">
+
+  , verify that the parent/guardian listed above resides at the rental property address listed on this form.
+
+</span>
+
 </p>
 
-<p>
-This verification is provided at the tenant's request for school
-enrollment and/or school residency verification purposes.
+
+<p
+  data-en="This verification is provided at the tenant's request for school enrollment and/or school residency verification purposes."
+  data-es="Esta verificación se proporciona a solicitud del inquilino para fines de inscripción escolar y/o verificación de residencia escolar."
+  data-pt="Esta verificação é fornecida a pedido do inquilino para fins de matrícula escolar e/ou verificação de residência escolar.">
+
+  This verification is provided at the tenant's request for school
+  enrollment and/or school residency verification purposes.
+
 </p>
 
 </div>
 
 
-<h3>Landlord Information</h3>
+<!-- =========================
+     LANDLORD INFO
+========================= -->
+
+<h3
+  data-en="Landlord Information"
+  data-es="Información del Propietario"
+  data-pt="Informações do Proprietário">
+
+  Landlord Information
+
+</h3>
+
 
 <div class="contact">
 
-<strong>Landlord:</strong> Geydis Airado<br>
+<strong
+  data-en="Landlord:"
+  data-es="Propietario:"
+  data-pt="Proprietário:">
 
-<strong>Business:</strong> Carlos Rents<br>
+  Landlord:
 
-<strong>Phone:</strong> 813-420-1563<br>
+</strong>
 
-<strong>Email:</strong> Geydisa@yahoo.com
+Geydis Airado
+
+<br>
+
+
+<strong
+  data-en="Business:"
+  data-es="Negocio:"
+  data-pt="Empresa:">
+
+  Business:
+
+</strong>
+
+Carlos Rents
+
+<br>
+
+
+<strong
+  data-en="Phone:"
+  data-es="Teléfono:"
+  data-pt="Telefone:">
+
+  Phone:
+
+</strong>
+
+813-420-1563
+
+<br>
+
+
+<strong
+  data-en="Email:"
+  data-es="Correo Electrónico:"
+  data-pt="E-mail:">
+
+  Email:
+
+</strong>
+
+Geydisa@yahoo.com
 
 </div>
 
+
+<!-- =========================
+     LANDLORD ACKNOWLEDGMENT
+========================= -->
 
 <div class="signature-area">
 
@@ -466,10 +885,20 @@ enrollment and/or school residency verification purposes.
 
 <div>
 
-<label>Landlord Name / Electronic Acknowledgment</label>
+<label
+  data-en="Landlord Name"
+  data-es="Nombre del Propietario"
+  data-pt="Nome do Proprietário">
+
+  Landlord Name
+
+</label>
+
 
 <div class="signature-box">
+
 Geydis Airado
+
 </div>
 
 </div>
@@ -477,15 +906,22 @@ Geydis Airado
 
 <div>
 
-<label for="verificationDate">
-Verification Date
+<label
+  for="verificationDate"
+  data-en="Verification Date"
+  data-es="Fecha de Verificación"
+  data-pt="Data da Verificação">
+
+  Verification Date
+
 </label>
+
 
 <input
   type="date"
   id="verificationDate"
   name="verification_date"
->
+  readonly>
 
 </div>
 
@@ -494,63 +930,82 @@ Verification Date
 </div>
 
 
-<p class="note">
-The landlord name above is displayed as an electronic acknowledgment.
-If the school requires a handwritten or formal electronic signature,
-the landlord should sign using a method accepted by the school.
-</p>
-
-
-<div id="saveStatus" class="status">
-✓ Form saved on this device.
-</div>
-
+<!-- =========================
+     BUTTONS
+========================= -->
 
 <div class="buttons">
-
-<button
-  class="save-button"
-  type="button"
-  onclick="saveForm()">
-  💾 Save Form
-</button>
-
-<button
-  class="load-button"
-  type="button"
-  onclick="loadForm()">
-  📂 Load Saved Form
-</button>
 
 <button
   class="clear-button"
   type="button"
   onclick="clearForm()">
-  🗑️ Clear Saved Form
+
+  🗑️
+
+  <span
+    data-en="Clear Form"
+    data-es="Borrar Formulario"
+    data-pt="Limpar Formulário">
+
+    Clear Form
+
+  </span>
+
 </button>
+
 
 <button
   class="print-button"
   type="button"
   onclick="window.print()">
-  🖨️ Print / Save as PDF
+
+  🖨️
+
+  <span
+    data-en="Print / Save as PDF"
+    data-es="Imprimir / Guardar como PDF"
+    data-pt="Imprimir / Salvar como PDF">
+
+    Print / Save as PDF
+
+  </span>
+
 </button>
+
 
 <a
   href="index.html"
   class="back-button">
-  ← Back to Carlos Rents
+
+  ←
+
+  <span
+    data-en="Back to Carlos Rents"
+    data-es="Volver a Carlos Rents"
+    data-pt="Voltar para Carlos Rents">
+
+    Back to Carlos Rents
+
+  </span>
+
 </a>
 
 </div>
 
 
-<p class="note">
-<strong>Tip:</strong> After completing the form, tap
-<strong>Print / Save as PDF</strong>. On an iPhone, you can use the
-Share button and choose <strong>Save to Files</strong> to keep a
-permanent copy on the phone.
+<p
+  class="note"
+  data-en="After completing the form, tap Print / Save as PDF. On an iPhone, you can use the Share button and choose Save to Files to keep a copy on the phone."
+  data-es="Después de completar el formulario, toca Imprimir / Guardar como PDF. En un iPhone, puedes usar el botón Compartir y elegir Guardar en Archivos para guardar una copia en el teléfono."
+  data-pt="Depois de preencher o formulário, toque em Imprimir / Salvar como PDF. No iPhone, você pode usar o botão Compartilhar e escolher Salvar em Arquivos para guardar uma cópia no telefone.">
+
+  After completing the form, tap Print / Save as PDF.
+  On an iPhone, you can use the Share button and choose Save to Files
+  to keep a copy on the phone.
+
 </p>
+
 
 </div>
 
@@ -566,94 +1021,128 @@ permanent copy on the phone.
 
 <script>
 
-const STORAGE_KEY = "carlosRentsSchoolResidencyVerification";
+/* =========================
+   MENU
+========================= */
 
+function toggleMenu(){
 
-function getFormFields(){
+  const menuPanel =
+    document.getElementById("menuPanel");
 
-  return document.querySelectorAll(
-    "input[type='text'], input[type='tel'], input[type='date']"
-  );
+  if(menuPanel){
+
+    menuPanel.classList.toggle("open");
+
+  }
 
 }
 
 
-function saveForm(){
+/* Close menu when clicking outside */
 
-  const fields = getFormFields();
+document.addEventListener("click",function(event){
 
-  const formData = {};
+  const menuContainer =
+    document.getElementById("menuContainer");
 
-  fields.forEach(function(field){
+  const menuPanel =
+    document.getElementById("menuPanel");
 
-    formData[field.id] = field.value;
+  if(
+    menuContainer &&
+    menuPanel &&
+    !menuContainer.contains(event.target)
+  ){
+
+    menuPanel.classList.remove("open");
+
+  }
+
+});
+
+
+/* =========================
+   LANGUAGE
+========================= */
+
+function changeLanguage(language){
+
+  document.documentElement.lang = language;
+
+  const elements =
+    document.querySelectorAll("[data-" + language + "]");
+
+  elements.forEach(function(element){
+
+    const translatedText =
+      element.getAttribute("data-" + language);
+
+    if(translatedText !== null){
+
+      element.textContent = translatedText;
+
+    }
 
   });
 
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(formData)
-  );
+  try{
 
-  const status = document.getElementById("saveStatus");
+    localStorage.setItem(
+      "carlosRentsSchoolLanguage",
+      language
+    );
 
-  status.textContent = "✓ Form saved on this device.";
-  status.style.display = "block";
+  }catch(error){
+
+    console.log("Language preference could not be saved.");
+
+  }
 
 }
 
 
-function loadForm(){
+/* =========================
+   AUTOMATIC VERIFICATION DATE
+========================= */
 
-  const savedData = localStorage.getItem(STORAGE_KEY);
+function setTodayDate(){
 
-  if(!savedData){
+  const dateField =
+    document.getElementById("verificationDate");
 
-    alert("No saved form was found on this device.");
+  if(!dateField){
 
     return;
 
   }
 
-  try{
+  const today =
+    new Date();
 
-    const formData = JSON.parse(savedData);
+  const year =
+    today.getFullYear();
 
-    const fields = getFormFields();
+  const month =
+    String(today.getMonth() + 1).padStart(2,"0");
 
-    fields.forEach(function(field){
+  const day =
+    String(today.getDate()).padStart(2,"0");
 
-      if(
-        Object.prototype.hasOwnProperty.call(
-          formData,
-          field.id
-        )
-      ){
-
-        field.value = formData[field.id];
-
-      }
-
-    });
-
-    const status = document.getElementById("saveStatus");
-
-    status.textContent = "✓ Saved form loaded.";
-    status.style.display = "block";
-
-  }catch(error){
-
-    alert("The saved form could not be loaded.");
-
-  }
+  dateField.value =
+    year + "-" + month + "-" + day;
 
 }
 
 
+/* =========================
+   CLEAR FORM
+========================= */
+
 function clearForm(){
 
   const confirmed = confirm(
-    "Are you sure you want to clear the saved form from this device?"
+    "Are you sure you want to clear this form?"
   );
 
   if(!confirmed){
@@ -662,9 +1151,9 @@ function clearForm(){
 
   }
 
-  localStorage.removeItem(STORAGE_KEY);
-
-  const fields = getFormFields();
+  const fields = document.querySelectorAll(
+    "input[type='text'], input[type='tel'], input[type='date']"
+  );
 
   fields.forEach(function(field){
 
@@ -672,50 +1161,58 @@ function clearForm(){
 
   });
 
-  const status = document.getElementById("saveStatus");
+  /*
+    After clearing, automatically
+    put today's verification date back.
+  */
 
-  status.textContent = "✓ Saved form cleared.";
-  status.style.display = "block";
+  setTodayDate();
 
 }
 
 
-/*
-  Automatically load the saved form when the page opens.
-*/
+/* =========================
+   PAGE LOAD
+========================= */
 
-window.addEventListener("DOMContentLoaded", function(){
+window.addEventListener("DOMContentLoaded",function(){
 
-  const savedData = localStorage.getItem(STORAGE_KEY);
+  /*
+    Automatically set verification date
+    to today's date every time the page opens.
+  */
 
-  if(savedData){
+  setTodayDate();
 
-    try{
 
-      const formData = JSON.parse(savedData);
+  /*
+    Load previously selected language.
+  */
 
-      const fields = getFormFields();
+  try{
 
-      fields.forEach(function(field){
+    const savedLanguage =
+      localStorage.getItem(
+        "carlosRentsSchoolLanguage"
+      );
 
-        if(
-          Object.prototype.hasOwnProperty.call(
-            formData,
-            field.id
-          )
-        ){
+    if(
+      savedLanguage === "en" ||
+      savedLanguage === "es" ||
+      savedLanguage === "pt"
+    ){
 
-          field.value = formData[field.id];
+      document.getElementById(
+        "languageSelect"
+      ).value = savedLanguage;
 
-        }
-
-      });
-
-    }catch(error){
-
-      console.log("No usable saved form found.");
+      changeLanguage(savedLanguage);
 
     }
+
+  }catch(error){
+
+    console.log("No saved language preference.");
 
   }
 
