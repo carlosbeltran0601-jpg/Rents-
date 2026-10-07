@@ -23,7 +23,7 @@ body{
 ========================= */
 
 .menu-container{
-  position:fixed !important;
+  position:absolute !important;
   top:15px !important;
   left:15px !important;
   z-index:999999 !important;
@@ -83,13 +83,12 @@ body{
   background:#f3f4f6 !important;
 }
 
-
 /* =========================
    LANGUAGE SELECTOR
 ========================= */
 
 .language-box{
-  position:fixed;
+  position:absolute !important;
   top:15px;
   right:15px;
   z-index:999998;
@@ -106,7 +105,6 @@ body{
   cursor:pointer;
   box-shadow:0 4px 15px rgba(0,0,0,.35);
 }
-
 
 /* =========================
    HEADER
@@ -129,7 +127,6 @@ body{
   font-size:16px;
   font-weight:bold;
 }
-
 
 /* =========================
    MAIN
@@ -188,7 +185,6 @@ input[readonly]{
   gap:18px;
 }
 
-
 /* =========================
    VERIFICATION
 ========================= */
@@ -229,7 +225,6 @@ input[readonly]{
   color:#6b7280;
   line-height:1.5;
 }
-
 
 /* =========================
    BUTTONS
@@ -283,7 +278,6 @@ button,
   background:#d1d5db;
 }
 
-
 /* =========================
    FOOTER
 ========================= */
@@ -294,7 +288,6 @@ footer{
   padding:25px;
   font-size:13px;
 }
-
 
 /* =========================
    MOBILE
@@ -335,7 +328,6 @@ footer{
     width:235px;
   }
 }
-
 
 /* =========================
    PRINT
@@ -415,7 +407,6 @@ footer{
 
 <body>
 
-
 <!-- =========================
      MENU
 ========================= -->
@@ -440,7 +431,6 @@ footer{
 
   </button>
 
-
   <div class="menu-panel" id="menuPanel">
 
     <a href="index.html">
@@ -457,7 +447,6 @@ footer{
       </span>
 
     </a>
-
 
     <a href="school-verification.html">
 
@@ -478,7 +467,6 @@ footer{
 
 </div>
 
-
 <!-- =========================
      LANGUAGE
 ========================= -->
@@ -497,7 +485,6 @@ footer{
   </select>
 
 </div>
-
 
 <!-- =========================
      HEADER
@@ -518,7 +505,6 @@ footer{
 
 </header>
 
-
 <!-- =========================
      MAIN CONTENT
 ========================= -->
@@ -526,7 +512,6 @@ footer{
 <div class="container">
 
 <div class="card">
-
 
 <h2
   data-en="School Residency Verification"
@@ -536,7 +521,6 @@ footer{
   School Residency Verification
 
 </h2>
-
 
 <p
   data-en="This form is provided by the landlord to verify the residential address of a parent/guardian and student for school enrollment or school-related residency verification purposes."
@@ -548,7 +532,6 @@ footer{
   residency verification purposes.
 
 </p>
-
 
 <!-- =========================
      PARENT
@@ -562,7 +545,6 @@ footer{
   Parent / Guardian Information
 
 </h3>
-
 
 <div class="field">
 
@@ -584,7 +566,6 @@ footer{
 
 </div>
 
-
 <div class="field">
 
 <label
@@ -605,7 +586,6 @@ footer{
 
 </div>
 
-
 <!-- =========================
      STUDENT
 ========================= -->
@@ -618,7 +598,6 @@ footer{
   Student Information
 
 </h3>
-
 
 <div class="field">
 
@@ -639,7 +618,6 @@ footer{
 
 </div>
 
-
 <div class="field">
 
 <label
@@ -659,7 +637,6 @@ footer{
 
 </div>
 
-
 <!-- =========================
      RESIDENCE
 ========================= -->
@@ -672,7 +649,6 @@ footer{
   Residence Information
 
 </h3>
-
 
 <div class="field">
 
@@ -692,7 +668,6 @@ footer{
   name="property_address">
 
 </div>
-
 
 <div class="row">
 
@@ -715,7 +690,6 @@ footer{
 
 </div>
 
-
 <div class="field">
 
 <label
@@ -737,7 +711,6 @@ footer{
 
 </div>
 
-
 <!-- =========================
      LANDLORD VERIFICATION
 ========================= -->
@@ -752,7 +725,6 @@ footer{
   Landlord Verification
 
 </strong>
-
 
 <p>
 
@@ -789,7 +761,6 @@ footer{
 
 </p>
 
-
 <p
   data-en="This verification is provided at the tenant's request for school enrollment and/or school residency verification purposes."
   data-es="Esta verificación se proporciona a solicitud del inquilino para fines de inscripción escolar y/o verificación de residencia escolar."
@@ -801,7 +772,6 @@ footer{
 </p>
 
 </div>
-
 
 <!-- =========================
      LANDLORD INFO
@@ -815,7 +785,6 @@ footer{
   Landlord Information
 
 </h3>
-
 
 <div class="contact">
 
@@ -832,7 +801,6 @@ Geydis Airado
 
 <br>
 
-
 <strong
   data-en="Business:"
   data-es="Negocio:"
@@ -845,7 +813,6 @@ Geydis Airado
 Carlos Rents
 
 <br>
-
 
 <strong
   data-en="Phone:"
@@ -860,7 +827,6 @@ Carlos Rents
 
 <br>
 
-
 <strong
   data-en="Email:"
   data-es="Correo Electrónico:"
@@ -874,9 +840,8 @@ Geydisa@yahoo.com
 
 </div>
 
-
 <!-- =========================
-     LANDLORD ACKNOWLEDGMENT
+     LANDLORD NAME + DATE
 ========================= -->
 
 <div class="signature-area">
@@ -894,7 +859,6 @@ Geydisa@yahoo.com
 
 </label>
 
-
 <div class="signature-box">
 
 Geydis Airado
@@ -902,7 +866,6 @@ Geydis Airado
 </div>
 
 </div>
-
 
 <div>
 
@@ -916,7 +879,6 @@ Geydis Airado
 
 </label>
 
-
 <input
   type="date"
   id="verificationDate"
@@ -928,7 +890,6 @@ Geydis Airado
 </div>
 
 </div>
-
 
 <!-- =========================
      BUTTONS
@@ -954,7 +915,6 @@ Geydis Airado
 
 </button>
 
-
 <button
   class="print-button"
   type="button"
@@ -972,7 +932,6 @@ Geydis Airado
   </span>
 
 </button>
-
 
 <a
   href="index.html"
@@ -993,7 +952,6 @@ Geydis Airado
 
 </div>
 
-
 <p
   class="note"
   data-en="After completing the form, tap Print / Save as PDF. On an iPhone, you can use the Share button and choose Save to Files to keep a copy on the phone."
@@ -1006,18 +964,15 @@ Geydis Airado
 
 </p>
 
-
 </div>
 
 </div>
-
 
 <footer>
 
 © Carlos Rents • Florida Residential Rental Services
 
 </footer>
-
 
 <script>
 
@@ -1162,8 +1117,8 @@ function clearForm(){
   });
 
   /*
-    After clearing, automatically
-    put today's verification date back.
+    Put today's verification date
+    back automatically after clearing.
   */
 
   setTodayDate();
