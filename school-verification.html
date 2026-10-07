@@ -78,6 +78,11 @@ input{
   border-radius:7px;
 }
 
+input[readonly]{
+  background:#f3f4f6;
+  color:#333;
+}
+
 .row{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -104,14 +109,19 @@ input{
   margin-top:35px;
 }
 
-.signature-line{
-  border-bottom:1px solid #222;
-  height:45px;
-  margin-bottom:6px;
+.signature-box{
+  min-height:55px;
+  border:1px solid #aaa;
+  border-radius:7px;
+  padding:14px;
+  background:#f9fafb;
+  font-size:18px;
+  font-weight:bold;
 }
 
 .buttons{
   display:flex;
+  flex-wrap:wrap;
   gap:12px;
   margin-top:25px;
 }
@@ -119,6 +129,7 @@ input{
 button,
 .back-button{
   flex:1;
+  min-width:160px;
   padding:14px;
   border:0;
   border-radius:8px;
@@ -129,6 +140,21 @@ button,
   text-decoration:none;
 }
 
+.save-button{
+  background:#166534;
+  color:white;
+}
+
+.load-button{
+  background:#2563eb;
+  color:white;
+}
+
+.clear-button{
+  background:#dc2626;
+  color:white;
+}
+
 .print-button{
   background:#111827;
   color:white;
@@ -137,6 +163,24 @@ button,
 .back-button{
   background:#e5e7eb;
   color:#111827;
+}
+
+.status{
+  display:none;
+  margin-top:15px;
+  padding:12px;
+  border-radius:8px;
+  background:#dcfce7;
+  color:#166534;
+  font-weight:bold;
+  text-align:center;
+}
+
+.note{
+  margin-top:12px;
+  font-size:13px;
+  color:#6b7280;
+  line-height:1.5;
 }
 
 footer{
@@ -162,6 +206,11 @@ footer{
 
   .buttons{
     flex-direction:column;
+  }
+
+  button,
+  .back-button{
+    width:100%;
   }
 }
 
@@ -202,6 +251,8 @@ footer{
   }
 
   .buttons,
+  .status,
+  .note,
   footer{
     display:none !important;
   }
@@ -211,7 +262,11 @@ footer{
     border-bottom:1px solid black;
     border-radius:0;
     padding:8px 2px;
-    background:white;
+    background:white !important;
+  }
+
+  input[readonly]{
+    background:white !important;
   }
 
   .statement,
@@ -220,6 +275,12 @@ footer{
     border:1px solid #777;
   }
 
+  .signature-box{
+    background:white;
+    border:0;
+    border-bottom:1px solid black;
+    border-radius:0;
+  }
 }
 </style>
 </head>
@@ -242,8 +303,8 @@ footer{
 <h2>School Residency Verification</h2>
 
 <p>
-This form is provided to verify the residential address of a
-parent/guardian and student for school enrollment or school-related
+This form is provided by the landlord to verify the residential address
+of a parent/guardian and student for school enrollment or school-related
 residency verification purposes.
 </p>
 
@@ -260,6 +321,7 @@ Parent / Guardian Full Legal Name
   type="text"
   id="parentName"
   name="parent_name"
+  autocomplete="name"
 >
 
 </div>
@@ -275,6 +337,7 @@ Parent / Guardian Phone Number
   type="tel"
   id="parentPhone"
   name="parent_phone"
+  autocomplete="tel"
 >
 
 </div>
@@ -403,27 +466,68 @@ enrollment and/or school residency verification purposes.
 
 <div>
 
-<label>Landlord Signature</label>
+<label>Landlord Name / Electronic Acknowledgment</label>
 
-<div class="signature-line"></div>
+<div class="signature-box">
+Geydis Airado
+</div>
 
 </div>
 
 
 <div>
 
-<label>Date</label>
+<label for="verificationDate">
+Verification Date
+</label>
 
-<div class="signature-line"></div>
+<input
+  type="date"
+  id="verificationDate"
+  name="verification_date"
+>
 
 </div>
 
 </div>
 
+</div>
+
+
+<p class="note">
+The landlord name above is displayed as an electronic acknowledgment.
+If the school requires a handwritten or formal electronic signature,
+the landlord should sign using a method accepted by the school.
+</p>
+
+
+<div id="saveStatus" class="status">
+✓ Form saved on this device.
 </div>
 
 
 <div class="buttons">
+
+<button
+  class="save-button"
+  type="button"
+  onclick="saveForm()">
+  💾 Save Form
+</button>
+
+<button
+  class="load-button"
+  type="button"
+  onclick="loadForm()">
+  📂 Load Saved Form
+</button>
+
+<button
+  class="clear-button"
+  type="button"
+  onclick="clearForm()">
+  🗑️ Clear Saved Form
+</button>
 
 <button
   class="print-button"
@@ -440,6 +544,14 @@ enrollment and/or school residency verification purposes.
 
 </div>
 
+
+<p class="note">
+<strong>Tip:</strong> After completing the form, tap
+<strong>Print / Save as PDF</strong>. On an iPhone, you can use the
+Share button and choose <strong>Save to Files</strong> to keep a
+permanent copy on the phone.
+</p>
+
 </div>
 
 </div>
@@ -450,6 +562,166 @@ enrollment and/or school residency verification purposes.
 © Carlos Rents • Florida Residential Rental Services
 
 </footer>
+
+
+<script>
+
+const STORAGE_KEY = "carlosRentsSchoolResidencyVerification";
+
+
+function getFormFields(){
+
+  return document.querySelectorAll(
+    "input[type='text'], input[type='tel'], input[type='date']"
+  );
+
+}
+
+
+function saveForm(){
+
+  const fields = getFormFields();
+
+  const formData = {};
+
+  fields.forEach(function(field){
+
+    formData[field.id] = field.value;
+
+  });
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(formData)
+  );
+
+  const status = document.getElementById("saveStatus");
+
+  status.textContent = "✓ Form saved on this device.";
+  status.style.display = "block";
+
+}
+
+
+function loadForm(){
+
+  const savedData = localStorage.getItem(STORAGE_KEY);
+
+  if(!savedData){
+
+    alert("No saved form was found on this device.");
+
+    return;
+
+  }
+
+  try{
+
+    const formData = JSON.parse(savedData);
+
+    const fields = getFormFields();
+
+    fields.forEach(function(field){
+
+      if(
+        Object.prototype.hasOwnProperty.call(
+          formData,
+          field.id
+        )
+      ){
+
+        field.value = formData[field.id];
+
+      }
+
+    });
+
+    const status = document.getElementById("saveStatus");
+
+    status.textContent = "✓ Saved form loaded.";
+    status.style.display = "block";
+
+  }catch(error){
+
+    alert("The saved form could not be loaded.");
+
+  }
+
+}
+
+
+function clearForm(){
+
+  const confirmed = confirm(
+    "Are you sure you want to clear the saved form from this device?"
+  );
+
+  if(!confirmed){
+
+    return;
+
+  }
+
+  localStorage.removeItem(STORAGE_KEY);
+
+  const fields = getFormFields();
+
+  fields.forEach(function(field){
+
+    field.value = "";
+
+  });
+
+  const status = document.getElementById("saveStatus");
+
+  status.textContent = "✓ Saved form cleared.";
+  status.style.display = "block";
+
+}
+
+
+/*
+  Automatically load the saved form when the page opens.
+*/
+
+window.addEventListener("DOMContentLoaded", function(){
+
+  const savedData = localStorage.getItem(STORAGE_KEY);
+
+  if(savedData){
+
+    try{
+
+      const formData = JSON.parse(savedData);
+
+      const fields = getFormFields();
+
+      fields.forEach(function(field){
+
+        if(
+          Object.prototype.hasOwnProperty.call(
+            formData,
+            field.id
+          )
+        ){
+
+          field.value = formData[field.id];
+
+        }
+
+      });
+
+    }catch(error){
+
+      console.log("No usable saved form found.");
+
+    }
+
+  }
+
+});
+
+</script>
 
 </body>
 </html>
